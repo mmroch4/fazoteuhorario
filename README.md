@@ -36,6 +36,9 @@ turmas do mesmo tipo, durante o período de aulas).
 - **Aulas pontuais** (reposições, aulas extra) distinguidas das semanais, para
   não contarem como compromisso nem como sobreposição.
 - **Horários guardados** no navegador, com link partilhável.
+- **Exportação em `.md` ou `.txt`** do horário escolhido, com as datas da primeira
+  e da última aula de cada turma — pronta a dar a uma IA para criar os eventos no
+  Google Calendar.
 - **Impressão** só da grelha, para PDF ou papel.
 
 ## Como correr

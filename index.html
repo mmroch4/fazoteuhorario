@@ -65,10 +65,21 @@
   .addbtn{display:flex;align-items:center;gap:8px;width:100%;margin-bottom:16px;
           font-weight:600;padding:10px 12px}
   .addbtn .plus{font-size:17px;line-height:1}
-  dialog#adddlg{border:0;border-radius:12px;padding:0;background:var(--panel);color:var(--ink);
-        width:min(560px,calc(100% - 32px));max-width:none;
+  dialog#adddlg,dialog#expdlg{border:0;border-radius:12px;padding:0;background:var(--panel);
+        color:var(--ink);width:min(560px,calc(100% - 32px));max-width:none;
         box-shadow:0 18px 50px rgba(0,0,0,.22)}
-  dialog#adddlg::backdrop{background:rgba(15,18,22,.42)}
+  dialog#adddlg::backdrop,dialog#expdlg::backdrop{background:rgba(15,18,22,.42)}
+  dialog#expdlg{width:min(720px,calc(100% - 32px))}
+  /* The preview is there to reassure, not to be read in full: monospace and
+     scrollable, so a 60-line export does not push the buttons off screen. */
+  #exptext{width:100%;height:min(46vh,340px);resize:vertical;font-family:ui-monospace,
+           SFMono-Regular,Menlo,Consolas,monospace;font-size:11.5px;line-height:1.45;
+           border:1px solid var(--line);border-radius:8px;padding:10px;background:var(--bg);
+           color:var(--ink);white-space:pre}
+  #exphint{margin:0 0 10px;font-size:12.5px;color:var(--muted)}
+  .exp-foot{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:10px 16px 14px}
+  .exp-foot .grow{flex:1}
+  #expmsg{font-size:12px;color:var(--ok)}
   .add-head{display:flex;align-items:center;gap:8px;padding:14px 16px;
             border-bottom:1px solid var(--line)}
   .add-head h2{flex:1;margin:0;font-size:12px;text-transform:uppercase;
@@ -176,6 +187,7 @@
     <div class="grow"></div>
     <span id="count" style="color:var(--muted)"></span>
     <button id="clear" class="noprint">Limpar tudo</button>
+    <button id="export" class="noprint">Exportar</button>
     <button id="print" class="primary noprint">Imprimir</button>
   </div>
 </header>
@@ -278,6 +290,32 @@
   <div class="add-foot">
     <span>Clica numa UC para a adicionar — podes adicionar várias seguidas.</span>
     <button class="primary" id="adddone">Concluído</button>
+  </div>
+</dialog>
+
+<dialog id="expdlg" class="noprint" aria-labelledby="expttl">
+  <div class="add-head">
+    <h2 id="expttl">Exportar horário</h2>
+    <div class="seg" id="expseg">
+      <button data-fmt="md" aria-pressed="true">.md</button>
+      <button data-fmt="txt" aria-pressed="false">.txt</button>
+    </div>
+    <button class="x" id="expx" title="Fechar" aria-label="Fechar">×</button>
+  </div>
+  <div class="add-body">
+    <p id="exphint">
+      Copia este texto para uma IA (ChatGPT, Claude, Gemini…) com acesso ao teu
+      Google Calendar e pede-lhe para criar os eventos. As instruções para a IA
+      já vão incluídas no texto.
+    </p>
+    <textarea id="exptext" readonly spellcheck="false"></textarea>
+  </div>
+  <div class="exp-foot">
+    <button class="primary" id="expcopy">Copiar</button>
+    <button id="expdl">Transferir ficheiro</button>
+    <span id="expmsg"></span>
+    <span class="grow"></span>
+    <button id="expclose">Fechar</button>
   </div>
 </dialog>
 
@@ -791,6 +829,188 @@ window.FTH.boot(function (err) {
     }
   };
   document.getElementById("print").onclick = () => window.print();
+
+  /* ---------- export ------------------------------------------------------ */
+  /* A plain-text dump of the week, written to be pasted into an assistant that
+     has access to the user's calendar. Everything a recurring event needs is
+     already in the dataset (first_date, last_date, occurrences, regular), so the
+     export only has to carry it across and say what to do with it — the model
+     never has to guess a date. */
+
+  const facName = () => {
+    const f = (window.TIMETABLE_DATA || {}).faculty || {};
+    return f.name ? f.name + (f.short ? " (" + f.short + ")" : "") : "U.Porto";
+  };
+  const semName = () => state.sem === "1S" ? "1.º semestre" : "2.º semestre";
+  // The academic year is not a field in the dataset, but the session dates are:
+  // a 1S class in 2026 belongs to 2026/2027, a 2S class in 2027 to 2026/2027.
+  function acadYear(sessions) {
+    const years = sessions.map(i => +String(i.slot.first_date || "").slice(0, 4))
+                          .filter(Boolean);
+    if (!years.length) return "";
+    const y = Math.min(...years);
+    return state.sem === "1S" ? `${y}/${y + 1}` : `${y - 1}/${y}`;
+  }
+
+  // Only what you will actually attend: turmas you ticked, minus the sessions
+  // you marked as faltas. Sorted the way a week reads.
+  function exportSessions() {
+    return chosenSlots()
+      .filter(i => !isSkipped(i.cls, i.slot))
+      .sort((a, b) => a.slot.day - b.slot.day
+                   || min(a.slot.start) - min(b.slot.start)
+                   || a.sub.code.localeCompare(b.sub.code));
+  }
+
+  const roomOf = s => s.rooms && s.rooms.length ? s.rooms.join(", ") : "—";
+  const teachOf = s => s.teachers && s.teachers.length ? s.teachers.join(", ") : "—";
+  const turmaOf = i => i.cls.name.replace(i.sub.code + "_", "");
+  const titleOf = i => `${i.sub.code} ${i.cls.type} — ${i.sub.name}`;
+
+  function buildExport(fmt) {
+    const all = exportSessions();
+    const weekly = all.filter(i => i.slot.regular);
+    const once = all.filter(i => !i.slot.regular);
+    const year = acadYear(all);
+    const L = [];
+    const h = (lvl, txt) => L.push(fmt === "md" ? "#".repeat(lvl) + " " + txt
+                                                : txt.toUpperCase(), "");
+    const bullet = t => L.push((fmt === "md" ? "- " : "  - ") + t);
+
+    h(1, `Horário — ${semName()}${year ? " de " + year : ""}`);
+    L.push(`Faculdade: ${facName()}`,
+           "Fuso horário: Europe/Lisbon",
+           `Exportado do Faz o Teu Horário em ${new Date().toISOString().slice(0, 10)}`,
+           "");
+
+    h(2, "Instruções para a IA");
+    bullet("Cria estes eventos no meu Google Calendar, no fuso Europe/Lisbon.");
+    bullet('Cada aula da secção "Aulas semanais" repete-se todas as semanas: cria '
+           + "um evento recorrente que começa em «Primeira aula» (essa data já cai "
+           + "no dia da semana indicado) e se repete semanalmente até «Última aula», "
+           + "inclusive — RRULE:FREQ=WEEKLY;UNTIL=<última aula>.");
+    bullet('As aulas da secção "Aulas pontuais" NÃO são semanais: cria um único '
+           + "evento na data indicada.");
+    bullet("Título do evento: «CÓDIGO TIPO — Nome da UC», "
+           + "por exemplo «CC4079 TP — Administração de Redes».");
+    bullet("Local do evento: a sala indicada. Se a sala for «—», deixa o local vazio.");
+    bullet("Descrição do evento: turma, tipo de aula e docentes.");
+    bullet("Não cries eventos para nada que não esteja listado abaixo, e não "
+           + "dupliques eventos que já existam no calendário.");
+    L.push("");
+
+    if (!all.length) L.push("(Não há aulas escolhidas para este semestre.)", "");
+
+    if (weekly.length) {
+      h(2, `Aulas semanais (${weekly.length})`);
+      if (fmt === "md") {
+        L.push("| Dia | Início | Fim | UC | Nome | Turma | Tipo | Sala | Docentes |"
+               + " Primeira aula | Última aula | N.º de aulas |",
+               "|---|---|---|---|---|---|---|---|---|---|---|---|");
+        for (const i of weekly) {
+          const s = i.slot;
+          L.push(`| ${DAYS[s.day]} | ${s.start} | ${s.end} | ${i.sub.code} |`
+                 + ` ${i.sub.name} | ${turmaOf(i)} | ${s.type} | ${roomOf(s)} |`
+                 + ` ${teachOf(s)} | ${s.first_date || "—"} | ${s.last_date || "—"} |`
+                 + ` ${s.occurrences || "—"} |`);
+        }
+      } else {
+        let day = -1;
+        for (const i of weekly) {
+          const s = i.slot;
+          if (s.day !== day) { day = s.day; L.push("", DAYS[day]); }
+          L.push(`  ${s.start}-${s.end}  ${titleOf(i)}`,
+                 `      turma ${turmaOf(i)} · tipo ${s.type} · sala ${roomOf(s)}`
+                 + ` · docentes ${teachOf(s)}`,
+                 `      semanal, de ${s.first_date || "—"} a ${s.last_date || "—"}`
+                 + (s.occurrences ? ` (${s.occurrences} aulas)` : ""));
+        }
+      }
+      L.push("");
+    }
+
+    if (once.length) {
+      h(2, `Aulas pontuais (${once.length}) — eventos únicos, não repetir`);
+      for (const i of once) {
+        const s = i.slot;
+        const when = !s.last_date || s.first_date === s.last_date
+          ? (s.first_date || "—") : `${s.first_date} a ${s.last_date}`;
+        const line = `${when} (${DAYS[s.day]}), ${s.start}-${s.end} — `
+                   + `${titleOf(i)} · turma ${turmaOf(i)} · sala ${roomOf(s)}`;
+        if (fmt === "md") bullet(line); else L.push("  " + line);
+      }
+      L.push("");
+    }
+
+    // Context the assistant should not act on, but that explains the gaps.
+    const notes = [];
+    const skipped = chosenSlots().filter(i => isSkipped(i.cls, i.slot)).length;
+    if (skipped) {
+      notes.push(skipped === 1
+        ? "1 sessão foi marcada como falta e não está incluída acima."
+        : `${skipped} sessões foram marcadas como falta e não estão incluídas acima.`);
+    }
+    const empty = Object.keys(state.picked)
+      .filter(c => byCode[c] && !all.some(i => i.sub.code === c))
+      .map(c => `${c} (${byCode[c].name})`);
+    if (empty.length) {
+      notes.push("Sem aulas neste semestre (turma por escolher ou horário ainda não "
+                 + "publicado): " + empty.join("; ") + ".");
+    }
+    if (notes.length) {
+      h(2, "Notas");
+      for (const n of notes) { if (fmt === "md") bullet(n); else L.push("  - " + n); }
+      L.push("");
+    }
+
+    return L.join("\n").replace(/\n{3,}/g, "\n\n").trim() + "\n";
+  }
+
+  (function () {
+    const dlg = document.getElementById("expdlg");
+    const ta = document.getElementById("exptext");
+    const msg = document.getElementById("expmsg");
+    const seg = document.getElementById("expseg");
+    let fmt = "md";
+
+    const fill = () => { ta.value = buildExport(fmt); msg.textContent = ""; };
+    const flash = t => {
+      msg.textContent = t;
+      setTimeout(() => { msg.textContent = ""; }, 2500);
+    };
+
+    seg.onclick = e => {
+      const b = e.target.closest("button[data-fmt]"); if (!b) return;
+      fmt = b.dataset.fmt;
+      [...seg.children].forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+      fill();
+    };
+
+    document.getElementById("export").onclick = () => { fill(); dlg.showModal(); };
+    document.getElementById("expx").onclick = () => dlg.close();
+    document.getElementById("expclose").onclick = () => dlg.close();
+    dlg.addEventListener("click", ev => { if (ev.target === dlg) dlg.close(); });
+
+    document.getElementById("expcopy").onclick = () => {
+      // The Clipboard API needs a secure context; select() is the fallback that
+      // always works, and leaves the text ready for Ctrl+C.
+      const manual = () => { ta.select(); flash("Carrega em Ctrl+C para copiar"); };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(ta.value).then(() => flash("Copiado ✓"), manual);
+      } else manual();
+    };
+
+    document.getElementById("expdl").onclick = () => {
+      const blob = new Blob([ta.value], {type: "text/plain;charset=utf-8"});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `horario-${F.faculty()}-${state.sem}.${fmt}`;
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+      flash("Transferido ✓");
+    };
+  })();
   (function () {
     const skip = document.getElementById("hideskip");
     skip.checked = state.hideSkipped !== false;   // faltas are hidden by default
