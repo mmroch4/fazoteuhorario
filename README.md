@@ -63,12 +63,14 @@ Para publicar, serve a pasta como ficheiros estáticos — GitHub Pages, Netlify
 ├── guia.html           guia de utilização, para quem chega de novo
 ├── sobre.html          porque é que o projeto existe
 ├── assets/             CSS e JavaScript do site
+│   ├── boot.js           escolhe a faculdade e carrega os dados dela
 │   ├── style.css         tema partilhado pelas quatro páginas
 │   ├── common.js         cores das UCs, popup de detalhes, utilitários
 │   ├── solver.js         gerador de combinações (corre no navegador)
 │   └── presets.js        horários distribuídos com o site (vazio por omissão)
 ├── data/               os horários — ver data/README.md
 │   ├── faculdades.json   índice: que faculdades existem e onde
+│   ├── faculdades.js     o mesmo, para o site carregar
 │   └── fcup/             uma pasta por faculdade
 │       ├── timetable.js    o ficheiro que o site carrega
 │       ├── timetable.json  o mesmo, para os scripts
@@ -107,6 +109,20 @@ Requisitos: Python 3.9+ (biblioteca padrão, sem dependências). O
 `fetch_timetables.sh`, alternativa em linha de comandos, precisa de `curl` e
 `jq`.
 
+## Várias faculdades
+
+O site serve uma faculdade de cada vez, escolhida por esta ordem: `?f=<sigla>`
+no URL, depois a última escolha guardada, depois a FCUP. O índice
+`data/faculdades.js` (~1 KB) carrega sempre; os ~500 KB de horários de uma
+faculdade só carregam quando ela é escolhida — é isso que impede o site de
+crescer para vários MB à medida que faculdades são acrescentadas.
+
+O seletor de faculdade só aparece quando houver mais do que uma com dados.
+
+Para acrescentar uma faculdade não é preciso mexer no site: corre o pipeline
+com `-f <sigla>` (ver [scripts/README.md](scripts/README.md)) e ela passa a
+existir no índice.
+
 ## SEO e publicação
 
 Os títulos, descrições, tags Open Graph, dados estruturados, `robots.txt`,
@@ -142,11 +158,15 @@ o `canonical` à UC que está a mostrar.
 O site não tem conta, servidor, cookies nem análise de utilização. Tudo o que
 guardas fica no teu navegador, em `localStorage`:
 
-| chave              | conteúdo                                              |
-| ------------------ | ----------------------------------------------------- |
-| `fcup-horario-v1`  | seleção atual, faltas, semestre e preferências        |
-| `fcup-presets-v1`  | os teus horários guardados                            |
-| `fcup-colors-v1`   | as cores escolhidas para cada UC                      |
+| chave                          | conteúdo                                       |
+| ------------------------------ | ---------------------------------------------- |
+| `fth-<faculdade>-horario-v1`   | seleção atual, faltas, semestre e preferências |
+| `fth-<faculdade>-presets-v1`   | os horários guardados                          |
+| `fth-<faculdade>-colors-v1`    | as cores escolhidas para cada UC               |
+| `fth-faculdade`                | a última faculdade escolhida                   |
+
+As chaves são por faculdade, para um horário feito na FCUP não colidir com um
+feito noutra. As chaves antigas (`fcup-*`) são migradas na primeira visita.
 
 Limpar os dados do site no navegador apaga tudo isto. Os links de partilha
 (`#pick=…`) levam o horário dentro do próprio endereço — não há upload.

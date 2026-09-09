@@ -110,12 +110,6 @@
   .opt.full{opacity:.55}
   .opt.noslot{border-style:dashed}
   .opt .v{color:var(--muted);font-size:11px}
-  /* Not an error, just "the university hasn't published this yet" — amber, so
-     it does not read like the red clash warnings. */
-  .notice{background:#fffbeb;border:1px solid #fcd34d;color:#92400e;border-radius:10px;
-          padding:11px 13px;margin-bottom:16px;font-size:12.5px;line-height:1.5}
-  .notice b{display:block;margin-bottom:2px}
-  .notice code{background:rgba(146,64,14,.1);padding:1px 4px;border-radius:4px;font-size:11.5px}
   .warn{background:var(--bad-bg);border:1px solid var(--bad);color:var(--bad);border-radius:8px;
         padding:9px 11px;margin-bottom:12px;font-size:13px}
   .warn ul{margin:6px 0 0;padding-left:18px}
@@ -172,6 +166,7 @@
 <header>
   <div class="bar">
     <h1>Faz o Teu Horário <small>U.Porto</small></h1>
+    <span id="facslot"></span>
     <a href="guia.html" class="btn noprint">Guia</a>
     <a href="subject.html" class="btn noprint">Todas as UCs</a>
     <div class="seg noprint" id="semseg">
@@ -286,17 +281,18 @@
   </div>
 </dialog>
 
-<script src="data/fcup/timetable.js"></script>
+<script src="data/faculdades.js"></script>
+<script src="assets/boot.js"></script>
 <script src="assets/presets.js"></script>
 <script src="assets/common.js"></script>
 <script src="assets/solver.js"></script>
 <script>
-(function () {
+window.FTH.boot(function (err) {
   "use strict";
-  const F = window.FCUP;
+  const F = window.FCUP, F_ = window.FTH;
   const DATA = (window.TIMETABLE_DATA || {subjects: []}).subjects;
   const DAYS = F.DAYS, H0 = 8, H1 = 22, HH = 44;
-  const KEY = "fcup-horario-v1";
+  const KEY = F_.key("horario-v1");   // por faculdade — ver assets/boot.js
   const byCode = Object.fromEntries(DATA.map(s => [s.code, s]));
   const esc = F.esc, min = F.min;
 
@@ -1060,7 +1056,7 @@
      they are a personal library that has to survive "Limpar tudo", semester
      switches and every other edit to the working schedule. Nothing is uploaded
      anywhere — they exist only in this browser, on this device. */
-  const PKEY = "fcup-presets-v1";
+  const PKEY = F_.key("presets-v1");
   let myPresets = [];
   try { myPresets = JSON.parse(localStorage.getItem(PKEY) || "[]"); } catch (e) {}
   if (!Array.isArray(myPresets)) myPresets = [];
@@ -1207,7 +1203,7 @@
   [...document.getElementById("semseg").children].forEach(x =>
     x.setAttribute("aria-pressed", String(x.dataset.sem === state.sem)));
   render();
-})();
+});
 </script>
 </body>
 </html>

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-09T00:50:52+00:00",
+  "generated": "2026-09-09T01:02:35+00:00",
   "faculdades": [
     {
       "code": "fcup",
@@ -8,7 +8,7 @@
       "file": "data/fcup/timetable.js",
       "subjects": 464,
       "with_slots": 986,
-      "generated": "2026-09-09T00:50:52+00:00",
+      "generated": "2026-09-09T01:02:35+00:00",
       "size_kb": 493
     }
   ]

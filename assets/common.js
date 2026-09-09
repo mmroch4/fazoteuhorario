@@ -12,7 +12,10 @@ window.FCUP = (function () {
     "#db2777", "#4f46e5", "#65a30d", "#c026d3", "#0d9488", "#ea580c",
   ];
 
-  const KEY = "fcup-colors-v1";
+  // Namespaced per faculty: two faculties can use the same subject code, and a
+  // colour chosen for CC1007 at the FCUP says nothing about another CC1007.
+  const KEY = (window.FTH && window.FTH.key) ? window.FTH.key("colors-v1")
+                                             : "fth-fcup-colors-v1";
   let colors = {};
   try { colors = JSON.parse(localStorage.getItem(KEY) || "{}"); } catch (e) { colors = {}; }
   const persist = () => { try { localStorage.setItem(KEY, JSON.stringify(colors)); } catch (e) {} };

@@ -54,6 +54,7 @@
   <div class="bar">
     <a class="btn noprint" href="index.html">← Construtor de horário</a>
     <h1 id="title">Unidades curriculares</h1>
+    <span id="facslot"></span>
     <div class="grow"></div>
     <span id="nav" class="noprint"></span>
     <a class="btn noprint" href="guia.html">Guia</a>
@@ -76,10 +77,11 @@
   </div>
 </main>
 
-<script src="data/fcup/timetable.js"></script>
+<script src="data/faculdades.js"></script>
+<script src="assets/boot.js"></script>
 <script src="assets/common.js"></script>
 <script>
-(function () {
+window.FTH.boot(function (err) {
   "use strict";
   const F = window.FCUP;
   const DATA = (window.TIMETABLE_DATA || {subjects: []}).subjects;
@@ -101,8 +103,15 @@
   const SEO_BASE = (document.querySelector('link[rel="canonical"]') || {}).href || "";
   const SITE = SEO_BASE.replace(/subject\.html.*$/, "");
   function seo(title, desc, code) {
-    document.title = title;
-    const url = SITE + "subject.html" + (code ? "?code=" + encodeURIComponent(code) : "");
+    // The faculty belongs in both, and this runs after boot.js has set them —
+    // so it has to carry the faculty itself instead of dropping it.
+    const fac = window.FTH.code, isDefault = fac === window.FTH.DEFAULT;
+    document.title = isDefault ? title
+      : title.replace(/U\.Porto/, window.FTH.current.short);
+    const q = [];
+    if (code) q.push("code=" + encodeURIComponent(code));
+    if (!isDefault) q.push("f=" + encodeURIComponent(fac));
+    const url = SITE + "subject.html" + (q.length ? "?" + q.join("&") : "");
     const set = (sel, attr, val) => {
       const el = document.querySelector(sel);
       if (el) el[attr] = val;
@@ -338,7 +347,7 @@
   document.getElementById("print").onclick = () => window.print();
   addEventListener("hashchange", () => { hidden.clear(); route(); });
   route();
-})();
+});
 </script>
 
 <footer class="site-foot noprint">

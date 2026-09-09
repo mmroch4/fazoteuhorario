@@ -196,13 +196,22 @@ def build(code):
 
 
 def write_index(entries):
-    """The small file the site loads first, to know which faculties exist."""
+    """The small file the site loads first, to know which faculties exist.
+
+    Written twice: .json for the scripts, .js for the site. The site cannot
+    fetch() JSON from a file:// URL, and the whole point of this index is that
+    it loads before anything else — so it has to be a plain <script>."""
     entries.sort(key=lambda e: e["name"])
-    F.INDEX.write_text(json.dumps(
-        {"generated": datetime.datetime.now(timezone.utc).isoformat(timespec="seconds"),
-         "faculdades": entries}, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    blob = {"generated": datetime.datetime.now(timezone.utc).isoformat(timespec="seconds"),
+            "faculdades": entries}
+    F.INDEX.write_text(json.dumps(blob, ensure_ascii=False, indent=2) + "\n",
+                       encoding="utf-8")
+    F.INDEX.with_suffix(".js").write_text(
+        "window.FACULDADES_INDEX = "
+        + json.dumps(blob, ensure_ascii=False, separators=(",", ":")) + ";\n",
+        encoding="utf-8")
     total = sum(e["subjects"] for e in entries)
-    print(f"\nindice -> {F.INDEX.relative_to(F.ROOT)}: "
+    print(f"\nindice -> {F.INDEX.relative_to(F.ROOT)} (+ .js): "
           f"{len(entries)} faculdade(s), {total} UCs")
 
 

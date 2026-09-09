@@ -346,9 +346,13 @@
 
     <h2 id="dados">Dados e privacidade</h2>
     <p>
-      Os horários vêm do SIGARRA da FCUP e são extraídos por um script incluído no
+      Cada faculdade tem as suas próprias chaves, por isso montar um horário na
+      FCUP não mexe no que tiveres guardado noutra faculdade.
+    </p>
+    <p>
+      Os horários vêm do SIGARRA e são extraídos por um script incluído no
       repositório (<code>browser_fetch.js</code>), que grava
-      <code>data/timetable.js</code>. Se o teu semestre ainda não tiver horários
+      <code>data/&lt;faculdade&gt;/timetable.js</code>. Se o teu semestre ainda não tiver horários
       publicados, a página avisa — corre o script outra vez mais tarde.
     </p>
     <p>
@@ -356,9 +360,11 @@
       utilização, não há cookies. O que fica guardado, e só neste dispositivo, é:
     </p>
     <ul>
-      <li><code>fcup-horario-v1</code> — a seleção atual, faltas, semestre e preferências;</li>
-      <li><code>fcup-presets-v1</code> — os teus horários guardados;</li>
-      <li><code>fcup-colors-v1</code> — as cores que escolheste para cada UC.</li>
+      <li><code>fth-&lt;faculdade&gt;-horario-v1</code> — a seleção atual, faltas,
+        semestre e preferências;</li>
+      <li><code>fth-&lt;faculdade&gt;-presets-v1</code> — os teus horários guardados;</li>
+      <li><code>fth-&lt;faculdade&gt;-colors-v1</code> — as cores de cada UC;</li>
+      <li><code>fth-faculdade</code> — a última faculdade que escolheste.</li>
     </ul>
     <p>
       Apagas tudo isto limpando os dados do site no teu navegador.

@@ -77,6 +77,18 @@ details[open] > summary .chev{transform:rotate(180deg)}
 .site-foot .gh:hover{border-color:var(--accent);text-decoration:none}
 .site-foot .gh svg{width:15px;height:15px;fill:currentColor}
 
+/* Not an error, just "this is not published yet" — amber, so it does not read
+   like the red clash warnings. Shared: boot.js renders it on any page. */
+.notice{background:#fffbeb;border:1px solid #fcd34d;color:#92400e;border-radius:10px;
+        padding:11px 13px;margin-bottom:16px;font-size:12.5px;line-height:1.5}
+.notice b{display:block;margin-bottom:2px}
+.notice code{background:rgba(146,64,14,.1);padding:1px 4px;border-radius:4px;font-size:11.5px}
+
+/* faculty picker — only rendered once a second faculty has data */
+.facsel{padding:6px 8px;border:1px solid var(--line);border-radius:7px;background:#fff;
+        color:var(--ink);font:inherit;font-weight:600;cursor:pointer}
+.facsel:hover{border-color:var(--accent)}
+
 /* ---- weekly grid ---- */
 .grid-wrap{overflow-x:auto}
 .grid{position:relative;display:grid;
