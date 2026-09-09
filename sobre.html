@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- seo:begin  gerado por scripts/build_seo.py — não editar à mão -->
+<title>Sobre o projeto — Faz o Teu Horário, U.Porto</title>
+<meta name="description" content="Porque é que este construtor existe: decidir o horário antes da inscrição no SIGARRA e continuar a ajustá-lo durante o semestre. Projeto de código aberto.">
+<link rel="canonical" href="https://horario.miguelrocha.dev/sobre.html">
+<meta name="theme-color" content="#2563eb">
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Faz o Teu Horário · U.Porto">
+<meta property="og:locale" content="pt_PT">
+<meta property="og:title" content="Porque é que este projeto existe">
+<meta property="og:description" content="Porque é que este construtor existe: decidir o horário antes da inscrição no SIGARRA e continuar a ajustá-lo durante o semestre. Projeto de código aberto.">
+<meta property="og:url" content="https://horario.miguelrocha.dev/sobre.html">
+<meta property="og:image" content="https://horario.miguelrocha.dev/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Grelha semanal de horário com as aulas de cinco unidades curriculares">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Porque é que este projeto existe">
+<meta name="twitter:description" content="Porque é que este construtor existe: decidir o horário antes da inscrição no SIGARRA e continuar a ajustá-lo durante o semestre. Projeto de código aberto.">
+<meta name="twitter:image" content="https://horario.miguelrocha.dev/assets/og.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "name": "Sobre o projeto — Faz o Teu Horário, U.Porto",
+  "url": "https://horario.miguelrocha.dev/sobre.html",
+  "description": "Porque é que este construtor existe: decidir o horário antes da inscrição no SIGARRA e continuar a ajustá-lo durante o semestre. Projeto de código aberto.",
+  "inLanguage": "pt-PT",
+  "author": {
+    "@type": "Person",
+    "name": "Miguel Rocha",
+    "url": "https://miguelrocha.dev"
+  },
+  "mainEntity": {
+    "@type": "SoftwareApplication",
+    "name": "Faz o Teu Horário · U.Porto",
+    "url": "https://horario.miguelrocha.dev/",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "Any (navegador web)",
+    "author": {
+      "@type": "Person",
+      "name": "Miguel Rocha",
+      "url": "https://miguelrocha.dev"
+    }
+  }
+}
+</script>
+<!-- seo:end -->
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  main{max-width:760px;margin:0 auto}
+  article{background:var(--panel);border:1px solid var(--line);border-radius:10px;
+          padding:10px 26px 26px}
+  article h2{font-size:18px;font-weight:650;margin:28px 0 10px}
+  article h2:first-of-type{margin-top:18px}
+  /* the two moments the page is about: before enrolling, and during term */
+  article h3{font-size:13px;font-weight:650;margin:20px 0 6px;color:var(--accent);
+             text-transform:uppercase;letter-spacing:.05em}
+  article p,article li{font-size:14px;line-height:1.65}
+  article p{margin:0 0 12px}
+  article ul{margin:0 0 12px;padding-left:20px}
+  article li{margin-bottom:6px}
+  article code{background:var(--bg);border:1px solid var(--line);border-radius:4px;
+               padding:1px 5px;font-size:12.5px}
+  .lead{font-size:16.5px;line-height:1.55;color:var(--ink);margin:16px 0 0;font-weight:500}
+  .sub{font-size:14.5px;color:var(--muted);line-height:1.6;margin:10px 0 0}
+
+  /* the problem, stated as the sequence of steps it actually costs you */
+  .steps{counter-reset:s;list-style:none;padding:0;margin:14px 0}
+  .steps li{counter-increment:s;position:relative;padding-left:34px;margin-bottom:9px;
+            font-size:13.5px;line-height:1.55}
+  .steps li::before{content:counter(s);position:absolute;left:0;top:1px;
+       width:22px;height:22px;border-radius:50%;background:var(--bg);
+       border:1px solid var(--line);color:var(--muted);font-size:11.5px;font-weight:650;
+       display:flex;align-items:center;justify-content:center}
+
+  .tip{border-left:3px solid var(--accent);background:#f5f8ff;border-radius:0 8px 8px 0;
+       padding:11px 14px;margin:14px 0;font-size:13.5px;line-height:1.6}
+  .tip.amber{border-left-color:#f59e0b;background:#fffbeb}
+  .tip b{font-weight:650}
+
+  /* what it does differently — one line per idea, no marketing */
+  .does{display:grid;gap:2px;margin:14px 0}
+  .does div{display:grid;grid-template-columns:150px 1fr;gap:14px;padding:9px 0;
+            border-top:1px solid var(--line);font-size:13.5px;line-height:1.55}
+  .does div:last-child{border-bottom:1px solid var(--line)}
+  .does b{font-weight:650}
+  @media (max-width:560px){ .does div{grid-template-columns:1fr;gap:2px} }
+
+  .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="bar">
+    <a class="btn noprint" href="index.html">← Construtor de horário</a>
+    <h1>Sobre</h1>
+    <div class="grow"></div>
+    <a class="btn noprint" href="guia.html">Guia</a>
+    <a class="btn noprint" href="subject.html">Todas as UCs</a>
+  </div>
+</header>
+
+<main>
+  <article>
+    <h2>Porque é que isto existe</h2>
+    <p class="lead">
+      Para poderes decidir o teu horário <b>antes</b> da inscrição, com calma, e
+      continuar a ajustá-lo <b>durante</b> o semestre.
+    </p>
+    <p class="sub">
+      O SIGARRA deixa escolher as turmas — mas só no momento exato da inscrição,
+      e só uma vez. Este construtor existe para os dois momentos que ficam de
+      fora: o antes e o depois.
+    </p>
+
+    <h2>O problema</h2>
+
+    <h3>Antes: só se decide na hora</h3>
+    <p>
+      A escolha de turmas acontece dentro da inscrição — uma janela única, com o
+      relógio a correr e as vagas a esgotar enquanto decides. É aí, e só aí, que
+      tens de cruzar os horários de todas as UCs pela primeira vez.
+    </p>
+    <p>Sem um sítio para preparar a decisão, a preparação acaba por ser isto:</p>
+    <ol class="steps">
+      <li>Abrir o horário de cada UC numa página diferente.</li>
+      <li>Copiar as horas para um papel, um Excel ou a cabeça.</li>
+      <li>Descobrir que a PL que querias colide com a teórica de outra UC.</li>
+      <li>Voltar atrás e tentar outra combinação. E outra.</li>
+      <li>Chegar à inscrição e escolher à pressa, sem saber se havia melhor.</li>
+    </ol>
+    <p>
+      É trabalho repetitivo, propenso a erro, e feito exatamente na semana em que
+      há menos tempo para o fazer. Como custa caro tentar, a maioria das pessoas
+      fica pela primeira combinação que funciona — não pela melhor.
+    </p>
+
+    <h3>Depois: a semana real não é a da inscrição</h3>
+    <p>
+      Feita a inscrição, o horário fica fixo: uma turma por tipo de aula, para o
+      semestre inteiro. Mas a semana real não se comporta assim. Turmas paralelas
+      de uma teórica dão a mesma matéria em horas diferentes, e ao longo do
+      semestre há sempre razões para preferir a de quinta à de terça — outra
+      cadeira, trabalho, um dia em que compensa não ir à faculdade.
+    </p>
+    <p>
+      Essa flexibilidade existe na prática, mas não há onde a representar: o
+      horário da inscrição não a sabe exprimir, e um horário no papel muito menos.
+    </p>
+
+    <h2>O que esta página faz</h2>
+
+    <h3>Antes da inscrição — chegar decidido</h3>
+    <div class="does">
+      <div><b>A semana inteira</b>
+        <span>Todas as UCs na mesma grelha, cada uma com a sua cor. As
+          sobreposições saltam à vista em vez de aparecerem em outubro.</span></div>
+      <div><b>Todas as hipóteses</b>
+        <span>Em vez de tentares à mão, o gerador percorre todas as semanas
+          possíveis sem sobreposições e ordena-as por aquilo que te importa:
+          evitar manhãs, menos buracos, menos dias, turmas com vagas.</span></div>
+      <div><b>Um “não” explicado</b>
+        <span>Quando nada encaixa, diz-te <i>que par</i> de UCs é impossível de
+          conciliar — que é a informação de que precisas para decidir o que
+          largar.</span></div>
+      <div><b>Alternativas guardadas</b>
+        <span>Guarda várias versões e alterna entre elas. Chegas à inscrição com
+          a primeira escolha e com o plano B, para quando uma turma tiver
+          esgotado entretanto.</span></div>
+    </div>
+
+    <h3>Durante as aulas — flexibilizar</h3>
+    <div class="does">
+      <div><b>Turmas misturadas</b>
+        <span>Uma teórica com duas aulas por semana não te obriga à mesma turma
+          nos dois dias. Podes ir à <code>T1</code> à terça e à <code>T2</code> à
+          quinta — a página monta o horário a partir das duas.</span></div>
+      <div><b>Aulas que não vais ter</b>
+        <span>Marcas como falta as sessões a que não vais. Deixam de contar para
+          as horas e para as sobreposições, e a grelha passa a mostrar a tua
+          semana real, não a da inscrição.</span></div>
+      <div><b>Contas certas</b>
+        <span>Conta as horas semanais que estás mesmo a ter, sabendo que turmas
+          paralelas repetem a mesma matéria e por isso não somam. Assim vês logo
+          se uma troca te deixou a descoberto.</span></div>
+    </div>
+
+    <h2>Como foi feito</h2>
+    <p>
+      Os horários são extraídos do SIGARRA e guardados num ficheiro de dados que
+      a página carrega de uma vez. Daí para a frente é tudo JavaScript no teu
+      navegador: sem conta, sem servidor, sem espera.
+    </p>
+    <p>
+      Três decisões que explicam o resto:
+    </p>
+    <ul>
+      <li><b>Nada sai do teu navegador.</b> Não há login, cookies, nem análise de
+        utilização. As tuas escolhas e os teus horários guardados vivem no
+        <code>localStorage</code> deste dispositivo e mais nada. Os links de
+        partilha levam o horário dentro do próprio endereço — não há upload.</li>
+      <li><b>Sem dependências.</b> HTML, CSS e JavaScript simples, sem passo de
+        compilação. Abre o ficheiro e funciona, hoje e daqui a cinco anos.</li>
+      <li><b>Código aberto.</b> Qualquer pessoa pode ver como as contas são
+        feitas, corrigir um erro, ou adaptar isto a outra faculdade — o modelo de
+        dados não tem nada de específico da FCUP.</li>
+    </ul>
+
+    <div class="tip amber">
+      <b>Isto não é uma página oficial</b> da U.Porto, da FCUP nem do SIGARRA, e
+      não tem qualquer ligação a eles. Os dados são uma cópia do SIGARRA feita
+      num determinado dia e podem estar desatualizados; a inscrição nas turmas
+      faz-se no SIGARRA. Confirma sempre lá antes de contares com um horário.
+    </div>
+
+    <h2>Quem fez</h2>
+    <p>
+      Feito por <a href="https://miguelrocha.dev" target="_blank" rel="noopener">Miguel
+      Rocha</a>, estudante na FCUP, porque este problema aparece todos os
+      semestres e não tinha de aparecer.
+    </p>
+    <p>
+      É software livre, sob licença MIT. Se encontrares um erro, se os dados
+      estiverem desatualizados, ou se quiseres adaptá-lo ao teu curso, o
+      repositório está aberto a issues e a contribuições.
+    </p>
+    <div class="cta">
+      <a class="btn" href="index.html">Construir o meu horário</a>
+      <a class="btn" href="guia.html">Ler o guia</a>
+      <a class="btn" href="https://github.com/mmroch4/fazoteuhorario"
+         target="_blank" rel="noopener">Ver o código ↗</a>
+    </div>
+  </article>
+</main>
+
+<footer class="site-foot noprint">
+  <span>Feito por <a href="https://miguelrocha.dev" target="_blank" rel="noopener">Miguel Rocha</a></span>
+  <span aria-hidden="true">·</span>
+  <span><a href="guia.html">Guia de utilização</a></span>
+  <span aria-hidden="true">·</span>
+  <span>Projeto de código aberto. Dados do SIGARRA · FCUP. Não é uma página oficial.</span>
+  <a class="gh" href="https://github.com/mmroch4/fazoteuhorario"
+     target="_blank" rel="noopener">
+    <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0a8 8 0 0 0-2.53 15.59c.4.07.55-.17.55-.38
+      0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53
+      .63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95
+      0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.4 7.4 0 0 1 2-.27c.68 0
+      1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87
+      3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8 8 0 0 0 8 0Z"/></svg>
+    GitHub
+  </a>
+</footer>
+</body>
+</html>

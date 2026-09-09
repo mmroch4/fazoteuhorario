@@ -1,0 +1,23 @@
+{
+  "name": "Faz o Teu Horário · U.Porto — construtor de horários",
+  "short_name": "Horário",
+  "description": "Monta o teu horário da U.Porto antes da inscrição: escolhe as UCs, compara turmas, vê as sobreposições e gera todas as combinações. Grátis e sem conta.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "lang": "pt-PT",
+  "background_color": "#f7f8fa",
+  "theme_color": "#2563eb",
+  "icons": [
+    {
+      "src": "assets/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "assets/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}

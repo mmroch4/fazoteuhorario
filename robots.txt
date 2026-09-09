@@ -1,0 +1,6 @@
+# Faz o Teu Horário — U.Porto
+User-agent: *
+Allow: /
+
+# Nada aqui é privado; o sitemap lista também a página de cada UC.
+Sitemap: https://horario.miguelrocha.dev/sitemap.xml

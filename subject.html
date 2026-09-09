@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- seo:begin  gerado por scripts/build_seo.py — não editar à mão -->
+<title>Unidades curriculares da U.Porto — turmas e horários</title>
+<meta name="description" content="Todas as unidades curriculares com horário publicado: turmas, salas, docentes e vagas, numa grelha semanal. Dados do SIGARRA da U.Porto.">
+<link rel="canonical" href="https://horario.miguelrocha.dev/subject.html">
+<meta name="theme-color" content="#2563eb">
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Faz o Teu Horário · U.Porto">
+<meta property="og:locale" content="pt_PT">
+<meta property="og:title" content="Unidades curriculares e turmas">
+<meta property="og:description" content="Todas as unidades curriculares com horário publicado: turmas, salas, docentes e vagas, numa grelha semanal. Dados do SIGARRA da U.Porto.">
+<meta property="og:url" content="https://horario.miguelrocha.dev/subject.html">
+<meta property="og:image" content="https://horario.miguelrocha.dev/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Grelha semanal de horário com as aulas de cinco unidades curriculares">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Unidades curriculares e turmas">
+<meta name="twitter:description" content="Todas as unidades curriculares com horário publicado: turmas, salas, docentes e vagas, numa grelha semanal. Dados do SIGARRA da U.Porto.">
+<meta name="twitter:image" content="https://horario.miguelrocha.dev/assets/og.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Unidades curriculares da U.Porto — turmas e horários",
+  "url": "https://horario.miguelrocha.dev/subject.html",
+  "description": "Todas as unidades curriculares com horário publicado: turmas, salas, docentes e vagas, numa grelha semanal. Dados do SIGARRA da U.Porto.",
+  "inLanguage": "pt-PT"
+}
+</script>
+<!-- seo:end -->
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  main{display:grid;gap:16px}
+  .dir{columns:3 240px;column-gap:20px}
+  .dir a{display:flex;gap:6px;align-items:baseline;padding:2px 0;text-decoration:none;
+         break-inside:avoid}
+  .dir a:hover{text-decoration:underline}
+  .dir b{font-weight:600}
+  .dir span.nm{color:var(--muted)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="bar">
+    <a class="btn noprint" href="index.html">← Construtor de horário</a>
+    <h1 id="title">Unidades curriculares</h1>
+    <div class="grow"></div>
+    <span id="nav" class="noprint"></span>
+    <a class="btn noprint" href="guia.html">Guia</a>
+    <button id="print" class="noprint">Imprimir</button>
+  </div>
+  <div class="badges" id="badges"></div>
+</header>
+
+<main>
+  <div class="panel" id="gridpanel">
+    <h2>Horário semanal — todas as turmas</h2>
+    <div class="noprint" id="tools"
+         style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:10px"></div>
+    <div class="grid-wrap"><div class="grid" id="grid"></div></div>
+    <div class="legend" id="legend"></div>
+  </div>
+  <div class="panel" id="tablepanel">
+    <h2>Turmas</h2>
+    <div id="table"></div>
+  </div>
+</main>
+
+<script src="data/timetable.js"></script>
+<script src="assets/common.js"></script>
+<script>
+(function () {
+  "use strict";
+  const F = window.FCUP;
+  const DATA = (window.TIMETABLE_DATA || {subjects: []}).subjects;
+  const DAYS = F.DAYS, H0 = 8, H1 = 22, HH = 46;
+  const esc = F.esc, min = F.min;
+  let hidden = new Set();
+
+  function wanted() {
+    const h = decodeURIComponent(location.hash.replace(/^#/, "")).trim();
+    return h || (new URLSearchParams(location.search).get("code") || "").trim();
+  }
+
+  /* ---------- per-UC SEO -------------------------------------------------
+     To a crawler this file is one URL per UC (`?code=CC1007` — the form the
+     sitemap lists), not one page with 464 states. So the title, description and
+     canonical have to follow whichever UC is on screen; otherwise every one of
+     those URLs reports the same generic metadata and none of them can rank.
+     Navigation between UCs still uses `#CC1007`, which is instant. */
+  const SEO_BASE = (document.querySelector('link[rel="canonical"]') || {}).href || "";
+  const SITE = SEO_BASE.replace(/subject\.html.*$/, "");
+  function seo(title, desc, code) {
+    document.title = title;
+    const url = SITE + "subject.html" + (code ? "?code=" + encodeURIComponent(code) : "");
+    const set = (sel, attr, val) => {
+      const el = document.querySelector(sel);
+      if (el) el[attr] = val;
+    };
+    set('meta[name="description"]', "content", desc);
+    set('link[rel="canonical"]', "href", url);
+    set('meta[property="og:title"]', "content", title);
+    set('meta[property="og:description"]', "content", desc);
+    set('meta[property="og:url"]', "content", url);
+    set('meta[name="twitter:title"]', "content", title);
+    set('meta[name="twitter:description"]', "content", desc);
+
+    // Course structured data, replaced (not stacked) on every navigation.
+    const old = document.getElementById("ld-uc");
+    if (old) old.remove();
+  }
+  function courseLd(sub, slots) {
+    const el = document.createElement("script");
+    el.type = "application/ld+json";
+    el.id = "ld-uc";
+    el.textContent = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Course",
+      name: sub.name,
+      courseCode: sub.code,
+      description: `Horário e turmas de ${sub.name} (${sub.code}), `
+        + `${sub.academic_year}.º ano — ${sub.classes.length} turma(s), `
+        + `${slots.length} aula(s) por semana.`,
+      inLanguage: "pt-PT",
+      url: SITE + "subject.html?code=" + encodeURIComponent(sub.code),
+      provider: {"@type": "CollegeOrUniversity",
+                 name: "Faculdade de Ciências da Universidade do Porto",
+                 url: "https://sigarra.up.pt/fcup/"},
+    });
+    document.head.appendChild(el);
+  }
+
+  /* ---------- directory ------------------------------------------------- */
+  function renderDirectory() {
+    seo("Unidades curriculares da U.Porto — turmas e horários",
+        "Todas as unidades curriculares com horário publicado: turmas, salas, "
+        + "docentes e vagas, numa grelha semanal. Dados do SIGARRA da U.Porto.",
+        null);
+    document.getElementById("title").innerHTML =
+      "Unidades curriculares <small>" + DATA.length + " no total</small>";
+    document.getElementById("badges").innerHTML = "";
+    document.getElementById("nav").innerHTML = "";
+    document.getElementById("gridpanel").style.display = "none";
+    const withT = DATA.filter(s => s.classes.some(c => c.slots.length));
+    const without = DATA.filter(s => !s.classes.some(c => c.slots.length));
+    const link = s => `<a href="#${encodeURIComponent(s.code)}">`
+      + `<span class="dot" style="background:${esc(F.colourOf(s.code))}"></span>`
+      + `<b>${esc(s.code)}</b> <span class="nm">${esc(s.name)}</span></a>`;
+    document.getElementById("tablepanel").querySelector("h2").textContent = "Escolhe uma UC";
+    document.getElementById("table").innerHTML =
+      `<div class="dir">${withT.map(link).join("")}</div>`
+      + `<h2 style="margin-top:18px">Sem horário publicado (${without.length})</h2>`
+      + `<div class="dir">${without.map(link).join("")}</div>`;
+  }
+
+  /* ---------- one subject ------------------------------------------------ */
+  function render(sub) {
+    const colour = F.colourOf(sub.code);
+    document.getElementById("title").innerHTML =
+      `<span class="dot" style="background:${esc(colour)};margin-right:6px"></span>`
+      + esc(sub.code) + " <small>" + esc(sub.name) + "</small>";
+
+    const slots = sub.classes.flatMap(c => c.slots.map(s => ({cls: c, slot: s})));
+    const hours = slots.reduce((a, x) => a + (min(x.slot.end) - min(x.slot.start)), 0) / 60;
+
+    // Both halves of the title are searched for: people look up the code
+    // ("CC1007 horário") about as often as the name.
+    const typeList = [...new Set(sub.classes.map(c => c.type))].join(", ");
+    seo(`${sub.code} ${sub.name} — horário e turmas`,
+        slots.length
+          ? `Horário de ${sub.name} (${sub.code}), ${sub.academic_year}.º ano: `
+            + `${sub.classes.length} turma(s) ${typeList}, salas, docentes e vagas, `
+            + `numa grelha semanal.`
+          : `${sub.name} (${sub.code}), ${sub.academic_year}.º ano — ainda sem `
+            + `horário publicado no SIGARRA.`,
+        sub.code);
+    if (slots.length) courseLd(sub, slots);
+    document.getElementById("badges").innerHTML = [
+      `${sub.academic_year}.º ano`,
+      sub.semester,
+      `${sub.classes.length} turma(s)`,
+      `${slots.length} aula(s)/semana`,
+      hours ? `${(hours % 1 ? hours.toFixed(1) : hours)} h/semana` : null,
+      `ocorrência ${sub.occurrence_id}`,
+    ].filter(Boolean).map(t => `<span class="tag">${esc(t)}</span>`).join("")
+      + ` <a class="tag" href="${F.ucURL(sub.occurrence_id)}" target="_blank" rel="noopener">ficha no SIGARRA ↗</a>`;
+
+    const i = DATA.indexOf(sub), prev = DATA[i - 1], next = DATA[i + 1];
+    document.getElementById("nav").innerHTML =
+      (prev ? `<a class="btn" href="#${encodeURIComponent(prev.code)}" title="${esc(prev.name)}">← ${esc(prev.code)}</a> ` : "")
+      + `<a class="btn" href="subject.html">Todas</a> `
+      + (next ? `<a class="btn" href="#${encodeURIComponent(next.code)}" title="${esc(next.name)}">${esc(next.code)} →</a>` : "");
+
+    // colour picker + type filters
+    const tools = document.getElementById("tools");
+    tools.innerHTML = '<span style="font-size:12px;color:var(--muted)">Cor</span>';
+    tools.appendChild(F.swatches(sub.code, () => route()));
+    const types = [...new Set(sub.classes.map(c => c.type))];
+    if (types.length > 1) {
+      const sep = document.createElement("span");
+      sep.style.cssText = "font-size:12px;color:var(--muted);margin-left:6px";
+      sep.textContent = "Tipos";
+      tools.appendChild(sep);
+      for (const t of types) {
+        const b = document.createElement("button");
+        b.className = "chip";
+        b.dataset.type = t;
+        b.textContent = t;
+        const on = !hidden.has(t);
+        b.setAttribute("aria-pressed", String(on));
+        if (on) { b.style.background = colour; b.style.color = "#fff"; b.style.borderColor = "transparent"; }
+        b.onclick = () => { hidden.has(t) ? hidden.delete(t) : hidden.add(t); route(); };
+        tools.appendChild(b);
+      }
+    }
+
+    renderGrid(sub, slots, colour);
+    renderTable(sub, colour);
+  }
+
+  const packDay = F.packDay;   // shared with index.html, see common.js
+
+  function renderGrid(sub, slots, colour) {
+    const nDays = slots.some(x => x.slot.day === 5) ? 6 : 5;
+    const packedByDay = [];
+    let maxLanes = 1;
+    for (let day = 0; day < nDays; day++) {
+      const p = packDay(slots.filter(x => x.slot.day === day));
+      packedByDay.push(p);
+      for (const it of p) maxLanes = Math.max(maxLanes, it._lanes);
+    }
+
+    const grid = document.getElementById("grid");
+    grid.style.setProperty("--days", nDays);
+    grid.style.setProperty("--hh", HH + "px");
+    grid.style.setProperty("--colw", Math.max(130, maxLanes * 62) + "px");
+    grid.innerHTML = '<div class="gh"></div>'
+      + DAYS.slice(0, nDays).map(d => `<div class="gh">${esc(d)}</div>`).join("");
+
+    const hrs = document.createElement("div");
+    hrs.className = "hours";
+    for (let h = H0; h <= H1; h++) {
+      const e = document.createElement("div");
+      e.className = "hour"; e.textContent = String(h).padStart(2, "0") + ":00";
+      hrs.appendChild(e);
+    }
+    grid.appendChild(hrs);
+
+    for (let day = 0; day < nDays; day++) {
+      const col = document.createElement("div");
+      col.className = "col";
+      col.style.height = ((H1 - H0) * HH) + "px";
+      for (let h = H0; h <= H1; h++) {
+        const l = document.createElement("div");
+        l.className = "line"; l.style.top = ((h - H0) * HH) + "px";
+        col.appendChild(l);
+      }
+      for (const it of packedByDay[day]) {
+        const s = it.slot, w = 100 / it._lanes;
+        const el = document.createElement("div");
+        el.className = "ev" + (hidden.has(it.cls.type) ? " dim" : "")
+                     + (it.slot.regular ? "" : " oneoff");
+        el.tabIndex = 0;
+        el.style.top = ((min(s.start) - H0 * 60) / 60 * HH) + "px";
+        el.style.height = Math.max((min(s.end) - min(s.start)) / 60 * HH - 2, 15) + "px";
+        el.style.left = `calc(${it._lane * w}% + 1px)`;
+        el.style.width = `calc(${w}% - 2px)`;
+        el.style.right = "auto";
+        el.style.setProperty("--c", colour);
+        el.innerHTML = `<b>${esc(it.cls.name.replace(sub.code + "_", ""))}</b>`
+          + `<span>${esc(s.start)}–${esc(s.end)}</span>`
+          + (s.rooms.length ? `<span> ${esc(s.rooms.join(","))}</span>` : "");
+        const open = () => F.showDetails({subject: sub, cls: it.cls, slot: s,
+                                          onColour: () => route()});
+        el.onclick = open;
+        el.onkeydown = ev => { if (ev.key === "Enter" || ev.key === " ") { ev.preventDefault(); open(); } };
+        col.appendChild(el);
+      }
+      grid.appendChild(col);
+    }
+
+    const used = [...new Set(slots.map(x => x.slot.type).filter(Boolean))];
+    document.getElementById("legend").innerHTML = used.length
+      ? used.map(t => `<span><i style="background:${esc(colour)}"></i>${esc(t)}</span>`).join("")
+        + '<span>— clica numa aula para ver os detalhes</span>'
+      : '<span class="empty">Sem horário publicado para esta UC.</span>';
+  }
+
+  function renderTable(sub, colour) {
+    const rows = sub.classes.map(c => {
+      const when = c.slots.length
+        ? c.slots.map(s => `${esc(DAYS[s.day])} ${esc(s.start)}–${esc(s.end)}`
+            + (s.regular ? "" : ' <span class="tag">pontual</span>')).join("<br>")
+        : '<span class="empty">sem horário publicado</span>';
+      const rooms = [...new Set(c.slots.flatMap(s => s.rooms))].join(", ") || "—";
+      const who = [...new Set(c.slots.flatMap(s => s.teachers))].join(", ") || "—";
+      const per = c.slots.length ? `${esc(c.slots[0].first_date)} → ${esc(c.slots[0].last_date)}` : "—";
+      const nm = c.turma_id
+        ? `<a href="${F.turmaURL(c.turma_id)}" target="_blank" rel="noopener">${esc(c.name)}</a>`
+        : esc(c.name);
+      return `<tr class="${c.slots.length ? "" : "noslot"}"><td>${nm}</td>`
+        + `<td><span class="ty" style="background:${esc(colour)}">${esc(c.type)}</span></td>`
+        + `<td>${esc(c.vacant_places)}</td><td>${when}</td><td>${esc(rooms)}</td>`
+        + `<td>${esc(who)}</td><td>${per}</td></tr>`;
+    }).join("");
+    document.getElementById("table").innerHTML =
+      "<table><thead><tr><th>Turma</th><th>Tipo</th><th>Vagas</th><th>Quando</th>"
+      + "<th>Sala</th><th>Docentes</th><th>Período</th></tr></thead><tbody>"
+      + rows + "</tbody></table>";
+  }
+
+  function route() {
+    const code = wanted();
+    if (!code) return renderDirectory();
+    const sub = DATA.find(s => s.code.toLowerCase() === code.toLowerCase());
+    if (!sub) {
+      document.getElementById("title").textContent = "UC não encontrada: " + code;
+      document.getElementById("gridpanel").style.display = "none";
+      document.getElementById("table").innerHTML =
+        '<p class="empty">Verifica o código. <a href="subject.html">Ver todas as UCs</a></p>';
+      return;
+    }
+    document.getElementById("gridpanel").style.display = "";
+    document.getElementById("tablepanel").querySelector("h2").textContent = "Turmas";
+    render(sub);
+  }
+
+  document.getElementById("print").onclick = () => window.print();
+  addEventListener("hashchange", () => { hidden.clear(); route(); });
+  route();
+})();
+</script>
+
+<footer class="site-foot noprint">
+  <span>Feito por <a href="https://miguelrocha.dev" target="_blank" rel="noopener">Miguel Rocha</a></span>
+  <span aria-hidden="true">·</span>
+  <span><a href="guia.html">Guia de utilização</a></span>
+  <span aria-hidden="true">·</span>
+  <span><a href="sobre.html">Sobre</a></span>
+  <span aria-hidden="true">·</span>
+  <span>Projeto de código aberto. Dados do SIGARRA · FCUP.</span>
+  <a class="gh" href="https://github.com/mmroch4/fazoteuhorario"
+     target="_blank" rel="noopener">
+    <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0a8 8 0 0 0-2.53 15.59c.4.07.55-.17.55-.38
+      0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53
+      .63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95
+      0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.4 7.4 0 0 1 2-.27c.68 0
+      1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87
+      3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8 8 0 0 0 8 0Z"/></svg>
+    GitHub
+  </a>
+</footer>
+</body>
+</html>

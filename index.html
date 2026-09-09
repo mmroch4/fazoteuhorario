@@ -1,0 +1,1213 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- seo:begin  gerado por scripts/build_seo.py — não editar à mão -->
+<title>Faz o Teu Horário — turmas e horários da U.Porto</title>
+<meta name="description" content="Monta o teu horário da U.Porto antes da inscrição: escolhe as UCs, compara turmas, vê as sobreposições e gera todas as combinações. Grátis e sem conta.">
+<link rel="canonical" href="https://horario.miguelrocha.dev/">
+<meta name="theme-color" content="#2563eb">
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Faz o Teu Horário · U.Porto">
+<meta property="og:locale" content="pt_PT">
+<meta property="og:title" content="Faz o teu horário antes da inscrição">
+<meta property="og:description" content="Monta o teu horário da U.Porto antes da inscrição: escolhe as UCs, compara turmas, vê as sobreposições e gera todas as combinações. Grátis e sem conta.">
+<meta property="og:url" content="https://horario.miguelrocha.dev/">
+<meta property="og:image" content="https://horario.miguelrocha.dev/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Grelha semanal de horário com as aulas de cinco unidades curriculares">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Faz o teu horário antes da inscrição">
+<meta name="twitter:description" content="Monta o teu horário da U.Porto antes da inscrição: escolhe as UCs, compara turmas, vê as sobreposições e gera todas as combinações. Grátis e sem conta.">
+<meta name="twitter:image" content="https://horario.miguelrocha.dev/assets/og.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Faz o Teu Horário · U.Porto",
+  "url": "https://horario.miguelrocha.dev/",
+  "description": "Monta o teu horário da U.Porto antes da inscrição: escolhe as UCs, compara turmas, vê as sobreposições e gera todas as combinações. Grátis e sem conta.",
+  "applicationCategory": "EducationalApplication",
+  "operatingSystem": "Any (navegador web)",
+  "inLanguage": "pt-PT",
+  "isAccessibleForFree": true,
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "EUR"
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Miguel Rocha",
+    "url": "https://miguelrocha.dev"
+  },
+  "license": "https://opensource.org/licenses/MIT",
+  "codeRepository": "https://github.com/mmroch4/fazoteuhorario"
+}
+</script>
+<!-- seo:end -->
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  main{display:grid;grid-template-columns:minmax(310px,380px) 1fr;gap:16px;align-items:start}
+  @media (max-width:960px){ main{grid-template-columns:1fr} }
+  .results{max-height:300px;overflow:auto;margin:8px -4px 0;padding:4px}
+  .res{display:flex;gap:8px;align-items:baseline;width:100%;text-align:left;margin-bottom:4px}
+  .res b{font-weight:600}
+  .res small{color:var(--muted);margin-left:auto}
+
+  /* add-subject launcher + modal */
+  .addbtn{display:flex;align-items:center;gap:8px;width:100%;margin-bottom:16px;
+          font-weight:600;padding:10px 12px}
+  .addbtn .plus{font-size:17px;line-height:1}
+  dialog#adddlg{border:0;border-radius:12px;padding:0;background:var(--panel);color:var(--ink);
+        width:min(560px,calc(100% - 32px));max-width:none;
+        box-shadow:0 18px 50px rgba(0,0,0,.22)}
+  dialog#adddlg::backdrop{background:rgba(15,18,22,.42)}
+  .add-head{display:flex;align-items:center;gap:8px;padding:14px 16px;
+            border-bottom:1px solid var(--line)}
+  .add-head h2{flex:1;margin:0;font-size:12px;text-transform:uppercase;
+               letter-spacing:.06em;color:var(--muted)}
+  .add-head .x{border:0;background:none;color:var(--muted);cursor:pointer;
+               font-size:20px;line-height:1;padding:0 4px}
+  .add-head .x:hover{color:var(--ink)}
+  .add-body{padding:14px 16px 4px}
+  .add-body input[type=search]{width:100%}
+  /* The modal has the whole viewport to work with, so the list gets more room
+     than it had in the sidebar — but never so much that the footer scrolls off. */
+  #adddlg .results{max-height:min(52vh,420px);margin-top:10px}
+  .add-foot{display:flex;gap:12px;align-items:center;padding:10px 16px 14px}
+  .add-foot span{flex:1;font-size:11.5px;color:var(--muted)}
+  details.subj{border:1px solid var(--line);border-radius:9px;margin-bottom:10px}
+  details.subj > summary{display:block;list-style:none;cursor:pointer;padding:10px;
+                         border-radius:9px}
+  details.subj > summary:hover{background:var(--bg)}
+  details.subj[open] > summary{border-bottom:1px solid var(--line);border-radius:9px 9px 0 0}
+  .subj-body{padding:10px}
+  .subj-head{display:flex;gap:8px;align-items:center}
+  .subj-head b{font-weight:650}
+  .subj-head .nm{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  /* Collapsed UCs still have to say whether their weekly hours are covered. */
+  .subj-head .flag{font-size:11px;flex:0 0 auto}
+  .subj-head .flag.short{color:var(--bad)}
+  .subj-head .flag.ok{color:var(--ok)}
+  .subj-head .x{border:0;background:none;color:var(--muted);cursor:pointer;
+                font-size:17px;line-height:1;padding:0 4px}
+  .subj-head .x:hover{color:var(--bad)}
+  .typerow{margin-top:8px}
+  .typerow > span{font-size:11px;color:var(--muted);font-weight:600}
+  .opts{display:flex;flex-wrap:wrap;gap:5px;margin-top:4px}
+  .opt{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--line);
+       border-radius:7px;padding:4px 8px;cursor:pointer;font-size:12.5px;background:#fff}
+  .opt:hover{border-color:var(--accent)}
+  .opt input{margin:0}
+  .opt.sel{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+  .opt.full{opacity:.55}
+  .opt.noslot{border-style:dashed}
+  .opt .v{color:var(--muted);font-size:11px}
+  /* Not an error, just "the university hasn't published this yet" — amber, so
+     it does not read like the red clash warnings. */
+  .notice{background:#fffbeb;border:1px solid #fcd34d;color:#92400e;border-radius:10px;
+          padding:11px 13px;margin-bottom:16px;font-size:12.5px;line-height:1.5}
+  .notice b{display:block;margin-bottom:2px}
+  .notice code{background:rgba(146,64,14,.1);padding:1px 4px;border-radius:4px;font-size:11.5px}
+  .warn{background:var(--bad-bg);border:1px solid var(--bad);color:var(--bad);border-radius:8px;
+        padding:9px 11px;margin-bottom:12px;font-size:13px}
+  .warn ul{margin:6px 0 0;padding-left:18px}
+  .okline{color:var(--ok);margin:0 0 10px}
+
+  /* hours ledger: required vs actually attended, per subject and type */
+  .ledger{margin-top:8px;border-top:1px solid var(--line);padding-top:7px}
+  .lrow{display:flex;align-items:center;gap:7px;font-size:12px;margin-top:3px}
+  .lrow .lt{font-weight:600;min-width:34px}
+  .lbar{flex:1;height:6px;border-radius:3px;background:var(--line);overflow:hidden}
+  .lbar i{display:block;height:100%;border-radius:3px;background:var(--ok)}
+  .lbar.short i{background:var(--bad)}
+  .lrow .ln{color:var(--muted);font-variant-numeric:tabular-nums}
+  .lrow.short .ln{color:var(--bad);font-weight:600}
+
+  /* combination generator */
+  .crit{display:flex;flex-wrap:wrap;gap:5px;margin:8px 0}
+  .crit label{display:inline-flex;align-items:center;gap:5px;font-size:12px;
+              border:1px solid var(--line);border-radius:7px;padding:3px 8px;cursor:pointer}
+  .crit label.on{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+  .needs{margin:8px 0;font-size:12px}
+  .needrow{display:flex;align-items:center;gap:6px;margin-top:4px}
+  .needrow span{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .needrow input{width:52px;padding:2px 4px;font-size:12px;text-align:right}
+  .needrow .full-h{color:var(--muted);font-size:11px;min-width:46px}
+  .combos{max-height:340px;overflow:auto;margin-top:8px}
+  .combo{display:block;width:100%;text-align:left;margin-bottom:5px;line-height:1.35}
+  .combo b{font-weight:650}
+  .combo small{display:block;color:var(--muted);font-size:11.5px}
+  .combo.cur{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+  .genmsg{font-size:12.5px;margin:6px 0 0}
+  .gridopts{display:flex;flex-wrap:wrap;gap:6px 16px;margin-bottom:9px;font-size:12.5px;
+            color:var(--muted)}
+  .gridopts label{display:inline-flex;gap:6px;align-items:center;cursor:pointer}
+
+  /* saved schedules */
+  .pr{display:flex;gap:5px;margin-bottom:6px}
+  .pr .load{flex:1;min-width:0;text-align:left;line-height:1.35}
+  .pr .load b{display:block;font-weight:650;overflow:hidden;text-overflow:ellipsis;
+              white-space:nowrap}
+  .pr .load small{color:var(--muted);font-size:11.5px}
+  .pr .load.cur{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+  .pract{display:flex;flex-direction:column;gap:3px}
+  .pract button{padding:0;width:26px;height:19px;font-size:11.5px;line-height:1;
+                color:var(--muted)}
+  .pract button:hover{color:var(--ink)}
+  .prsec{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);
+         font-weight:600;margin:12px 0 6px;border-top:1px solid var(--line);padding-top:10px}
+  .prempty{color:var(--muted);font-style:italic;font-size:12.5px;margin:0}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="bar">
+    <h1>Faz o Teu Horário <small>U.Porto</small></h1>
+    <a href="guia.html" class="btn noprint">Guia</a>
+    <a href="subject.html" class="btn noprint">Todas as UCs</a>
+    <div class="seg noprint" id="semseg">
+      <button data-sem="1S" aria-pressed="true">1.º semestre</button>
+      <button data-sem="2S" aria-pressed="false">2.º semestre</button>
+    </div>
+    <div class="grow"></div>
+    <span id="count" style="color:var(--muted)"></span>
+    <button id="clear" class="noprint">Limpar tudo</button>
+    <button id="print" class="primary noprint">Imprimir</button>
+  </div>
+</header>
+
+<noscript>
+  <div class="notice" style="margin:16px 16px 0">
+    <b>Esta página precisa de JavaScript</b>
+    O construtor de horários corre inteiramente no teu navegador — não há
+    servidor a montar a página por ti, e por isso nada aparece sem JavaScript.
+    Entretanto podes ler o <a href="guia.html">guia de utilização</a> ou saber
+    <a href="sobre.html">porque é que o projeto existe</a>.
+  </div>
+</noscript>
+
+<main>
+  <div class="noprint">
+    <div id="semwarn"></div>
+    <button id="addbtn" class="primary addbtn">
+      <span class="plus" aria-hidden="true">+</span> Adicionar unidade curricular
+    </button>
+    <details class="panel" id="presetpanel" style="margin-bottom:16px">
+      <summary>
+        <h2>Horários guardados <span id="prcount" style="text-transform:none"></span></h2>
+        <span class="chev">▼</span>
+      </summary>
+      <div class="panel-body">
+        <button id="savepreset" style="width:100%;margin-bottom:10px">
+          Guardar o horário atual…
+        </button>
+        <div id="presets"></div>
+        <div id="bundled"></div>
+      </div>
+    </details>
+
+    <details class="panel" id="genpanel" style="margin-bottom:16px;display:none">
+      <summary><h2>Gerar combinações</h2><span class="chev">▼</span></summary>
+      <div class="panel-body">
+        <p style="margin:0;font-size:12.5px;color:var(--muted)">
+          Cumpre as horas semanais de cada UC podendo trocar de turma entre dias.
+          Cada resultado seleciona várias turmas e marca como falta as aulas a que
+          não vais.
+        </p>
+        <div class="crit" id="crit"></div>
+        <div class="needs" id="needs"></div>
+        <button id="gen" class="primary" style="width:100%">Gerar combinações</button>
+        <div class="genmsg" id="genmsg"></div>
+        <div class="combos" id="combos"></div>
+      </div>
+    </details>
+
+    <div class="panel">
+      <h2>As minhas UCs <span id="selcount" style="text-transform:none"></span></h2>
+      <div id="selected"></div>
+    </div>
+  </div>
+
+  <div class="panel cal">
+    <div class="gridopts noprint">
+      <label><input type="checkbox" id="hideskip" checked> Ocultar aulas marcadas como falta</label>
+      <label title="Aulas que só acontecem 1 ou 2 vezes no semestre (ex.: dias de reposição)."
+        ><input type="checkbox" id="hideoneoff"> Ocultar aulas pontuais</label>
+    </div>
+    <div id="clashes"></div>
+    <div class="grid-wrap"><div class="grid" id="grid"></div></div>
+    <div class="legend" id="legend"></div>
+  </div>
+</main>
+
+<!-- TODO: troca o URL do repositório abaixo pelo teu quando o publicares. -->
+<footer class="site-foot noprint">
+  <span>Feito por <a href="https://miguelrocha.dev" target="_blank" rel="noopener">Miguel Rocha</a></span>
+  <span aria-hidden="true">·</span>
+  <span><a href="guia.html">Guia de utilização</a></span>
+  <span aria-hidden="true">·</span>
+  <span><a href="sobre.html">Sobre</a></span>
+  <span aria-hidden="true">·</span>
+  <span>Projeto de código aberto. Dados do SIGARRA · FCUP.</span>
+  <a class="gh" href="https://github.com/mmroch4/fazoteuhorario"
+     target="_blank" rel="noopener">
+    <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0a8 8 0 0 0-2.53 15.59c.4.07.55-.17.55-.38
+      0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53
+      .63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95
+      0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.4 7.4 0 0 1 2-.27c.68 0
+      1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87
+      3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8 8 0 0 0 8 0Z"/></svg>
+    GitHub
+  </a>
+</footer>
+
+<dialog id="adddlg" class="noprint" aria-labelledby="addttl">
+  <div class="add-head">
+    <h2 id="addttl">Adicionar unidade curricular</h2>
+    <button class="x" id="addx" title="Fechar" aria-label="Fechar">×</button>
+  </div>
+  <div class="add-body">
+    <input type="search" id="q" autocomplete="off"
+           placeholder="Procurar por código ou nome…">
+    <div class="results" id="results"></div>
+  </div>
+  <div class="add-foot">
+    <span>Clica numa UC para a adicionar — podes adicionar várias seguidas.</span>
+    <button class="primary" id="adddone">Concluído</button>
+  </div>
+</dialog>
+
+<script src="data/timetable.js"></script>
+<script src="assets/presets.js"></script>
+<script src="assets/common.js"></script>
+<script src="assets/solver.js"></script>
+<script>
+(function () {
+  "use strict";
+  const F = window.FCUP;
+  const DATA = (window.TIMETABLE_DATA || {subjects: []}).subjects;
+  const DAYS = F.DAYS, H0 = 8, H1 = 22, HH = 44;
+  const KEY = "fcup-horario-v1";
+  const byCode = Object.fromEntries(DATA.map(s => [s.code, s]));
+  const esc = F.esc, min = F.min;
+
+  let state = {sem: "1S", picked: {}, skipped: {}};
+  try { Object.assign(state, JSON.parse(localStorage.getItem(KEY) || "{}")); } catch (e) {}
+  if (!state.skipped) state.skipped = {};
+
+  // state.picked[code][type] used to be a single turma name. It is now a LIST,
+  // because the point of this page is that you may attend CC1007_T1 on Tuesday
+  // and CC1007_T2 on Thursday. Old saved schedules are migrated in place.
+  for (const types of Object.values(state.picked || {}))
+    for (const [t, v] of Object.entries(types))
+      types[t] = typeof v === "string" ? (v ? [v] : []) : (Array.isArray(v) ? v : []);
+
+  const save = () => { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} };
+  const picksOf = (code, type) => (state.picked[code] && state.picked[code][type]) || [];
+
+  // Which collapsibles are open. Persisted because the sidebar is rebuilt from
+  // scratch on every render: without this, ticking a turma would snap every
+  // section shut. Keys are "panel:<id>" or "subj:<code>".
+  if (!state.open) state.open = {};
+  function bindDetails(el, key, dflt) {
+    el.open = state.open[key] != null ? state.open[key] : dflt;
+    el.addEventListener("toggle", () => { state.open[key] = el.open; save(); });
+  }
+
+  // Sessions you have marked as "not attending". Keyed by turma + day + start,
+  // so skipping CC1007_T1's Tuesday hour leaves its Thursday hour intact.
+  const skipKey = (cl, s) => `${cl.name}|${s.day}|${s.start}`;
+  const isSkipped = (cl, s) => Boolean(state.skipped[skipKey(cl, s)]);
+  const toggleSkip = (cl, s) => {
+    const k = skipKey(cl, s);
+    if (state.skipped[k]) delete state.skipped[k]; else state.skipped[k] = true;
+    save(); render();
+  };
+
+  const slotsOf = cl => (cl.slots || []).filter(s => !s.semester || s.semester === state.sem);
+  // A one-off session (typically a single extra class in the last week of term)
+  // is not a weekly commitment, so it must not count as a clash.
+  const weeklyOf = cl => slotsOf(cl).filter(s => s.regular);
+  const typesOf = sub => {
+    const t = {};
+    for (const cl of sub.classes) (t[cl.type] = t[cl.type] || []).push(cl);
+    return t;
+  };
+  const inSem = sub => sub.classes.some(cl => slotsOf(cl).length);
+  const semHasData = () => DATA.some(inSem);
+
+  /* ---------- search ---------------------------------------------------- */
+  // The same message in two places: inside the picker, where it explains the
+  // empty result list, and in the sidebar, where it explains the empty page.
+  const semLabel = () => state.sem === "1S" ? "o 1.º semestre" : "o 2.º semestre";
+  const noDataMsg = () => `Ainda não há horários publicados para ${semLabel()}. `
+    + `Corre <code>browser_fetch.js</code> outra vez quando o SIGARRA os publicar.`;
+
+  const semwarn = document.getElementById("semwarn");
+  function renderSemWarn() {
+    semwarn.innerHTML = semHasData() ? ""
+      : `<div class="notice"><b>Sem horários para ${esc(semLabel().slice(2))}</b>`
+        + `${noDataMsg()}</div>`;
+  }
+
+  const q = document.getElementById("q"), results = document.getElementById("results");
+  function search() {
+    if (!semHasData()) {
+      results.innerHTML = `<p class="empty">${noDataMsg()}</p>`;
+      return;
+    }
+    const term = q.value.trim().toLowerCase();
+    let list = DATA.filter(inSem);
+    if (term) list = list.filter(s =>
+      s.code.toLowerCase().includes(term) || s.name.toLowerCase().includes(term));
+    list = list.filter(s => !state.picked[s.code]).slice(0, 40);
+    results.innerHTML = "";
+    if (!list.length) { results.innerHTML = '<p class="empty">Sem resultados.</p>'; return; }
+    for (const s of list) {
+      const b = document.createElement("button");
+      b.className = "res";
+      b.innerHTML = `<span class="dot" style="background:${esc(F.colourOf(s.code))}"></span>`
+        + `<b>${esc(s.code)}</b><span>${esc(s.name)}</span>`
+        + `<small>${esc(s.academic_year)}.º ano</small>`;
+      b.onclick = () => add(s.code);
+      results.appendChild(b);
+    }
+  }
+  q.oninput = search;
+  // Enter picks the top hit, so adding a UC you know the code of is
+  // "type CC1007, Enter" without reaching for the mouse.
+  q.onkeydown = ev => {
+    if (ev.key !== "Enter") return;
+    ev.preventDefault();
+    const first = results.querySelector("button.res");
+    if (first) first.click();
+  };
+
+  /* The picker lives in a modal: it is only needed when you are adding, and as
+     a permanent panel it pushed everything else down the sidebar. It stays open
+     after each pick, so adding five UCs is one trip instead of five. */
+  const addDlg = document.getElementById("adddlg");
+  function openAdd() {
+    if (!addDlg.open) addDlg.showModal();
+    search();
+    q.focus(); q.select();
+  }
+  document.getElementById("addbtn").onclick = openAdd;
+  document.getElementById("addx").onclick = () => addDlg.close();
+  document.getElementById("adddone").onclick = () => addDlg.close();
+  // Clicking the backdrop (outside the panel) closes it, as in the details popup.
+  addDlg.addEventListener("click", ev => { if (ev.target === addDlg) addDlg.close(); });
+
+  function add(code) {
+    const sub = byCode[code];
+
+    // Auto colours are hashed from the code, so two subjects you happen to pick
+    // can collide. Nudge the newcomer to a free palette colour (persisted, so
+    // the subject page agrees) instead of leaving two identical blocks.
+    const taken = new Set(Object.keys(state.picked)
+      .filter(c => c !== code).map(c => F.colourOf(c).toLowerCase()));
+    if (taken.has(F.colourOf(code).toLowerCase())) {
+      const free = F.PALETTE.find(h => !taken.has(h.toLowerCase()));
+      if (free) F.setColour(code, free);
+    }
+
+    state.picked[code] = state.picked[code] || {};
+    for (const [type, list] of Object.entries(typesOf(sub))) {
+      const avail = list.filter(cl => slotsOf(cl).length);
+      if (avail.length === 1) state.picked[code][type] = [avail[0].name];
+    }
+    lastResult = null;          // the search space changed
+    save(); render();
+    // render() rebuilt the results list under the cursor; keep typing possible.
+    if (addDlg.open) q.focus();
+  }
+
+  /* ---------- weekly hours ledger ---------------------------------------- */
+  /* How many hours of a subject/type you are really getting.
+
+     Parallel turmas repeat content, so attended hours are not simply summed.
+     If every turma of a type meets once a week (the PL case) they are all the
+     SAME session at different times, so going to two of them still buys you one
+     session. If they meet several times a week (the T case) it is the weekday
+     that identifies the session: Tuesday's hour and Thursday's hour are
+     different material, but T1's Tuesday and T2's Tuesday are the same hour. */
+  function creditFor(sub, type) {
+    const list = sub.classes.filter(c => c.type === type && weeklyOf(c).length);
+    if (!list.length) return null;
+    const need = Math.max(...list.map(c =>
+      weeklyOf(c).reduce((a, s) => a + min(s.end) - min(s.start), 0)));
+    const oncePerWeek = list.every(c => weeklyOf(c).length === 1);
+
+    const groups = new Map();          // session identity -> [minutes, ...]
+    let raw = 0;
+    for (const name of picksOf(sub.code, type)) {
+      const cl = list.find(c => c.name === name);
+      if (!cl) continue;
+      for (const s of weeklyOf(cl)) {
+        if (isSkipped(cl, s)) continue;
+        const key = oncePerWeek ? "*" : s.day;
+        const mins = min(s.end) - min(s.start);
+        raw += mins;
+        if (!groups.has(key)) groups.set(key, []);
+        groups.get(key).push(mins);
+      }
+    }
+    let credited = 0, dup = 0;
+    for (const mins of groups.values()) {
+      const best = Math.max(...mins);
+      credited += best;
+      dup += mins.reduce((a, m) => a + m, 0) - best;
+    }
+    return {type, need, credited, raw, dup};
+  }
+
+  function ledgerFor(sub) {
+    const box = document.createElement("div");
+    box.className = "ledger";
+    const types = [...new Set(sub.classes.map(c => c.type))];
+    for (const type of types) {
+      const c = creditFor(sub, type);
+      if (!c) continue;
+      const pct = c.need ? Math.min(100, c.credited / c.need * 100) : 100;
+      const short = c.credited < c.need;
+      const h = m => (m % 60 ? (m / 60).toFixed(1).replace(".", ",") : m / 60);
+      const row = document.createElement("div");
+      row.className = "lrow" + (short ? " short" : "");
+      row.innerHTML = `<span class="lt">${esc(type)}</span>`
+        + `<span class="lbar${short ? " short" : ""}"><i style="width:${pct}%"></i></span>`
+        + `<span class="ln">${esc(h(c.credited))}/${esc(h(c.need))} h</span>`;
+      row.title = short
+        ? `Faltam ${h(c.need - c.credited)} h semanais de ${sub.code} ${type}.`
+        : `Horas semanais de ${sub.code} ${type} cumpridas.`;
+      if (c.dup) {
+        row.title += `\n${h(c.dup)} h selecionadas não contam: são a mesma aula `
+                   + `noutra turma. Marca-as como falta.`;
+        row.querySelector(".ln").insertAdjacentHTML("afterend",
+          `<span title="aulas repetidas" style="color:var(--muted)">⧉</span>`);
+      }
+      box.appendChild(row);
+    }
+    return box;
+  }
+
+  /* ---------- my subjects ----------------------------------------------- */
+  const selected = document.getElementById("selected");
+  function renderSelected() {
+    const codes = Object.keys(state.picked);
+    document.getElementById("selcount").textContent = codes.length ? `(${codes.length})` : "";
+    selected.innerHTML = "";
+    if (!codes.length) {
+      // With the picker behind a button, the empty list is the natural place to
+      // point at it.
+      selected.innerHTML = '<p class="empty" style="margin:0 0 10px">'
+        + 'Ainda não escolheste nenhuma UC.</p>';
+      const b = document.createElement("button");
+      b.textContent = "Adicionar unidade curricular";
+      b.onclick = openAdd;
+      selected.appendChild(b);
+      return;
+    }
+    for (const code of codes) {
+      const sub = byCode[code];
+      if (!sub) continue;
+      const box = document.createElement("details");
+      box.className = "subj";
+
+      // Collapsed, a UC shows only its identity — so the summary also carries a
+      // one-glance verdict on whether its weekly hours are already covered.
+      const creds = [...new Set(sub.classes.map(c => c.type))]
+        .map(t => creditFor(sub, t)).filter(Boolean);
+      const missing = creds.filter(c => c.credited < c.need);
+      const flag = !creds.length ? ""
+        : missing.length
+          ? `<span class="flag short" title="Faltam horas em: `
+            + `${esc(missing.map(c => c.type).join(", "))}">⚠ ${esc(missing.length)}</span>`
+          : `<span class="flag ok" title="Horas semanais cumpridas">✓</span>`;
+
+      const sum = document.createElement("summary");
+      const head = document.createElement("div");
+      head.className = "subj-head";
+      head.innerHTML = `<span class="dot" style="background:${esc(F.colourOf(code))}"></span>`
+        + `<b>${esc(sub.code)}</b><span class="nm">${esc(sub.name)}</span>` + flag;
+      const x = document.createElement("button");
+      x.className = "x noprint"; x.textContent = "×"; x.title = "Remover";
+      // Inside a <summary>, a click would also toggle the section open: the
+      // button has to swallow the event before the summary sees it.
+      x.onclick = ev => {
+        ev.preventDefault(); ev.stopPropagation();
+        delete state.picked[code]; delete state.open["subj:" + code];
+        lastResult = null; save(); render();
+      };
+      head.appendChild(x);
+      head.insertAdjacentHTML("beforeend", '<span class="chev">▼</span>');
+      sum.appendChild(head);
+      box.appendChild(sum);
+
+      const body = document.createElement("div");
+      body.className = "subj-body";
+      box.appendChild(body);
+
+      const tools = document.createElement("div");
+      tools.style.cssText = "display:flex;gap:8px;align-items:center;flex-wrap:wrap";
+      tools.appendChild(F.swatches(code, () => render()));
+      const link = document.createElement("a");
+      link.href = "subject.html#" + encodeURIComponent(code);
+      link.textContent = "horário da UC ↗";
+      link.style.cssText = "font-size:12px;margin-left:auto";
+      link.className = "noprint";
+      tools.appendChild(link);
+      body.appendChild(tools);
+
+      for (const [type, list] of Object.entries(typesOf(sub))) {
+        const avail = list.filter(cl => slotsOf(cl).length || cl.vacant_places > 0);
+        if (!avail.length) continue;
+        const row = document.createElement("div");
+        row.className = "typerow";
+        row.innerHTML = `<span>${esc(type)}</span>`;
+        const opts = document.createElement("div");
+        opts.className = "opts";
+        const chosen = picksOf(code, type);
+        for (const cl of avail) {
+          const on = chosen.includes(cl.name);
+          const noSlot = !slotsOf(cl).length;
+          const lab = document.createElement("label");
+          lab.className = "opt" + (on ? " sel" : "") + (cl.vacant_places === 0 ? " full" : "")
+                        + (noSlot ? " noslot" : "");
+          lab.title = noSlot ? "Sem horário publicado para esta turma"
+            : slotsOf(cl).map(s => `${DAYS[s.day]} ${s.start}–${s.end}`
+                + (s.rooms.length ? ` · ${s.rooms.join(", ")}` : "")).join("\n");
+          // Checkbox, not radio: several turmas of the same type may be picked
+          // at once, and the sessions you will not attend are marked as faltas.
+          lab.innerHTML = `<input type="checkbox" ${on ? "checked" : ""}>`
+            + esc(cl.name.replace(code + "_", ""))
+            + `<span class="v">${noSlot ? "sem horário"
+                : cl.vacant_places === 0 ? "sem vagas" : esc(cl.vacant_places) + " vagas"}</span>`;
+          lab.querySelector("input").onchange = () => {
+            const cur = picksOf(code, type);
+            state.picked[code][type] = cur.includes(cl.name)
+              ? cur.filter(n => n !== cl.name) : cur.concat([cl.name]);
+            // Dropping a turma leaves its faltas behind as dead keys; clear them.
+            if (!state.picked[code][type].includes(cl.name))
+              for (const s of slotsOf(cl)) delete state.skipped[skipKey(cl, s)];
+            save(); render();
+          };
+          opts.appendChild(lab);
+        }
+        row.appendChild(opts);
+        body.appendChild(row);
+      }
+      body.appendChild(ledgerFor(sub));
+      bindDetails(box, "subj:" + code, true);
+      selected.appendChild(box);
+    }
+  }
+
+  /* ---------- grid ------------------------------------------------------- */
+  function chosenSlots() {
+    const out = [];
+    for (const [code, types] of Object.entries(state.picked)) {
+      const sub = byCode[code]; if (!sub) continue;
+      for (const names of Object.values(types)) for (const name of names) {
+        const cl = sub.classes.find(c => c.name === name); if (!cl) continue;
+        for (const s of slotsOf(cl)) out.push({sub, cls: cl, slot: s});
+      }
+    }
+    return out;
+  }
+  function clashesOf(all) {
+    // Only weekly slots you actually attend can clash week after week.
+    const items = all.filter(i => i.slot.regular && !isSkipped(i.cls, i.slot));
+    const bad = new Set(), pairs = [];
+    for (let i = 0; i < items.length; i++) for (let j = i + 1; j < items.length; j++) {
+      const a = items[i], b = items[j];
+      if (a.slot.day !== b.slot.day) continue;
+      if (min(a.slot.start) < min(b.slot.end) && min(b.slot.start) < min(a.slot.end)) {
+        bad.add(a.cls.name + a.slot.start); bad.add(b.cls.name + b.slot.start);
+        pairs.push(`${a.cls.name} × ${b.cls.name} — ${DAYS[a.slot.day]}`);
+      }
+    }
+    return {bad, pairs};
+  }
+
+  function renderGrid() {
+    const items = chosenSlots();
+    const {bad, pairs} = clashesOf(items);
+
+    const warn = document.getElementById("clashes");
+    warn.innerHTML = pairs.length
+      ? `<div class="warn"><b>${pairs.length} sobreposição(ões)</b><ul>`
+        + [...new Set(pairs)].map(p => `<li>${esc(p)}</li>`).join("") + "</ul></div>"
+      : (items.length ? '<p class="okline">✓ Sem sobreposições.</p>' : "");
+    const attending = items.filter(i => i.slot.regular && !isSkipped(i.cls, i.slot));
+    const hours = attending.reduce((a, i) => a + (min(i.slot.end) - min(i.slot.start)), 0) / 60;
+    document.getElementById("count").textContent = attending.length
+      ? `${attending.length} aula(s)/semana · ${hours % 1 ? hours.toFixed(1) : hours}h` : "";
+
+    // Two kinds of noise you may want out of the grid. Both are filtered only
+    // here, at drawing time: they stay in `items` so the hours ledger, the
+    // clash check and the legend keep seeing them.
+    //   - faltas: selecting several turmas of one type means most of their
+    //     sessions are ones you will not attend, and drawing them buries the week.
+    //   - aulas pontuais: 1-2 sessions a semester (make-up days), never part of
+    //     the weekly commitment.
+    const drawn = items.filter(i =>
+      !(state.hideSkipped !== false && i.slot.regular && isSkipped(i.cls, i.slot))
+      && !(state.hideOneoff && !i.slot.regular));
+    // Saturday only earns a column if something is actually drawn in it.
+    const nDays = drawn.some(i => i.slot.day === 5) ? 6 : 5;
+
+    // Lay overlapping classes side by side so a clash is visible, not hidden.
+    const packedByDay = [];
+    let maxLanes = 1;
+    for (let day = 0; day < nDays; day++) {
+      const p = F.packDay(drawn.filter(i => i.slot.day === day));
+      packedByDay.push(p);
+      for (const it of p) maxLanes = Math.max(maxLanes, it._lanes);
+    }
+
+    const grid = document.getElementById("grid");
+    grid.style.setProperty("--days", nDays);
+    grid.style.setProperty("--hh", HH + "px");
+    grid.style.setProperty("--colw", Math.max(120, maxLanes * 108) + "px");
+    grid.innerHTML = '<div class="gh"></div>'
+      + DAYS.slice(0, nDays).map(d => `<div class="gh">${esc(d)}</div>`).join("");
+
+    const hrs = document.createElement("div");
+    hrs.className = "hours";
+    for (let h = H0; h <= H1; h++) {
+      const e = document.createElement("div");
+      e.className = "hour"; e.textContent = String(h).padStart(2, "0") + ":00";
+      hrs.appendChild(e);
+    }
+    grid.appendChild(hrs);
+
+    for (let day = 0; day < nDays; day++) {
+      const col = document.createElement("div");
+      col.className = "col";
+      col.style.height = ((H1 - H0) * HH) + "px";
+      for (let h = H0; h <= H1; h++) {
+        const l = document.createElement("div");
+        l.className = "line"; l.style.top = ((h - H0) * HH) + "px";
+        col.appendChild(l);
+      }
+      for (const it of packedByDay[day]) {
+        const s = it.slot, w = 100 / it._lanes;
+        const skipped = isSkipped(it.cls, s);
+        const el = document.createElement("div");
+        el.className = "ev" + (bad.has(it.cls.name + s.start) ? " clash" : "")
+                     + (s.regular ? "" : " oneoff") + (skipped ? " skipped" : "");
+        el.tabIndex = 0;
+        el.style.top = ((min(s.start) - H0 * 60) / 60 * HH) + "px";
+        el.style.height = Math.max((min(s.end) - min(s.start)) / 60 * HH - 2, 16) + "px";
+        el.style.left = `calc(${it._lane * w}% + 2px)`;
+        el.style.width = `calc(${w}% - 4px)`;
+        el.style.right = "auto";
+        el.style.setProperty("--c", F.colourOf(it.sub.code));
+        el.innerHTML = `<b>${esc(it.sub.code)} ${esc(s.type || "")}</b>`
+          + `<span>${esc(s.start)}–${esc(s.end)}</span>`
+          + (s.rooms.length ? `<span> · ${esc(s.rooms.join(", "))}</span>` : "")
+          + `<span style="display:block;opacity:.85">${esc(it.cls.name.replace(it.sub.code + "_", ""))}`
+          + (s.teachers.length ? " · " + esc(s.teachers.join(", ")) : "") + "</span>";
+        const open = () => F.showDetails({
+          subject: it.sub, cls: it.cls, slot: s,
+          onColour: () => render(),
+          skip: {isSkipped: () => isSkipped(it.cls, s), toggle: () => toggleSkip(it.cls, s)},
+        });
+        el.onclick = open;
+        el.onkeydown = ev => { if (ev.key === "Enter" || ev.key === " ") { ev.preventDefault(); open(); } };
+        col.appendChild(el);
+      }
+      grid.appendChild(col);
+    }
+
+    const codes = [...new Set(items.map(i => i.sub.code))];
+    const oneOffs = items.filter(i => !i.slot.regular);
+    const skips = items.filter(i => i.slot.regular && isSkipped(i.cls, i.slot));
+    const skipH = skips.reduce((a, i) => a + (min(i.slot.end) - min(i.slot.start)), 0) / 60;
+    document.getElementById("legend").innerHTML =
+      codes.map(c => `<span><i style="background:${esc(F.colourOf(c))}"></i>${esc(c)}</span>`).join("")
+      + (skips.length
+          ? `<div class="oneoff-note"><b>Aulas marcadas como falta</b>`
+            + ` (${state.hideSkipped === false ? "riscado" : "ocultas"}) —`
+            + ` ${esc(skipH % 1 ? skipH.toFixed(1) : skipH)}h/semana que não vais assistir.`
+            + ` Clica numa para voltar a assistir:<ul>`
+            + skips.map(i => `<li><a href="#" data-unskip="${esc(skipKey(i.cls, i.slot))}">`
+                    + `${esc(i.cls.name)} — ${esc(DAYS[i.slot.day])} `
+                    + `${esc(i.slot.start)}–${esc(i.slot.end)}</a></li>`).join("")
+            + `</ul></div>`
+          : "")
+      + (oneOffs.length
+          ? `<div class="oneoff-note"><b>Aulas pontuais</b>`
+            + ` (${state.hideOneoff ? "ocultas" : "tracejado"}) — não são semanais,`
+            + ` por isso não contam como sobreposição:<ul>`
+            + oneOffs.sort((a, b) => (a.slot.first_date || "").localeCompare(b.slot.first_date || ""))
+                .map(i => `<li>${esc(i.cls.name)} — ${esc(DAYS[i.slot.day])} `
+                        + `${esc(i.slot.start)}–${esc(i.slot.end)}, ${esc(i.slot.first_date)}`
+                        + (i.slot.occurrences > 1 ? ` (${esc(i.slot.occurrences)}×)` : "")
+                        + `</li>`).join("")
+            + `</ul></div>`
+          : "");
+
+    // A hidden session cannot be clicked in the grid, so the legend is the way
+    // back: clicking one undoes the falta.
+    for (const a of document.querySelectorAll("#legend a[data-unskip]"))
+      a.onclick = ev => {
+        ev.preventDefault();
+        delete state.skipped[a.dataset.unskip];
+        save(); render();
+      };
+  }
+
+  function render() {
+    renderSemWarn(); search(); renderSelected(); renderGrid(); renderGen();
+    renderPresets();   // so the "in use" highlight follows the working schedule
+  }
+
+  document.getElementById("semseg").onclick = e => {
+    const b = e.target.closest("button[data-sem]"); if (!b) return;
+    state.sem = b.dataset.sem;
+    [...e.currentTarget.children].forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+    save(); render();
+  };
+  document.getElementById("clear").onclick = () => {
+    if (confirm("Remover todas as UCs escolhidas?")) {
+      state.picked = {}; state.skipped = {}; state.overrides = {};
+      lastResult = null; save(); render();
+    }
+  };
+  document.getElementById("print").onclick = () => window.print();
+  (function () {
+    const skip = document.getElementById("hideskip");
+    skip.checked = state.hideSkipped !== false;   // faltas are hidden by default
+    skip.onchange = () => { state.hideSkipped = skip.checked; save(); render(); };
+
+    // One-offs stay visible by default: the make-up day is worth knowing about,
+    // and the dashed border already says it is not a weekly commitment.
+    const one = document.getElementById("hideoneoff");
+    one.checked = Boolean(state.hideOneoff);
+    one.onchange = () => { state.hideOneoff = one.checked; save(); render(); };
+  })();
+
+  /* ---------- combination generator -------------------------------------- */
+  /* Enumerates every overlap-free week that meets the required hours, then
+     applies one by selecting the turmas involved and marking every other
+     session of those turmas as a falta. */
+
+  const CRIT_LABELS = {
+    morning: "Evitar manhãs (antes das 11h)",
+    gaps: "Menos buracos",
+    days: "Menos dias",
+    vacancy: "Preferir turmas com vagas",
+  };
+  if (!state.criteria) state.criteria = ["gaps", "morning"];
+  if (!state.overrides) state.overrides = {};
+  let lastResult = null, shown = 12;
+
+  const hFmt = m => (m % 60 ? (m / 60).toFixed(1).replace(".", ",") : String(m / 60));
+
+  // Full weekly load of one turma, per subject/type - the default requirement.
+  function fullLoads() {
+    const out = [];
+    for (const code of Object.keys(state.picked)) {
+      const sub = byCode[code]; if (!sub) continue;
+      const types = [...new Set(sub.classes.map(c => c.type))];
+      for (const type of types) {
+        const list = sub.classes.filter(c => c.type === type && weeklyOf(c).length);
+        if (!list.length) continue;
+        out.push({code, type, full: Math.max(...list.map(c =>
+          weeklyOf(c).reduce((a, s) => a + min(s.end) - min(s.start), 0)))});
+      }
+    }
+    return out;
+  }
+
+  // What the grid currently shows, so we can mark which generated combination
+  // is the one in effect. The signature has to include the subject and type,
+  // not just the times: swapping CC1007 T and CC2003 T between 14h and 15h
+  // fills exactly the same hours but is a different timetable.
+  function currentSig() {
+    const keys = new Set();
+    for (const i of chosenSlots())
+      if (i.slot.regular && !isSkipped(i.cls, i.slot))
+        keys.add(`${i.sub.code}|${i.cls.type}|${i.slot.day}|${i.slot.start}|${i.slot.end}`);
+    return [...keys].sort().join(",");
+  }
+  const comboSig = e => [...new Set(e.chosen.map(c =>
+    `${c.req.code}|${c.req.type}|${c.slot.day}|${c.slot.start}|${c.slot.end}`))]
+    .sort().join(",");
+
+  function applyCombo(entry) {
+    // One turma per chosen slot: reuse a turma already assigned to this
+    // requirement where possible, and prefer one that still has vacancies.
+    const byKey = new Map();
+    for (const {req, slot} of entry.chosen) {
+      const k = req.code + "|" + req.type;
+      if (!byKey.has(k)) byKey.set(k, []);
+      byKey.get(k).push(slot);
+    }
+    const picked = {}, attend = new Set();
+    for (const [k, slots] of byKey) {
+      const [code, type] = k.split("|");
+      const sub = byCode[code]; if (!sub) continue;
+      const used = new Set();
+      for (const slot of slots) {
+        const cl = [...slot.turmas]
+          .map(n => sub.classes.find(c => c.name === n)).filter(Boolean)
+          .sort((a, b) => (Number(used.has(b.name)) - Number(used.has(a.name)))
+                       || (Number(b.vacant_places > 0) - Number(a.vacant_places > 0))
+                       || (b.vacant_places - a.vacant_places))[0];
+        if (!cl) continue;
+        used.add(cl.name);
+        attend.add(cl.name + "|" + slot.day + "|" + slot.start);
+      }
+      (picked[code] = picked[code] || {})[type] = [...used];
+    }
+    // Subjects with nothing to schedule this semester stay selected but empty.
+    for (const code of Object.keys(state.picked)) picked[code] = picked[code] || {};
+
+    // Every weekly session of a selected turma that is not in `attend` is a
+    // falta - this is what lets you take T1 on Tuesday and T2 on Thursday.
+    const skipped = {};
+    for (const [code, types] of Object.entries(picked)) {
+      const sub = byCode[code]; if (!sub) continue;
+      for (const names of Object.values(types)) for (const n of names) {
+        const cl = sub.classes.find(c => c.name === n); if (!cl) continue;
+        for (const s of weeklyOf(cl)) {
+          const key = skipKey(cl, s);
+          if (!attend.has(key)) skipped[key] = true;
+        }
+      }
+    }
+    state.picked = picked;
+    state.skipped = skipped;
+    save(); render();
+  }
+
+  function generate() {
+    const subs = Object.keys(state.picked).map(c => byCode[c]).filter(s => s && inSem(s));
+    shown = 12;
+    if (!subs.length) { lastResult = null; renderGen(); return; }
+    lastResult = window.SOLVER.solve(subs, {
+      weeklySlots: weeklyOf,
+      overrides: state.overrides,
+      criteria: state.criteria,
+      cap: 4000,
+    });
+    renderGen();
+  }
+
+  function comboCard(entry, n, isCur) {
+    const b = document.createElement("button");
+    b.className = "combo" + (isCur ? " cur" : "");
+    // Show WHICH subject sits in each hour, not just the hours: many
+    // combinations occupy identical times and differ only in what goes where.
+    const byDay = new Map();
+    for (const {req, slot} of entry.chosen) {
+      if (!byDay.has(slot.day)) byDay.set(slot.day, []);
+      byDay.get(slot.day).push({req, slot});
+    }
+    const lines = [...byDay.keys()].sort((a, b2) => a - b2).map(d => {
+      const iv = byDay.get(d).slice().sort((x, y) => min(x.slot.start) - min(y.slot.start));
+      return `<small><b style="font-weight:600">${esc(DAYS[d].slice(0, 3))}</b> `
+        + iv.map(x => `${esc(x.slot.start)} ${esc(x.req.code)} ${esc(x.req.type)}`).join(" · ")
+        + `</small>`;
+    });
+    const s = entry.shape;
+    b.innerHTML = `<b>#${n}${isCur ? " · em uso" : ""}</b>`
+      + `<small>${esc(hFmt(s.early))}h antes das 11h · ${esc(hFmt(s.gaps))}h de buracos`
+      + ` · ${s.days} dia(s)${s.full ? ` · ${s.full} sem vagas` : ""}</small>`
+      + lines.join("");
+    b.onclick = () => applyCombo(entry);
+    return b;
+  }
+
+  function renderGen() {
+    const panel = document.getElementById("genpanel");
+    const loads = fullLoads();
+    panel.style.display = loads.length ? "" : "none";
+    if (!loads.length) return;
+
+    const crit = document.getElementById("crit");
+    crit.innerHTML = "";
+    for (const [k, label] of Object.entries(CRIT_LABELS)) {
+      const on = state.criteria.includes(k);
+      const lab = document.createElement("label");
+      lab.className = on ? "on" : "";
+      lab.innerHTML = `<input type="checkbox" ${on ? "checked" : ""}>${esc(label)}`;
+      lab.querySelector("input").onchange = () => {
+        state.criteria = on ? state.criteria.filter(x => x !== k)
+                            : state.criteria.concat([k]);
+        save();
+        if (lastResult) generate(); else renderGen();
+      };
+      crit.appendChild(lab);
+    }
+
+    const needs = document.getElementById("needs");
+    needs.innerHTML = '<span style="color:var(--muted)">Horas semanais exigidas '
+                    + '(baixa para assistir só a parte de uma UC):</span>';
+    for (const {code, type, full} of loads) {
+      const k = code + "|" + type;
+      const cur = state.overrides[k] != null ? state.overrides[k] : full;
+      const row = document.createElement("div");
+      row.className = "needrow";
+      row.innerHTML = `<span>${esc(code)} <b>${esc(type)}</b></span>`
+        + `<input type="number" min="0.5" max="${full / 60}" step="0.5" value="${cur / 60}">`
+        + `<span class="full-h">de ${esc(hFmt(full))}h</span>`;
+      row.querySelector("input").onchange = ev => {
+        const v = Math.round(parseFloat(ev.target.value) * 60);
+        if (!v || v >= full) delete state.overrides[k]; else state.overrides[k] = v;
+        save();
+        if (lastResult) generate(); else renderGen();
+      };
+      needs.appendChild(row);
+    }
+
+    const msg = document.getElementById("genmsg");
+    const box = document.getElementById("combos");
+    box.innerHTML = "";
+    if (!lastResult) { msg.innerHTML = ""; return; }
+
+    if (lastResult.impossible.length) {
+      msg.innerHTML = `<div class="warn"><b>Requisito impossível</b><ul>`
+        + lastResult.impossible.map(r =>
+            `<li>${esc(r.label)}: não há como juntar ${esc(hFmt(r.need))}h sem sobrepor.</li>`
+          ).join("") + `</ul></div>`;
+      return;
+    }
+    if (!lastResult.solutions.length) {
+      msg.innerHTML = `<div class="warn"><b>Nenhuma combinação possível</b>`
+        + `<p style="margin:6px 0 0">Estes requisitos não cabem juntos, seja qual `
+        + `for a turma escolhida:</p><ul>`
+        + lastResult.conflicts.map(([a, b2]) =>
+            `<li>${esc(a)} × ${esc(b2)}</li>`).join("")
+        + `</ul><p style="margin:6px 0 0">Baixa as horas exigidas de uma delas `
+        + `acima, ou remove uma UC.</p></div>`;
+      return;
+    }
+
+    const cur = currentSig();
+    const n = lastResult.solutions.length;
+    msg.innerHTML = `<b style="color:var(--ok)">${n.toLocaleString("pt-PT")}`
+      + `${lastResult.truncated ? "+" : ""} combinação(ões)</b> sem sobreposições`
+      + (lastResult.notes.length
+          ? `<br><span style="color:var(--muted)">${esc(lastResult.notes.join(" "))}</span>` : "");
+
+    lastResult.solutions.slice(0, shown).forEach((e, i) =>
+      box.appendChild(comboCard(e, i + 1, comboSig(e) === cur)));
+    if (n > shown) {
+      const more = document.createElement("button");
+      more.style.width = "100%";
+      more.textContent = `Mostrar mais (${(n - shown).toLocaleString("pt-PT")} restantes)`;
+      more.onclick = () => { shown += 24; renderGen(); };
+      box.appendChild(more);
+    }
+  }
+
+  document.getElementById("gen").onclick = generate;
+
+  /* ---------- presets ---------------------------------------------------- */
+  // Turn a list of turma names into a full selection.
+  function picksFrom(names) {
+    const picked = {}, unknown = [];
+    for (const n of names.map(s => String(s).trim()).filter(Boolean)) {
+      const sub = DATA.find(s => s.classes.some(c => c.name === n));
+      if (!sub) { unknown.push(n); continue; }
+      const cl = sub.classes.find(c => c.name === n);
+      const types = (picked[sub.code] = picked[sub.code] || {});
+      (types[cl.type] = types[cl.type] || []).push(cl.name);
+    }
+    return {picked, unknown};
+  }
+
+  function applyPicks(names, {ask = false, skips = null, sem = null} = {}) {
+    const {picked, unknown} = picksFrom(names);
+    if (!Object.keys(picked).length) {
+      alert("Nenhuma das turmas deste horário existe nos dados atuais."); return;
+    }
+    // Loading a preset throws away whatever is currently selected - confirm it.
+    if (ask && Object.keys(state.picked).length &&
+        !confirm("Isto substitui a seleção atual. Continuar?")) return;
+    // Only after the confirmation: a cancelled load must change nothing at all,
+    // the semester included.
+    if (sem && sem !== state.sem) {
+      state.sem = sem;
+      [...document.getElementById("semseg").children].forEach(x =>
+        x.setAttribute("aria-pressed", String(x.dataset.sem === sem)));
+    }
+    state.picked = picked;
+    // A preset may declare sessions it assumes you skip ("TURMA|day|HH:MM").
+    state.skipped = {};
+    for (const k of skips || []) state.skipped[k] = true;
+    save();
+    render();
+    if (unknown.length) {
+      console.warn("turmas não encontradas:", unknown);
+      alert("Turmas não encontradas (ignoradas):\n" + unknown.join(", "));
+    }
+  }
+
+  /* Saved schedules live in their OWN localStorage key, not inside `state`:
+     they are a personal library that has to survive "Limpar tudo", semester
+     switches and every other edit to the working schedule. Nothing is uploaded
+     anywhere — they exist only in this browser, on this device. */
+  const PKEY = "fcup-presets-v1";
+  let myPresets = [];
+  try { myPresets = JSON.parse(localStorage.getItem(PKEY) || "[]"); } catch (e) {}
+  if (!Array.isArray(myPresets)) myPresets = [];
+  function savePresets() {
+    try { localStorage.setItem(PKEY, JSON.stringify(myPresets)); }
+    catch (e) { alert("Não foi possível guardar: o armazenamento do navegador está cheio."); }
+  }
+
+  // The working schedule, flattened into the shape a preset stores.
+  const currentPicks = () => Object.values(state.picked)
+    .flatMap(types => Object.values(types).flat());
+  // Only faltas belonging to a turma that is actually selected; the rest are
+  // leftovers from earlier edits and would just bloat every saved schedule.
+  function currentSkips() {
+    const live = new Set(currentPicks());
+    return Object.keys(state.skipped).filter(k => live.has(k.split("|")[0]));
+  }
+
+  function savePresetNow() {
+    const picks = currentPicks();
+    if (!picks.length) {
+      alert("Escolhe primeiro as UCs e as turmas que queres guardar."); return;
+    }
+    const n = Object.keys(state.picked).length;
+    const dflt = `${n} UC${n === 1 ? "" : "s"} · ${state.sem === "1S" ? "1.º" : "2.º"} semestre`;
+    const name = (prompt("Nome deste horário:", dflt) || "").trim();
+    if (!name) return;
+    myPresets.unshift({
+      id: "p" + Date.now().toString(36),
+      name, sem: state.sem, picks, skips: currentSkips(),
+      saved: new Date().toISOString().slice(0, 10),
+    });
+    savePresets(); renderPresets();
+  }
+
+  // A saved schedule is a link: same #pick= format the page already reads, plus
+  // the faltas, so what the other person opens is what you saved.
+  // location.href minus the hash, not origin+pathname: on file:// the origin is
+  // the string "null" and the link would come out unusable.
+  const linkFor = p => location.href.split("#")[0]
+    + "#pick=" + encodeURIComponent(p.picks.join(","))
+    + (p.skips && p.skips.length ? "&skip=" + encodeURIComponent(p.skips.join(",")) : "");
+  function copyLink(p) {
+    const url = linkFor(p);
+    const done = () => alert("Link copiado. Quem o abrir vê este horário.");
+    if (navigator.clipboard && location.protocol !== "file:")
+      navigator.clipboard.writeText(url).then(done, () => prompt("Copia o link:", url));
+    else prompt("Copia o link:", url);
+  }
+
+  // Marks the saved schedule that matches what is on screen right now.
+  const presetSig = p => [...new Set(p.picks)].sort().join(",");
+  const liveSig = () => [...new Set(currentPicks())].sort().join(",");
+
+  function presetRow(p, {mine}) {
+    const row = document.createElement("div");
+    row.className = "pr";
+    const load = document.createElement("button");
+    load.className = "load" + (mine && presetSig(p) === liveSig() ? " cur" : "");
+    const sub = p.note ? esc(p.note)
+      : `${esc(p.picks.length)} turma(s)`
+        + (p.sem ? ` · ${p.sem === "1S" ? "1.º" : "2.º"} semestre` : "")
+        + (p.skips && p.skips.length ? ` · ${esc(p.skips.length)} falta(s)` : "")
+        + (p.saved ? ` · ${esc(p.saved)}` : "");
+    load.innerHTML = `<b>${esc(p.name)}</b><small>${sub}</small>`;
+    load.onclick = () => applyPicks(p.picks, {ask: true, skips: p.skips, sem: p.sem});
+    row.appendChild(load);
+
+    const act = document.createElement("div");
+    act.className = "pract";
+    const btn = (label, title, fn) => {
+      const b = document.createElement("button");
+      b.textContent = label; b.title = title; b.onclick = fn;
+      act.appendChild(b);
+    };
+    btn("🔗", "Copiar link para este horário", () => copyLink(p));
+    if (mine) {
+      btn("✎", "Mudar o nome", () => {
+        const name = (prompt("Novo nome:", p.name) || "").trim();
+        if (name) { p.name = name; savePresets(); renderPresets(); }
+      });
+      btn("×", "Eliminar", () => {
+        if (!confirm(`Eliminar "${p.name}"?`)) return;
+        myPresets = myPresets.filter(x => x.id !== p.id);
+        savePresets(); renderPresets();
+      });
+    }
+    row.appendChild(act);
+    return row;
+  }
+
+  function renderPresets() {
+    const box = document.getElementById("presets");
+    box.innerHTML = "";
+    document.getElementById("prcount").textContent =
+      myPresets.length ? `(${myPresets.length})` : "";
+    if (!myPresets.length) {
+      box.innerHTML = '<p class="prempty">Ainda não guardaste nenhum horário. '
+        + 'Monta um e carrega em “Guardar o horário atual”.</p>';
+    } else {
+      for (const p of myPresets) box.appendChild(presetRow(p, {mine: true}));
+    }
+
+    // Schedules shipped with the site (presets.js), if any: read-only examples.
+    const bundled = window.TIMETABLE_PRESETS || [];
+    const bbox = document.getElementById("bundled");
+    bbox.innerHTML = "";
+    if (!bundled.length) return;
+    bbox.innerHTML = '<div class="prsec">Exemplos incluídos</div>';
+    for (const p of bundled) bbox.appendChild(presetRow(p, {mine: false}));
+  }
+
+  document.getElementById("savepreset").onclick = savePresetNow;
+
+  // #pick=CC2005_PL6,CC2005_T…&skip=CC1007_T1|1|14:00,… loads a schedule from a
+  // link. The skip half is optional, so older links keep working.
+  (function fromHash() {
+    const h = location.hash.replace(/^#/, "");
+    if (!h.startsWith("pick=")) return;
+    const parts = Object.fromEntries(h.split("&").map(kv => {
+      const i = kv.indexOf("=");
+      return [kv.slice(0, i), decodeURIComponent(kv.slice(i + 1))];
+    }));
+    applyPicks((parts.pick || "").split(","),
+               {skips: parts.skip ? parts.skip.split(",") : null});
+    history.replaceState(null, "", location.pathname);
+  })();
+
+  /* ---------- layout ------------------------------------------------------ */
+  // The calendar is pinned just under the sticky header, so its offset has to
+  // track the header's real height — which grows when the toolbar wraps.
+  const hdr = document.querySelector("header");
+  const syncHeader = () =>
+    document.documentElement.style.setProperty("--hdr", hdr.offsetHeight + "px");
+  syncHeader();
+  addEventListener("resize", syncHeader);
+  if (window.ResizeObserver) new ResizeObserver(syncHeader).observe(hdr);
+
+  // Both generators start folded: they are tall, and the point of the sidebar
+  // is to get to "As minhas UCs" without scrolling past them.
+  bindDetails(document.getElementById("presetpanel"), "panel:presets", false);
+  bindDetails(document.getElementById("genpanel"), "panel:gen", false);
+
+  [...document.getElementById("semseg").children].forEach(x =>
+    x.setAttribute("aria-pressed", String(x.dataset.sem === state.sem)));
+  render();
+})();
+</script>
+</body>
+</html>
