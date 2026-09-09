@@ -634,6 +634,15 @@ window.FTH.boot(function (err) {
     return {bad, pairs};
   }
 
+  // A grid block is a couple of centimetres wide, and a Portuguese full name is
+  // not: "Rui Pedro de Magalhães Claro Prior" would be clipped mid-word. First
+  // and last name is how people actually refer to a lecturer; the details popup,
+  // the UC page and the export still carry the name in full.
+  function shortName(full) {
+    const parts = String(full).trim().split(/\s+/);
+    return parts.length < 3 ? full : parts[0] + " " + parts[parts.length - 1];
+  }
+
   function renderGrid() {
     const items = chosenSlots();
     const {bad, pairs} = clashesOf(items);
@@ -712,7 +721,8 @@ window.FTH.boot(function (err) {
           + `<span>${esc(s.start)}–${esc(s.end)}</span>`
           + (s.rooms.length ? `<span> · ${esc(s.rooms.join(", "))}</span>` : "")
           + `<span style="display:block;opacity:.85">${esc(it.cls.name.replace(it.sub.code + "_", ""))}`
-          + (s.teachers.length ? " · " + esc(s.teachers.join(", ")) : "") + "</span>";
+          + (s.teachers.length ? " · " + esc(s.teachers.map(shortName).join(", ")) : "")
+          + "</span>";
         const open = () => F.showDetails({
           subject: it.sub, cls: it.cls, slot: s,
           onColour: () => render(),

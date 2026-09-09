@@ -37,6 +37,19 @@ def hhmm(t):
     return (t or "")[:5]
 
 
+# SIGARRA prefixes a teacher's name with their staff number: "203447 - Maria
+# Gabriela Faria Arala Chaves". The number means nothing to a student, so it is
+# dropped. A few entries arrive without it ("Docente Convidado") and are kept
+# whole. The `acronym` ("MGFAC") is only the fallback: it is not unique either -
+# "RG" is two different people - and nobody knows their lecturer by initials.
+STAFF_NO_RE = re.compile(r"^\s*\d+\s*-\s*")
+
+
+def person_name(person):
+    name = STAFF_NO_RE.sub("", (person.get("name") or "").strip()).strip()
+    return name or (person.get("acronym") or "").strip()
+
+
 def load_events(occ_id, raw_dir):
     """Return ({class_name: [slot, ...]}, semester, status, {class_name: turma_id})."""
     path = raw_dir / f"{occ_id}.json"
@@ -86,8 +99,14 @@ def load_events(occ_id, raw_dir):
                     "type": (ev.get("typology") or {}).get("acronym"),
                     "rooms": set(), "teachers": set(), "dates": set(),
                 }
-            slot["rooms"].update(r["acronym"] for r in (ev.get("rooms") or []) if r.get("acronym"))
-            slot["teachers"].update(p["acronym"] for p in (ev.get("persons") or []) if p.get("acronym"))
+            # The room's `name` ("FC1007"), not its `acronym` ("007"): the acronym
+            # is only the door number, and it repeats across buildings — "007" is
+            # both FC1007 and FC2007. The name is what gets you to the right room.
+            slot["rooms"].update((r.get("name") or r.get("acronym") or "").strip()
+                                 for r in (ev.get("rooms") or [])
+                                 if (r.get("name") or r.get("acronym")))
+            slot["teachers"].update(
+                person_name(p) for p in (ev.get("persons") or []) if person_name(p))
             slot["dates"].add(date)
 
     merged = {}
