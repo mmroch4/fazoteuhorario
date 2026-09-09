@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Pick one turma per (subject, class type) to build the best weekly timetable.
 
-  python3 scripts/solve_schedule.py CC2005 CC1007 CC2003 M2040 CC3032 CC4069
+  python3 scripts/solve_schedule.py CC2005 CC1007 CC2003 M2040
+  python3 scripts/solve_schedule.py -f feup <códigos>
 
 Preferences (in order):
   1. no overlaps at all
@@ -17,9 +18,9 @@ import os
 import re
 import sys
 from collections import defaultdict
-from pathlib import Path
+import faculdades as F
 
-ROOT = Path(__file__).resolve().parent.parent
+FACULTY = F.arg(sys.argv)
 
 DAYS = ["Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado", "Domingo"]
 NOON = 13 * 60          # anything after this counts as "afternoon"
@@ -27,7 +28,7 @@ m = lambda t: int(t[:2]) * 60 + int(t[3:5])
 
 
 def load(codes):
-    data = json.load(open(ROOT / "data" / "timetable.json", encoding="utf-8"))
+    data = json.load(open(F.timetable(FACULTY), encoding="utf-8"))
     byc = {s["code"]: s for s in data["subjects"]}
     missing = [c for c in codes if c not in byc]
     if missing:
@@ -109,7 +110,7 @@ def describe(choice):
     return "\n".join(lines)
 
 
-PRESETS = ROOT / "assets" / "presets.js"
+PRESETS = F.ROOT / "assets" / "presets.js"
 # Kept in sync with the comment at the top of presets.js: rewriting the file
 # replaces it, and the format notes are the only documentation it has.
 HEADER = """/* Horários que acompanham o site, mostrados em "Horários guardados" como

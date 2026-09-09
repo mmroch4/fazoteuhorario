@@ -13,12 +13,21 @@ Dois grupos de scripts, com propósitos diferentes:
 
 **Corre sempre a partir da raiz do repositório.** Os scripts resolvem os
 caminhos a partir da localização deles, por isso funcionam de qualquer
-diretório, mas os exemplos assumem a raiz:
+diretório, mas os exemplos assumem a raiz.
+
+**Todos aceitam `-f <faculdade>`** (ou `--faculty`), com a sigla do SIGARRA.
+Sem a opção, assumem a FCUP:
 
 ```sh
-cd make-class
-python3 scripts/build_data.py
+python3 scripts/build_data.py            # FCUP
+python3 scripts/build_data.py -f feup    # FEUP
+python3 scripts/build_data.py --all      # todas as que já têm dados
 ```
+
+As faculdades conhecidas estão em [`faculdades.py`](faculdades.py) — é o único
+sítio onde se acrescenta uma. Os ficheiros de cada uma vivem em
+`data/<sigla>/`, e o índice `data/faculdades.json`, escrito pelo
+`build_data.py`, é o que diz ao site quais existem.
 
 ---
 
@@ -27,18 +36,18 @@ python3 scripts/build_data.py
 O caminho completo, do SIGARRA até ao ficheiro que o site carrega. Ver o
 diagrama em [`data/README.md`](../data/README.md).
 
-### 1. Que UCs existem → `data/subjects.json`
+### 1. Que UCs existem → `data/<sigla>/subjects.json`
 
 A lista de UCs, turmas e vagas não está em nenhuma API: está numa tabela HTML.
 
 1. No SIGARRA, abre a página de **turmas** da FCUP (a que lista todas as UCs com
    as suas turmas e vagas).
-2. Guarda-a como `data/ucs.html` (<kbd>Ctrl</kbd>+<kbd>S</kbd>, "só HTML").
+2. Guarda-a como `data/<sigla>/ucs.html` (<kbd>Ctrl</kbd>+<kbd>S</kbd>, "só HTML").
 3. Extrai:
 
 ```sh
-python3 scripts/parse_ucs.py data/ucs.html
-# 723 subject/type rows -> data/subjects.json
+python3 scripts/parse_ucs.py            # lê data/fcup/ucs.html
+# 723 subject/type rows -> data/fcup/subjects.json
 # 1472 classes total
 ```
 
@@ -47,7 +56,7 @@ python3 scripts/parse_ucs.py data/ucs.html
 com `rowspan` (ano, nome, código, tipo) e o resto da linha são pares
 *(turma, vagas)*.
 
-### 2. Quando são as aulas → `data/raw/`
+### 2. Quando são as aulas → `data/<sigla>/raw/`
 
 Os horários vêm da API de calendários do SIGARRA. Não é preciso login, mas está
 atrás da Cloudflare. Há duas vias.
@@ -67,11 +76,11 @@ python3 scripts/import_raw_all.py ~/Downloads/raw_all.json
 # wrote 465 files to .../data/raw/
 ```
 
-A lista de ocorrências está fixa no topo do `browser_fetch.js`. Para a renovar,
-tira os `occurrence_id` do `data/subjects.json`:
+A lista de ocorrências está no topo do `browser_fetch.js`. Nunca a escrevas à
+mão — gera-a com o [`ids.py`](#idspy--a-lista-de-ocorrências-para-o-browser_fetchjs):
 
 ```sh
-python3 -c "import json;print(sorted({s['occurrence_id'] for s in json.load(open('data/subjects.json'))}))"
+python3 scripts/ids.py -f feup --js
 ```
 
 **Via B — do terminal.** Mais prático de automatizar, mas apanha 403 da
@@ -89,7 +98,7 @@ Envia um conjunto completo de cabeçalhos de Chrome (largar qualquer um deles d�
 403) e recua exponencialmente quando é recusado. As falhas ficam em
 `data/failed.txt`; voltar a correr tenta só essas.
 
-### 3. Juntar tudo → `data/timetable.js`
+### 3. Juntar tudo → `data/<sigla>/timetable.js`
 
 ```sh
 python3 scripts/build_data.py
@@ -161,6 +170,16 @@ Devolve **todos** os horários sem sobreposições, ordenados, e — quando não
 nenhum — diz que pares de requisitos são impossíveis de conciliar, que é a
 informação útil. Escreve com `--json` para `data/out/` (ignorado pelo git: os
 ficheiros chegam a centenas de MB).
+
+### `ids.py` — a lista de ocorrências para o `browser_fetch.js`
+
+```sh
+python3 scripts/ids.py -f feup --js
+```
+
+Imprime `const FACULTY` e `const IDS = [...]` prontos a colar no topo do
+`browser_fetch.js`. Assim a lista sai sempre do catálogo que o `parse_ucs.py`
+acabou de ler, em vez de ser mantida à mão.
 
 ---
 

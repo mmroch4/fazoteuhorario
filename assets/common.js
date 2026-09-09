@@ -35,10 +35,16 @@ window.FCUP = (function () {
     .replace(/[&<>"]/g, c => ({"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;"}[c]));
   const min = t => (+t.slice(0, 2)) * 60 + (+t.slice(3, 5));
   const fmtDur = m => (m % 60 ? (m / 60).toFixed(1).replace(".", ",") : m / 60) + " h";
+  // The faculty acronym is a path segment in every SIGARRA URL, so the links
+  // have to follow whichever faculty's data is loaded. The dataset carries it;
+  // "fcup" is only the fallback for data built before that field existed.
+  const faculty = () =>
+    (window.TIMETABLE_DATA && window.TIMETABLE_DATA.faculty
+     && window.TIMETABLE_DATA.faculty.code) || "fcup";
   const ucURL = occ =>
-    "https://sigarra.up.pt/fcup/pt/ucurr_geral.ficha_uc_view?pv_ocorrencia_id=" + occ;
+    "https://sigarra.up.pt/" + faculty() + "/pt/ucurr_geral.ficha_uc_view?pv_ocorrencia_id=" + occ;
   const turmaURL = id =>
-    "https://sigarra.up.pt/fcup/pt/hor_geral.turmas_view?pv_turma_id=" + id +
+    "https://sigarra.up.pt/" + faculty() + "/pt/hor_geral.turmas_view?pv_turma_id=" + id +
     "&pv_ano_lectivo=" + YEAR + PERIODS.map(p => "&pv_periodos=" + p).join("");
 
   /* ---- side-by-side layout for overlapping classes ---------------------- */
@@ -206,6 +212,6 @@ window.FCUP = (function () {
     if (!d.open) d.showModal();
   }
 
-  return {DAYS, PALETTE, colourOf, setColour, isCustom, swatches, showDetails,
+  return {DAYS, PALETTE, faculty, colourOf, setColour, isCustom, swatches, showDetails,
           packDay, esc, min, ucURL, turmaURL};
 })();

@@ -1,7 +1,12 @@
 #!/usr/bin/env python3
-"""Merge subjects.json + data/raw/*.json into one dataset for the timetable UI.
+"""Merge subjects.json + raw/*.json into one dataset per faculty for the UI.
 
-  python3 scripts/build_data.py            # -> data/timetable.json and .js
+  python3 scripts/build_data.py                  # a FCUP
+  python3 scripts/build_data.py -f feup          # outra faculdade
+  python3 scripts/build_data.py --all            # todas as que têm dados
+
+Writes data/<faculdade>/timetable.json and .js, and refreshes the index in
+data/faculdades.json that the site reads to know which faculties exist.
 
 subjects.json gives the authoritative list of subjects/classes and their
 vacancies; the calendar API gives when and where each class actually meets.
@@ -16,14 +21,13 @@ import datetime
 import json
 import os
 import re
+import sys
 from collections import defaultdict
 from pathlib import Path
 from datetime import timezone
 
-ROOT = Path(__file__).resolve().parent.parent
-RAW = ROOT / "data" / "raw"
-SUBJECTS = ROOT / "data" / "subjects.json"
-OUT = ROOT / "data" / "timetable.json"
+import faculdades as F
+
 SEMESTER_RE = re.compile(r"\((\dS|A)\)\s*$")
 # Fewer than this many meetings is an extra session, not a weekly commitment.
 REGULAR_MIN = 3
@@ -33,9 +37,9 @@ def hhmm(t):
     return (t or "")[:5]
 
 
-def load_events(occ_id):
+def load_events(occ_id, raw_dir):
     """Return ({class_name: [slot, ...]}, semester, status, {class_name: turma_id})."""
-    path = RAW / f"{occ_id}.json"
+    path = raw_dir / f"{occ_id}.json"
     if not path.exists():
         return {}, None, "missing", {}
     with open(path, encoding="utf-8") as fh:
@@ -106,8 +110,13 @@ def load_events(occ_id):
     return merged, semester, ("ok" if events else "empty"), turma_ids
 
 
-def main():
-    with open(SUBJECTS, encoding="utf-8") as fh:
+def build(code):
+    """Build one faculty. Returns the index entry describing what came out."""
+    subjects_path, raw = F.subjects(code), F.raw_dir(code)
+    if not subjects_path.exists():
+        raise SystemExit(f"{code}: falta {subjects_path.relative_to(F.ROOT)} — "
+                         f"corre primeiro parse_ucs.py -f {code}")
+    with open(subjects_path, encoding="utf-8") as fh:
         rows = json.load(fh)
 
     subjects, order = {}, []
@@ -131,7 +140,7 @@ def main():
     unmatched = []
     for key in order:
         sub = subjects[key]
-        by_name, semester, status, turma_ids = load_events(sub["occurrence_id"])
+        by_name, semester, status, turma_ids = load_events(sub["occurrence_id"], raw)
         sub["semester"] = semester
         sub["status"] = status
         stats[status] += 1
@@ -150,24 +159,75 @@ def main():
             if name not in seen:
                 unmatched.append(f"{sub['code']}:{name}")
 
+    fac = F.get(code)
     out = {
+        "faculty": {"code": fac["code"], "name": fac["name"], "short": fac["short"]},
         "generated": datetime.datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "subjects": [subjects[k] for k in order],
     }
-    OUT.parent.mkdir(parents=True, exist_ok=True)
+    dest = F.timetable(code)
+    dest.parent.mkdir(parents=True, exist_ok=True)
     blob = json.dumps(out, ensure_ascii=False, separators=(",", ":"))
-    with open(OUT, "w", encoding="utf-8") as fh:
-        fh.write(blob)
+    dest.write_text(blob, encoding="utf-8")
     # Chrome refuses fetch() on file:// URLs, so the pages load data via <script>.
-    with open(OUT.with_suffix(".js"), "w", encoding="utf-8") as fh:
-        fh.write("window.TIMETABLE_DATA = " + blob + ";\n")
+    # The faculty code is in the global name, so two faculties can be loaded at
+    # once later on without one overwriting the other.
+    F.timetable_js(code).write_text(
+        f'window.TIMETABLE_DATA_{code.upper()} = ' + blob + ";\n"
+        f'window.TIMETABLE_DATA = window.TIMETABLE_DATA_{code.upper()};\n',
+        encoding="utf-8")
 
-    print(f"{len(order)} subjects -> {OUT} ({OUT.stat().st_size/1024:.0f} KB)")
-    print(f"  raw files: ok={stats['ok']} empty={stats['empty']} missing={stats['missing']}")
-    print(f"  classes with slots: {stats['classes_with_slots']}, without: {stats['classes_without_slots']}")
-    print(f"  weekly slots: {stats['slots']} (of which one-off: {stats['one_off_slots']})")
+    kb = dest.stat().st_size / 1024
+    print(f"{code}: {len(order)} UCs -> {dest.relative_to(F.ROOT)} ({kb:.0f} KB)")
+    print(f"  raw: ok={stats['ok']} empty={stats['empty']} missing={stats['missing']}")
+    print(f"  turmas com horário: {stats['classes_with_slots']}, sem: {stats['classes_without_slots']}")
+    print(f"  horários semanais: {stats['slots']} (pontuais: {stats['one_off_slots']})")
     if unmatched:
-        print(f"  WARNING {len(unmatched)} calendar classes not in subjects.json: {unmatched[:8]}")
+        print(f"  AVISO {len(unmatched)} turmas do calendário fora de subjects.json: {unmatched[:6]}")
+
+    return {
+        "code": fac["code"], "name": fac["name"], "short": fac["short"],
+        "file": f"data/{code}/timetable.js",
+        "subjects": len(order),
+        "with_slots": stats["classes_with_slots"],
+        "generated": out["generated"],
+        "size_kb": round(kb),
+    }
+
+
+def write_index(entries):
+    """The small file the site loads first, to know which faculties exist."""
+    entries.sort(key=lambda e: e["name"])
+    F.INDEX.write_text(json.dumps(
+        {"generated": datetime.datetime.now(timezone.utc).isoformat(timespec="seconds"),
+         "faculdades": entries}, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    total = sum(e["subjects"] for e in entries)
+    print(f"\nindice -> {F.INDEX.relative_to(F.ROOT)}: "
+          f"{len(entries)} faculdade(s), {total} UCs")
+
+
+def main():
+    argv = sys.argv[1:]
+    if "--all" in argv:
+        # Every faculty that actually has data on disk, not every faculty known.
+        codes = [c for c in F.BY_CODE if F.subjects(c).exists()]
+        if not codes:
+            raise SystemExit("nenhuma faculdade tem dados em data/")
+    else:
+        codes = [F.arg(argv)]
+
+    # Keep entries for faculties built earlier but not rebuilt now, so building
+    # one faculty does not drop the others out of the index.
+    entries = []
+    if F.INDEX.exists():
+        try:
+            entries = [e for e in json.loads(F.INDEX.read_text(encoding="utf-8"))["faculdades"]
+                       if e["code"] not in codes]
+        except (ValueError, KeyError):
+            entries = []
+    for code in codes:
+        entries.append(build(code))
+    write_index(entries)
 
 
 if __name__ == "__main__":

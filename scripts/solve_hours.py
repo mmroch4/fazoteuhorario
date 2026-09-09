@@ -2,6 +2,7 @@
 """Build a timetable by filling required hours per subject/type from ANY turma.
 
   python3 scripts/solve_hours.py CC2005 CC1007 CC2003 M2040
+  python3 scripts/solve_hours.py -f feup <códigos>
 
 Unlike solve_schedule.py (which picks one turma per type, the SIGARRA enrolment
 model), you may mix turmas: attend CC1007's Tuesday lecture with T1 at 14:00 and
@@ -18,9 +19,10 @@ import itertools
 import json
 import sys
 from collections import defaultdict
-from pathlib import Path
+import faculdades as F
 
-ROOT = Path(__file__).resolve().parent.parent
+# Which faculty's data to solve against. `-f xx` anywhere in the arguments.
+FACULTY = F.arg(sys.argv)
 
 DAYS = ["Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado", "Domingo"]
 NOON = 13 * 60
@@ -187,7 +189,7 @@ def main():
     if not codes:
         sys.exit(__doc__)
 
-    data = json.load(open(ROOT / "data" / "timetable.json", encoding="utf-8"))
+    data = json.load(open(F.timetable(FACULTY), encoding="utf-8"))
     byc = {s["code"]: s for s in data["subjects"]}
     missing = [c for c in codes if c not in byc]
     if missing:

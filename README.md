@@ -68,9 +68,11 @@ Para publicar, serve a pasta como ficheiros estáticos — GitHub Pages, Netlify
 │   ├── solver.js         gerador de combinações (corre no navegador)
 │   └── presets.js        horários distribuídos com o site (vazio por omissão)
 ├── data/               os horários — ver data/README.md
-│   ├── timetable.js      o ficheiro que o site carrega
-│   ├── timetable.json    o mesmo, para os scripts
-│   └── subjects.json     UCs, turmas e vagas
+│   ├── faculdades.json   índice: que faculdades existem e onde
+│   └── fcup/             uma pasta por faculdade
+│       ├── timetable.js    o ficheiro que o site carrega
+│       ├── timetable.json  o mesmo, para os scripts
+│       └── subjects.json   UCs, turmas e vagas
 ├── scripts/            extração e análise — ver scripts/README.md
 ├── robots.txt          ┐
 ├── sitemap.xml         │ gerados por scripts/build_seo.py
@@ -78,9 +80,9 @@ Para publicar, serve a pasta como ficheiros estáticos — GitHub Pages, Netlify
 └── LICENSE             MIT
 ```
 
-O site precisa apenas dos quatro HTML, de `assets/` e de `data/timetable.js`. Tudo
-o resto — `scripts/`, `data/subjects.json`, `data/timetable.json` — existe para
-**produzir** esse ficheiro e para análise em linha de comandos.
+O site precisa apenas dos quatro HTML, de `assets/` e do `timetable.js` de cada
+faculdade. Tudo o resto — `scripts/`, `subjects.json`, `timetable.json` —
+existe para **produzir** esses ficheiros e para análise em linha de comandos.
 
 ## Atualizar os dados
 
@@ -88,8 +90,8 @@ Os horários são uma fotografia do SIGARRA no dia em que foram extraídos. Para
 renovar, ver **[scripts/README.md](scripts/README.md)** — em resumo:
 
 ```sh
-# 1. Guardar a página de turmas do SIGARRA como data/ucs.html, e extrair as UCs
-python3 scripts/parse_ucs.py data/ucs.html
+# 1. Guardar a página de turmas do SIGARRA como data/fcup/ucs.html, e extrair
+python3 scripts/parse_ucs.py
 
 # 2. Descarregar os eventos do calendário (browser_fetch.js é a via fiável)
 python3 scripts/import_raw_all.py ~/Downloads/raw_all.json
@@ -97,6 +99,9 @@ python3 scripts/import_raw_all.py ~/Downloads/raw_all.json
 # 3. Construir o ficheiro que o site carrega
 python3 scripts/build_data.py
 ```
+
+Todos os passos aceitam `-f <sigla>` para outra faculdade (`-f feup`). As
+faculdades conhecidas estão em `scripts/faculdades.py`.
 
 Requisitos: Python 3.9+ (biblioteca padrão, sem dependências). O
 `fetch_timetables.sh`, alternativa em linha de comandos, precisa de `curl` e

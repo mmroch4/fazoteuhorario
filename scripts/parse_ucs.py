@@ -1,15 +1,20 @@
 #!/usr/bin/env python3
 """Extract subjects + their classes from a SIGARRA "turmas" table into JSON.
 
-Usage:  python3 scripts/parse_ucs.py input.html [output.json]
+  python3 scripts/parse_ucs.py                       # data/fcup/ucs.html -> subjects.json
+  python3 scripts/parse_ucs.py -f feup               # a mesma coisa para a FEUP
+  python3 scripts/parse_ucs.py entrada.html saida.json
+
+Without paths it reads data/<faculdade>/ucs.html and writes
+data/<faculdade>/subjects.json, which is where the rest of the pipeline
+expects them.
 """
 import json
+import pathlib
 import re
 import sys
 from html.parser import HTMLParser
-from pathlib import Path
-
-ROOT = Path(__file__).resolve().parent.parent
+import faculdades as F
 
 
 class TableParser(HTMLParser):
@@ -92,10 +97,15 @@ def parse(html):
 
 
 def main():
-    if len(sys.argv) < 2:
-        sys.exit(__doc__)
-    src = sys.argv[1]
-    dst = sys.argv[2] if len(sys.argv) > 2 else ROOT / "data" / "subjects.json"
+    argv = sys.argv[1:]
+    code = F.arg(argv)
+    src = pathlib.Path(argv[0]) if argv else F.ucs_html(code)
+    dst = pathlib.Path(argv[1]) if len(argv) > 1 else F.subjects(code)
+    if not src.exists():
+        sys.exit(f"não encontrei {src}\n"
+                 f"guarda a página de turmas do SIGARRA da {F.get(code)['short']} "
+                 f"como {src} (ver scripts/README.md)")
+    dst.parent.mkdir(parents=True, exist_ok=True)
     with open(src, encoding="utf-8") as fh:
         subjects = parse(fh.read())
     with open(dst, "w", encoding="utf-8") as fh:

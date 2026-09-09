@@ -1,11 +1,11 @@
 # --- scraped SIGARRA sources -------------------------------------------------
-# Intermediate downloads. Large, regenerable, and not ours to redistribute.
-# See data/README.md for how to produce them.
-data/raw/
-data/raw_all.json
-data/ucs.html
-data/failed.txt
-data/fetch.log
+# Intermediate downloads, one set per faculty. Large, regenerable, and not ours
+# to redistribute. See data/README.md for how to produce them.
+data/*/raw/
+data/*/raw_all.json
+data/*/ucs.html
+data/*/failed.txt
+data/*/fetch.log
 
 # --- generated analyses ------------------------------------------------------
 # enumerate_all.py --json output: can be hundreds of MB.

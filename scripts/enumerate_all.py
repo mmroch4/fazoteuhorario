@@ -18,7 +18,9 @@ import json
 import sys
 from collections import defaultdict
 
-from solve_hours import ROOT, DAYS, combos_for, disjoint, m, requirements, score
+import faculdades as F
+from solve_hours import (FACULTY, DAYS, combos_for, disjoint,
+                         m, requirements, score)
 
 MAXPRINT = 20
 
@@ -112,7 +114,7 @@ def main():
     if not codes:
         sys.exit(__doc__)
 
-    data = json.load(open(ROOT / "data" / "timetable.json", encoding="utf-8"))
+    data = json.load(open(F.timetable(FACULTY), encoding="utf-8"))
     byc = {s["code"]: s for s in data["subjects"]}
     missing = [c for c in codes if c not in byc]
     if missing:

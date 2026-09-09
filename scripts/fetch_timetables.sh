@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
-# Fetch SIGARRA timetable events for every UC occurrence listed in data/subjects.json.
+# Fetch SIGARRA timetable events for every UC occurrence of one faculty,
+# listed in data/<faculdade>/subjects.json.
 #
-#   scripts/fetch_timetables.sh              # fetch all, skipping already-downloaded ones
+#   scripts/fetch_timetables.sh              # a FCUP, saltando o que já está
+#   FACULTY=feup scripts/fetch_timetables.sh # outra faculdade
 #   scripts/fetch_timetables.sh 589589       # fetch only these occurrence ids
 #   FORCE=1 scripts/fetch_timetables.sh      # re-download even if cached
 #   DELAY=3 scripts/fetch_timetables.sh      # seconds between requests (default 1.5)
@@ -12,13 +14,15 @@
 set -uo pipefail
 cd "$(dirname "$0")/.."   # scripts live in scripts/, data lives at the root
 
+FACULTY=${FACULTY:-fcup}
 YEAR=${YEAR:-2026}
 PERIODS=${PERIODS:-"1 2 4 5 8"}
 DELAY=${DELAY:-1.5}
 FORCE=${FORCE:-0}
-OUT=data/raw
-FAILED=data/failed.txt
-BASE="https://sigarra.up.pt/calendarios-api/api/v1/events/fcup/uc"
+OUT=data/$FACULTY/raw
+FAILED=data/$FACULTY/failed.txt
+SUBJECTS=data/$FACULTY/subjects.json
+BASE="https://sigarra.up.pt/calendarios-api/api/v1/events/$FACULTY/uc"
 UA='Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36'
 
 # The full set is required together; dropping any one of these gets a 403.
@@ -39,10 +43,11 @@ for p in $PERIODS; do QS="${QS}&period=${p}"; done
 QS="${QS}&lang=pt"
 
 mkdir -p "$OUT"
-if [ $# -gt 0 ]; then IDS="$*"; else IDS=$(jq -r '[.[].occurrence_id] | unique | .[]' data/subjects.json); fi
+if [ ! -f "$SUBJECTS" ]; then echo "falta $SUBJECTS - corre parse_ucs.py -f $FACULTY"; exit 1; fi
+if [ $# -gt 0 ]; then IDS="$*"; else IDS=$(jq -r '[.[].occurrence_id] | unique | .[]' "$SUBJECTS"); fi
 
 total=$(echo "$IDS" | wc -w)
-echo "Fetching $total occurrence(s) -> $OUT/  (year=$YEAR periods='$PERIODS' delay=${DELAY}s)"
+echo "Fetching $total occurrence(s) of $FACULTY -> $OUT/  (year=$YEAR periods='$PERIODS' delay=${DELAY}s)"
 : > "$FAILED"
 ok=0; skip=0; fail=0; i=0
 
@@ -58,7 +63,7 @@ for id in $IDS; do
   code=""
   for attempt in 1 2 3 4; do
     code=$(curl -sS -m 40 --compressed "${HDRS[@]}" \
-             -H "Referer: https://sigarra.up.pt/fcup/pt/ucurr_geral.ficha_uc_view?pv_ocorrencia_id=${id}" \
+             -H "Referer: https://sigarra.up.pt/$FACULTY/pt/ucurr_geral.ficha_uc_view?pv_ocorrencia_id=${id}" \
              -o "$dest.part" -w '%{http_code}' \
              "${BASE}/${id}/?${QS}") || code="000"
     [ "$code" = "200" ] && break

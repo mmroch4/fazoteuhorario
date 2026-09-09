@@ -1,7 +1,12 @@
 # `data/` — os horários
 
-Tudo o que o site sabe sobre a FCUP está aqui. Os ficheiros formam uma cadeia:
-cada um é produzido a partir do anterior, e só o último interessa ao site.
+**Uma pasta por faculdade.** `data/fcup/`, `data/feup/`, … cada uma com a mesma
+estrutura de ficheiros, mais um índice `data/faculdades.json` na raiz que diz
+quais existem e onde estão. A sigla da pasta é a do SIGARRA, e é a mesma que
+aparece nos URLs da API e das páginas públicas.
+
+Dentro de cada pasta, os ficheiros formam uma cadeia: cada um é produzido a
+partir do anterior, e só o último interessa ao site.
 
 ```
   SIGARRA (página de turmas)          SIGARRA (API de calendários)
@@ -19,6 +24,29 @@ cada um é produzido a partir do anterior, e só o último interessa ao site.
 ```
 
 ## Ficheiros versionados
+
+### `data/faculdades.json`
+
+O índice, escrito pelo `build_data.py`. É pequeno (~1 KB) e é o primeiro
+ficheiro que o site lê, para saber que faculdades oferecer sem ter de carregar
+os dados de nenhuma:
+
+```json
+{
+  "generated": "2026-09-09T00:47:16+00:00",
+  "faculdades": [
+    { "code": "fcup", "name": "Faculdade de Ciências", "short": "FCUP",
+      "file": "data/fcup/timetable.js", "subjects": 464, "with_slots": 986,
+      "generated": "2026-09-09T00:47:16+00:00", "size_kb": 493 }
+  ]
+}
+```
+
+`generated` por faculdade existe para se poder mostrar ao utilizador **quando é
+que aqueles horários foram extraídos** — com várias faculdades mantidas a
+ritmos diferentes, é informação que passa a ser necessária.
+
+### Em `data/<sigla>/`
 
 | ficheiro         | tamanho | o que é |
 | ---------------- | ------- | ------- |
@@ -44,6 +72,7 @@ Grandes, regeneráveis, e não são nossos para redistribuir — por isso estão
 
 ```jsonc
 {
+  "faculty": {"code": "fcup", "name": "Faculdade de Ciências", "short": "FCUP"},
   "generated": "2026-09-08T22:30:00+00:00",   // quando foi construído
   "subjects": [
     {
@@ -109,5 +138,9 @@ que o site usa para filtrar.
   ignora-as.
 - O semestre de cada horário é deduzido do mês da primeira aula: setembro a
   janeiro é `1S`, fevereiro a julho é `2S`.
-- Os dados pertencem à U.Porto/FCUP. Estão aqui como cópia de conveniência, não
+- O `timetable.js` define `window.TIMETABLE_DATA_<SIGLA>` **e**
+  `window.TIMETABLE_DATA`. O nome com sigla existe para que, mais tarde, duas
+  faculdades possam estar carregadas ao mesmo tempo sem uma apagar a outra —
+  que é o que um horário com UCs de faculdades diferentes vai precisar.
+- Os dados pertencem à U.Porto. Estão aqui como cópia de conveniência, não
   são cobertos pela licença MIT do código, e podem estar desatualizados.
