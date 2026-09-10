@@ -1,1 +1,1 @@
-window.FACULDADES_INDEX = {"generated":"2026-09-09T09:59:25+00:00","faculdades":[{"code":"fcup","name":"Faculdade de Ciências","short":"FCUP","file":"data/fcup/timetable.js","subjects":464,"with_slots":986,"generated":"2026-09-09T09:59:25+00:00","size_kb":571}]};
+window.FACULDADES_INDEX = {"generated":"2026-09-10T16:37:34+00:00","faculdades":[{"code":"fcup","name":"Faculdade de Ciências","short":"FCUP","file":"data/fcup/timetable.js","subjects":468,"with_slots":998,"generated":"2026-09-10T16:37:34+00:00","size_kb":577}]};

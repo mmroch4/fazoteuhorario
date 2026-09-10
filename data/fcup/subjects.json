@@ -8,7 +8,7 @@
     "classes": [
       {
         "name": "CC4079_TP",
-        "vacant_places": 29
+        "vacant_places": 28
       }
     ]
   },
@@ -21,7 +21,7 @@
     "classes": [
       {
         "name": "CC4069_TP",
-        "vacant_places": 29
+        "vacant_places": 28
       }
     ]
   },
@@ -34,7 +34,7 @@
     "classes": [
       {
         "name": "CAGR4009_PL",
-        "vacant_places": 4
+        "vacant_places": 6
       }
     ]
   },
@@ -47,7 +47,7 @@
     "classes": [
       {
         "name": "CAGR4009_T",
-        "vacant_places": 4
+        "vacant_places": 6
       }
     ]
   },
@@ -86,11 +86,11 @@
     "classes": [
       {
         "name": "M1002_T1",
-        "vacant_places": 43
+        "vacant_places": 10
       },
       {
         "name": "M1002_T2",
-        "vacant_places": 8
+        "vacant_places": 5
       }
     ]
   },
@@ -103,11 +103,11 @@
     "classes": [
       {
         "name": "M1002_TP1",
-        "vacant_places": 10
+        "vacant_places": 5
       },
       {
         "name": "M1002_TP2",
-        "vacant_places": 0
+        "vacant_places": 3
       },
       {
         "name": "M1002_TP3",
@@ -115,15 +115,15 @@
       },
       {
         "name": "M1002_TP4",
-        "vacant_places": 19
+        "vacant_places": 8
       },
       {
         "name": "M1002_TP5",
-        "vacant_places": 1
+        "vacant_places": 0
       },
       {
         "name": "M1002_TP6",
-        "vacant_places": 3
+        "vacant_places": 6
       }
     ]
   },
@@ -136,7 +136,7 @@
     "classes": [
       {
         "name": "M1038_T",
-        "vacant_places": 35
+        "vacant_places": 21
       }
     ]
   },
@@ -149,7 +149,7 @@
     "classes": [
       {
         "name": "M1038_TP1",
-        "vacant_places": 2
+        "vacant_places": 0
       },
       {
         "name": "M1038_TP2",
@@ -157,11 +157,11 @@
       },
       {
         "name": "M1038_TP3",
-        "vacant_places": 8
+        "vacant_places": 0
       },
       {
         "name": "M1038_TP4",
-        "vacant_places": 24
+        "vacant_places": 7
       }
     ]
   },
@@ -174,11 +174,11 @@
     "classes": [
       {
         "name": "M1010_T1",
-        "vacant_places": 36
+        "vacant_places": 2
       },
       {
         "name": "M1010_T2",
-        "vacant_places": 29
+        "vacant_places": 18
       }
     ]
   },
@@ -191,11 +191,11 @@
     "classes": [
       {
         "name": "M1010_TP1",
-        "vacant_places": 14
+        "vacant_places": 0
       },
       {
         "name": "M1010_TP2",
-        "vacant_places": 1
+        "vacant_places": 0
       },
       {
         "name": "M1010_TP3",
@@ -203,11 +203,11 @@
       },
       {
         "name": "M1010_TP4",
-        "vacant_places": 7
+        "vacant_places": 0
       },
       {
         "name": "M1010_TP5",
-        "vacant_places": 37
+        "vacant_places": 28
       }
     ]
   },
@@ -220,7 +220,7 @@
     "classes": [
       {
         "name": "CC4010_TP",
-        "vacant_places": 16
+        "vacant_places": 15
       }
     ]
   },
@@ -233,7 +233,7 @@
     "classes": [
       {
         "name": "BIOL4124_PL",
-        "vacant_places": 0
+        "vacant_places": 1
       }
     ]
   },
@@ -246,7 +246,7 @@
     "classes": [
       {
         "name": "BIOL4124_T",
-        "vacant_places": 0
+        "vacant_places": 1
       }
     ]
   },
@@ -259,7 +259,7 @@
     "classes": [
       {
         "name": "M1039_T",
-        "vacant_places": 74
+        "vacant_places": 36
       }
     ]
   },
@@ -272,19 +272,19 @@
     "classes": [
       {
         "name": "M1039_TP1",
-        "vacant_places": 6
+        "vacant_places": 0
       },
       {
         "name": "M1039_TP2",
-        "vacant_places": 17
+        "vacant_places": 0
       },
       {
         "name": "M1039_TP3",
-        "vacant_places": 7
+        "vacant_places": 0
       },
       {
         "name": "M1039_TP4",
-        "vacant_places": 32
+        "vacant_places": 6
       }
     ]
   },
@@ -366,7 +366,7 @@
     "classes": [
       {
         "name": "M4076_TP",
-        "vacant_places": 5
+        "vacant_places": 9
       }
     ]
   },
@@ -379,11 +379,11 @@
     "classes": [
       {
         "name": "M1011_T1",
-        "vacant_places": 27
+        "vacant_places": 0
       },
       {
         "name": "M1011_T2",
-        "vacant_places": 20
+        "vacant_places": 10
       }
     ]
   },
@@ -396,19 +396,19 @@
     "classes": [
       {
         "name": "M1011_TP1",
-        "vacant_places": 14
+        "vacant_places": 0
       },
       {
         "name": "M1011_TP2",
-        "vacant_places": 5
+        "vacant_places": 0
       },
       {
         "name": "M1011_TP3",
-        "vacant_places": 20
+        "vacant_places": 10
       },
       {
         "name": "M1011_TP4",
-        "vacant_places": 2
+        "vacant_places": 0
       }
     ]
   },
@@ -421,7 +421,7 @@
     "classes": [
       {
         "name": "MED4001_TP",
-        "vacant_places": 0
+        "vacant_places": 13
       }
     ]
   },
@@ -434,7 +434,7 @@
     "classes": [
       {
         "name": "BIOL4069_PL",
-        "vacant_places": 16
+        "vacant_places": 11
       }
     ]
   },
@@ -447,7 +447,7 @@
     "classes": [
       {
         "name": "BIOL4069_T",
-        "vacant_places": 16
+        "vacant_places": 11
       }
     ]
   },
@@ -499,7 +499,7 @@
     "classes": [
       {
         "name": "CAGR1003_PL",
-        "vacant_places": 7
+        "vacant_places": 4
       }
     ]
   },
@@ -512,7 +512,7 @@
     "classes": [
       {
         "name": "CAGR1003_T",
-        "vacant_places": 6
+        "vacant_places": 2
       }
     ]
   },
@@ -525,7 +525,7 @@
     "classes": [
       {
         "name": "BIOL4067_TP",
-        "vacant_places": 15
+        "vacant_places": 14
       }
     ]
   },
@@ -542,7 +542,7 @@
       },
       {
         "name": "BIOL1021_PLE",
-        "vacant_places": 20
+        "vacant_places": 19
       },
       {
         "name": "BIOL1021_PL1",
@@ -554,19 +554,19 @@
       },
       {
         "name": "BIOL1021_PL3",
-        "vacant_places": 4
+        "vacant_places": 3
       },
       {
         "name": "BIOL1021_PL4",
-        "vacant_places": 0
+        "vacant_places": 1
       },
       {
         "name": "BIOL1021_PL5",
-        "vacant_places": 0
+        "vacant_places": 1
       },
       {
         "name": "BIOL1021_PL6",
-        "vacant_places": 3
+        "vacant_places": 2
       },
       {
         "name": "BIOL1021_PL7",
@@ -587,7 +587,7 @@
     "classes": [
       {
         "name": "BIOL1021_T",
-        "vacant_places": 15
+        "vacant_places": 8
       }
     ]
   },
@@ -630,11 +630,11 @@
     "classes": [
       {
         "name": "BIOL4021_PL1",
-        "vacant_places": 1
+        "vacant_places": 2
       },
       {
         "name": "BIOL4021_PL2",
-        "vacant_places": 1
+        "vacant_places": 4
       }
     ]
   },
@@ -647,7 +647,7 @@
     "classes": [
       {
         "name": "BIOL4021_T",
-        "vacant_places": 2
+        "vacant_places": 7
       }
     ]
   },
@@ -660,7 +660,7 @@
     "classes": [
       {
         "name": "BIOL4015_TP",
-        "vacant_places": 14
+        "vacant_places": 11
       }
     ]
   },
@@ -677,7 +677,7 @@
       },
       {
         "name": "BIOL1012_PLE",
-        "vacant_places": 20
+        "vacant_places": 18
       },
       {
         "name": "BIOL1012_PL1",
@@ -697,7 +697,7 @@
       },
       {
         "name": "BIOL1012_PL5",
-        "vacant_places": 8
+        "vacant_places": 4
       },
       {
         "name": "BIOL1012_PL6",
@@ -705,15 +705,15 @@
       },
       {
         "name": "BIOL1012_PL7",
-        "vacant_places": 6
+        "vacant_places": 3
       },
       {
         "name": "BIOL1012_PL8",
-        "vacant_places": 6
+        "vacant_places": 7
       },
       {
         "name": "BIOL1012_PL9",
-        "vacant_places": 7
+        "vacant_places": 5
       }
     ]
   },
@@ -726,7 +726,7 @@
     "classes": [
       {
         "name": "BIOL1012_T",
-        "vacant_places": 25
+        "vacant_places": 9
       }
     ]
   },
@@ -743,7 +743,7 @@
       },
       {
         "name": "BIOL1018_PLE",
-        "vacant_places": 20
+        "vacant_places": 19
       },
       {
         "name": "BIOL1018_PL1",
@@ -751,7 +751,7 @@
       },
       {
         "name": "BIOL1018_PL2",
-        "vacant_places": 8
+        "vacant_places": 6
       },
       {
         "name": "BIOL1018_PL3",
@@ -759,7 +759,7 @@
       },
       {
         "name": "BIOL1018_PL4",
-        "vacant_places": 8
+        "vacant_places": 7
       },
       {
         "name": "BIOL1018_PL5",
@@ -771,7 +771,7 @@
       },
       {
         "name": "BIOL1018_PL7",
-        "vacant_places": 7
+        "vacant_places": 5
       },
       {
         "name": "BIOL1018_PL8",
@@ -792,7 +792,7 @@
     "classes": [
       {
         "name": "BIOL1018_T",
-        "vacant_places": 24
+        "vacant_places": 14
       }
     ]
   },
@@ -805,7 +805,7 @@
     "classes": [
       {
         "name": "BIOL4009_TP",
-        "vacant_places": 11
+        "vacant_places": 8
       }
     ]
   },
@@ -834,7 +834,7 @@
       },
       {
         "name": "BIOL1019_PL3",
-        "vacant_places": 10
+        "vacant_places": 2
       },
       {
         "name": "BIOL1019_PL4",
@@ -846,19 +846,19 @@
       },
       {
         "name": "BIOL1019_PL6",
-        "vacant_places": 10
+        "vacant_places": 1
       },
       {
         "name": "BIOL1019_PL7",
-        "vacant_places": 8
+        "vacant_places": 5
       },
       {
         "name": "BIOL1019_PL8",
-        "vacant_places": 8
+        "vacant_places": 4
       },
       {
         "name": "BIOL1019_PL9",
-        "vacant_places": 8
+        "vacant_places": 9
       }
     ]
   },
@@ -871,7 +871,7 @@
     "classes": [
       {
         "name": "BIOL1019_T",
-        "vacant_places": 43
+        "vacant_places": 14
       }
     ]
   },
@@ -1035,7 +1035,7 @@
     "classes": [
       {
         "name": "EQB4004_T",
-        "vacant_places": 2
+        "vacant_places": 0
       }
     ]
   },
@@ -1048,7 +1048,7 @@
     "classes": [
       {
         "name": "BIOL4005_TP",
-        "vacant_places": 17
+        "vacant_places": 14
       }
     ]
   },
@@ -1061,7 +1061,7 @@
     "classes": [
       {
         "name": "BIOL4050_TP",
-        "vacant_places": 13
+        "vacant_places": 11
       }
     ]
   },
@@ -1074,7 +1074,7 @@
     "classes": [
       {
         "name": "BIOL4054_TP",
-        "vacant_places": 16
+        "vacant_places": 13
       }
     ]
   },
@@ -1087,11 +1087,11 @@
     "classes": [
       {
         "name": "M1001_T1",
-        "vacant_places": 92
+        "vacant_places": 39
       },
       {
         "name": "M1001_T2",
-        "vacant_places": 42
+        "vacant_places": 22
       }
     ]
   },
@@ -1104,23 +1104,23 @@
     "classes": [
       {
         "name": "M1001_TP1",
-        "vacant_places": 24
+        "vacant_places": 0
       },
       {
         "name": "M1001_TP2",
-        "vacant_places": 28
+        "vacant_places": 2
       },
       {
         "name": "M1001_TP3",
-        "vacant_places": 35
+        "vacant_places": 0
       },
       {
         "name": "M1001_TP4",
-        "vacant_places": 8
+        "vacant_places": 0
       },
       {
         "name": "M1001_TP5",
-        "vacant_places": 29
+        "vacant_places": 2
       }
     ]
   },
@@ -1172,7 +1172,7 @@
     "classes": [
       {
         "name": "FIS4024_TP",
-        "vacant_places": 21
+        "vacant_places": 19
       }
     ]
   },
@@ -1315,7 +1315,7 @@
     "classes": [
       {
         "name": "CC4014_TP",
-        "vacant_places": 23
+        "vacant_places": 18
       }
     ]
   },
@@ -1328,11 +1328,11 @@
     "classes": [
       {
         "name": "DP/CTT1001_PL1",
-        "vacant_places": 6
+        "vacant_places": 2
       },
       {
         "name": "DP/CTT1001_PL2",
-        "vacant_places": 2
+        "vacant_places": 1
       },
       {
         "name": "DP/CTT1001_PL3",
@@ -1340,7 +1340,7 @@
       },
       {
         "name": "DP/CTT1001_PL4",
-        "vacant_places": 5
+        "vacant_places": 1
       }
     ]
   },
@@ -1353,7 +1353,20 @@
     "classes": [
       {
         "name": "DP/CTT1001_TP",
-        "vacant_places": 33
+        "vacant_places": 23
+      }
+    ]
+  },
+  {
+    "code": "DPI1000",
+    "name": "Comunicação em Ciência",
+    "occurrence_id": 593893,
+    "academic_year": 1,
+    "type": "TP",
+    "classes": [
+      {
+        "name": "DPI1000_TP",
+        "vacant_places": 20
       }
     ]
   },
@@ -1366,7 +1379,7 @@
     "classes": [
       {
         "name": "BIOL4125_T",
-        "vacant_places": 7
+        "vacant_places": 6
       }
     ]
   },
@@ -1379,7 +1392,7 @@
     "classes": [
       {
         "name": "BIOL4125_TP",
-        "vacant_places": 7
+        "vacant_places": 6
       }
     ]
   },
@@ -1392,7 +1405,7 @@
     "classes": [
       {
         "name": "BIOL4118_PL",
-        "vacant_places": 6
+        "vacant_places": 3
       }
     ]
   },
@@ -1405,7 +1418,7 @@
     "classes": [
       {
         "name": "BIOL4118_T",
-        "vacant_places": 6
+        "vacant_places": 3
       }
     ]
   },
@@ -1418,7 +1431,7 @@
     "classes": [
       {
         "name": "TCAEM02_PL",
-        "vacant_places": 10
+        "vacant_places": 12
       }
     ]
   },
@@ -1431,7 +1444,7 @@
     "classes": [
       {
         "name": "TCAEM02_T",
-        "vacant_places": 10
+        "vacant_places": 12
       }
     ]
   },
@@ -1448,7 +1461,7 @@
       },
       {
         "name": "CC4017_TP2",
-        "vacant_places": 14
+        "vacant_places": 13
       }
     ]
   },
@@ -1465,7 +1478,7 @@
       },
       {
         "name": "CC4076_TP2",
-        "vacant_places": 8
+        "vacant_places": 7
       }
     ]
   },
@@ -1478,11 +1491,11 @@
     "classes": [
       {
         "name": "GEOL1007_PL1",
-        "vacant_places": 2
+        "vacant_places": 0
       },
       {
         "name": "GEOL1007_PL2",
-        "vacant_places": 19
+        "vacant_places": 9
       },
       {
         "name": "GEOL1007_PL3",
@@ -1499,7 +1512,7 @@
     "classes": [
       {
         "name": "GEOL1007_T",
-        "vacant_places": 21
+        "vacant_places": 8
       }
     ]
   },
@@ -1529,7 +1542,7 @@
     "classes": [
       {
         "name": "BIOL4041_TP",
-        "vacant_places": 0
+        "vacant_places": 2
       }
     ]
   },
@@ -1606,7 +1619,7 @@
       },
       {
         "name": "ARQTP1001_TP2",
-        "vacant_places": 16
+        "vacant_places": 1
       }
     ]
   },
@@ -1632,7 +1645,7 @@
     "classes": [
       {
         "name": "EGEO1002_TP",
-        "vacant_places": 3
+        "vacant_places": 4
       }
     ]
   },
@@ -1645,11 +1658,11 @@
     "classes": [
       {
         "name": "BIOL4121_TP1",
-        "vacant_places": 16
+        "vacant_places": 13
       },
       {
         "name": "BIOL4121_TP2",
-        "vacant_places": 7
+        "vacant_places": 6
       }
     ]
   },
@@ -1893,7 +1906,7 @@
     "classes": [
       {
         "name": "BIOL4039_PL",
-        "vacant_places": 16
+        "vacant_places": 11
       }
     ]
   },
@@ -1906,7 +1919,7 @@
     "classes": [
       {
         "name": "BIOL4039_T",
-        "vacant_places": 16
+        "vacant_places": 11
       }
     ]
   },
@@ -1957,11 +1970,11 @@
       },
       {
         "name": "BIOL2010_PLE",
-        "vacant_places": 20
+        "vacant_places": 19
       },
       {
         "name": "BIOL2010_PL1",
-        "vacant_places": 17
+        "vacant_places": 3
       },
       {
         "name": "BIOL2010_PL2",
@@ -1978,7 +1991,7 @@
     "classes": [
       {
         "name": "BIOL2010_T",
-        "vacant_places": 20
+        "vacant_places": 7
       }
     ]
   },
@@ -2017,7 +2030,7 @@
     "classes": [
       {
         "name": "AMB4020_T",
-        "vacant_places": 4
+        "vacant_places": 1
       }
     ]
   },
@@ -2030,7 +2043,7 @@
     "classes": [
       {
         "name": "AMB4020_TP",
-        "vacant_places": 4
+        "vacant_places": 1
       }
     ]
   },
@@ -2069,7 +2082,7 @@
     "classes": [
       {
         "name": "GEOL1005_T",
-        "vacant_places": 18
+        "vacant_places": 12
       }
     ]
   },
@@ -2082,7 +2095,7 @@
     "classes": [
       {
         "name": "GEOL1005_TP1",
-        "vacant_places": 4
+        "vacant_places": 2
       },
       {
         "name": "GEOL1005_TP2",
@@ -2099,7 +2112,7 @@
     "classes": [
       {
         "name": "M1021_T",
-        "vacant_places": 21
+        "vacant_places": 13
       }
     ]
   },
@@ -2112,15 +2125,28 @@
     "classes": [
       {
         "name": "M1021_TP1",
-        "vacant_places": 7
+        "vacant_places": 1
       },
       {
         "name": "M1021_TP2",
-        "vacant_places": 8
+        "vacant_places": 5
       },
       {
         "name": "M1021_TP3",
-        "vacant_places": 4
+        "vacant_places": 2
+      }
+    ]
+  },
+  {
+    "code": "GES600",
+    "name": "Empreendedorismo",
+    "occurrence_id": 593896,
+    "academic_year": 1,
+    "type": "TP",
+    "classes": [
+      {
+        "name": "GES600_TP",
+        "vacant_places": 19
       }
     ]
   },
@@ -2133,7 +2159,7 @@
     "classes": [
       {
         "name": "AMB4021_T",
-        "vacant_places": 4
+        "vacant_places": 0
       }
     ]
   },
@@ -2146,7 +2172,7 @@
     "classes": [
       {
         "name": "AMB4021_TP",
-        "vacant_places": 4
+        "vacant_places": 0
       }
     ]
   },
@@ -2349,7 +2375,7 @@
     "classes": [
       {
         "name": "M4091_TP",
-        "vacant_places": 0
+        "vacant_places": 9
       }
     ]
   },
@@ -2375,7 +2401,7 @@
     "classes": [
       {
         "name": "M4154_TP",
-        "vacant_places": 2
+        "vacant_places": 1
       }
     ]
   },
@@ -2401,7 +2427,7 @@
     "classes": [
       {
         "name": "M4083_TP",
-        "vacant_places": 6
+        "vacant_places": 5
       }
     ]
   },
@@ -2427,7 +2453,7 @@
     "classes": [
       {
         "name": "M4142_TP",
-        "vacant_places": 4
+        "vacant_places": 3
       }
     ]
   },
@@ -2440,11 +2466,11 @@
     "classes": [
       {
         "name": "CC1001_PL1",
-        "vacant_places": 8
+        "vacant_places": 6
       },
       {
         "name": "CC1001_PL2",
-        "vacant_places": 6
+        "vacant_places": 1
       },
       {
         "name": "CC1001_PL3",
@@ -2456,11 +2482,11 @@
       },
       {
         "name": "CC1001_PL5",
-        "vacant_places": 10
+        "vacant_places": 6
       },
       {
         "name": "CC1001_PL6",
-        "vacant_places": 10
+        "vacant_places": 9
       },
       {
         "name": "CC1001_PL7",
@@ -2468,7 +2494,7 @@
       },
       {
         "name": "CC1001_PL8",
-        "vacant_places": 8
+        "vacant_places": 6
       }
     ]
   },
@@ -2481,11 +2507,11 @@
     "classes": [
       {
         "name": "CC1001_T1",
-        "vacant_places": 20
+        "vacant_places": 13
       },
       {
         "name": "CC1001_T2",
-        "vacant_places": 10
+        "vacant_places": 3
       }
     ]
   },
@@ -2498,7 +2524,7 @@
     "classes": [
       {
         "name": "CAGR4001_T",
-        "vacant_places": 4
+        "vacant_places": 9
       }
     ]
   },
@@ -2511,7 +2537,7 @@
     "classes": [
       {
         "name": "CAGR4001_TP",
-        "vacant_places": 4
+        "vacant_places": 9
       }
     ]
   },
@@ -2537,7 +2563,7 @@
     "classes": [
       {
         "name": "FIS1006_T",
-        "vacant_places": 14
+        "vacant_places": 0
       }
     ]
   },
@@ -2549,20 +2575,24 @@
     "type": "TP",
     "classes": [
       {
+        "name": "FIS1006_atendimento",
+        "vacant_places": 0
+      },
+      {
         "name": "FIS1006_TP1",
-        "vacant_places": 51
+        "vacant_places": 38
       },
       {
         "name": "FIS1006_TP2",
-        "vacant_places": 71
+        "vacant_places": 63
       },
       {
         "name": "FIS1006_TP3",
-        "vacant_places": 62
+        "vacant_places": 56
       },
       {
         "name": "FIS1006_TP4",
-        "vacant_places": 50
+        "vacant_places": 46
       }
     ]
   },
@@ -2601,11 +2631,11 @@
     "classes": [
       {
         "name": "FIS1001_T1",
-        "vacant_places": 45
+        "vacant_places": 3
       },
       {
         "name": "FIS1001_T2",
-        "vacant_places": 41
+        "vacant_places": 25
       }
     ]
   },
@@ -2617,20 +2647,24 @@
     "type": "TP",
     "classes": [
       {
+        "name": "FIS1001_atendimento",
+        "vacant_places": 0
+      },
+      {
         "name": "FIS1001_TP1",
-        "vacant_places": 27
+        "vacant_places": 14
       },
       {
         "name": "FIS1001_TP2",
-        "vacant_places": 0
+        "vacant_places": 4
       },
       {
         "name": "FIS1001_TP3",
-        "vacant_places": 0
+        "vacant_places": 6
       },
       {
         "name": "FIS1001_TP4",
-        "vacant_places": 14
+        "vacant_places": 15
       },
       {
         "name": "FIS1001_TP5",
@@ -2701,7 +2735,7 @@
     "classes": [
       {
         "name": "M4167_TP",
-        "vacant_places": 0
+        "vacant_places": 1
       }
     ]
   },
@@ -2727,7 +2761,7 @@
     "classes": [
       {
         "name": "EG4001_TP",
-        "vacant_places": 8
+        "vacant_places": 6
       }
     ]
   },
@@ -2740,7 +2774,7 @@
     "classes": [
       {
         "name": "BIOL/AMB4002_PL",
-        "vacant_places": 12
+        "vacant_places": 11
       }
     ]
   },
@@ -2753,7 +2787,7 @@
     "classes": [
       {
         "name": "BIOL/AMB4002_T",
-        "vacant_places": 12
+        "vacant_places": 11
       }
     ]
   },
@@ -2766,7 +2800,7 @@
     "classes": [
       {
         "name": "BIOL4026_TP",
-        "vacant_places": 18
+        "vacant_places": 17
       }
     ]
   },
@@ -2796,7 +2830,7 @@
     "classes": [
       {
         "name": "CC4013_TP",
-        "vacant_places": 15
+        "vacant_places": 14
       }
     ]
   },
@@ -2871,11 +2905,11 @@
     "classes": [
       {
         "name": "M1012_T1",
-        "vacant_places": 55
+        "vacant_places": 0
       },
       {
         "name": "M1012_T2",
-        "vacant_places": 76
+        "vacant_places": 55
       }
     ]
   },
@@ -2888,7 +2922,7 @@
     "classes": [
       {
         "name": "M1012_TP1 (L:CTA)",
-        "vacant_places": 8
+        "vacant_places": 0
       },
       {
         "name": "M1012_TP2",
@@ -2900,27 +2934,27 @@
       },
       {
         "name": "M1012_TP4",
-        "vacant_places": 1
+        "vacant_places": 2
       },
       {
         "name": "M1012_TP5",
-        "vacant_places": 11
+        "vacant_places": 0
       },
       {
         "name": "M1012_TP6",
-        "vacant_places": 31
+        "vacant_places": 21
       },
       {
         "name": "M1012_TP7",
-        "vacant_places": 31
+        "vacant_places": 6
       },
       {
         "name": "M1012_TP8",
-        "vacant_places": 15
+        "vacant_places": 9
       },
       {
         "name": "M1012_TP9 (L:SDIB)",
-        "vacant_places": 38
+        "vacant_places": 34
       }
     ]
   },
@@ -2933,7 +2967,7 @@
     "classes": [
       {
         "name": "BIOL4122_T",
-        "vacant_places": 6
+        "vacant_places": 5
       }
     ]
   },
@@ -2946,7 +2980,7 @@
     "classes": [
       {
         "name": "BIOL4122_TP",
-        "vacant_places": 6
+        "vacant_places": 5
       }
     ]
   },
@@ -2959,7 +2993,7 @@
     "classes": [
       {
         "name": "GEOL1001_T",
-        "vacant_places": 83
+        "vacant_places": 38
       }
     ]
   },
@@ -2972,19 +3006,19 @@
     "classes": [
       {
         "name": "GEOL1001_TP1",
-        "vacant_places": 5
+        "vacant_places": 0
       },
       {
         "name": "GEOL1001_TP2",
-        "vacant_places": 5
+        "vacant_places": 2
       },
       {
         "name": "GEOL1001_TP3",
-        "vacant_places": 6
+        "vacant_places": 0
       },
       {
         "name": "GEOL1001_TP4",
-        "vacant_places": 5
+        "vacant_places": 0
       },
       {
         "name": "GEOL1001_TP5",
@@ -3005,7 +3039,7 @@
     "classes": [
       {
         "name": "GEOL1011_TP",
-        "vacant_places": 20
+        "vacant_places": 17
       }
     ]
   },
@@ -3018,7 +3052,7 @@
     "classes": [
       {
         "name": "G4025_T",
-        "vacant_places": 10
+        "vacant_places": 0
       }
     ]
   },
@@ -3031,7 +3065,7 @@
     "classes": [
       {
         "name": "G4025_TP",
-        "vacant_places": 10
+        "vacant_places": 0
       }
     ]
   },
@@ -3044,7 +3078,7 @@
     "classes": [
       {
         "name": "G4029_TP",
-        "vacant_places": 10
+        "vacant_places": 2
       }
     ]
   },
@@ -3057,7 +3091,7 @@
     "classes": [
       {
         "name": "CC4005_TP",
-        "vacant_places": 17
+        "vacant_places": 16
       }
     ]
   },
@@ -3109,7 +3143,7 @@
     "classes": [
       {
         "name": "AMB4007_TP",
-        "vacant_places": 4
+        "vacant_places": 0
       }
     ]
   },
@@ -3135,7 +3169,7 @@
     "classes": [
       {
         "name": "G4009_T",
-        "vacant_places": 8
+        "vacant_places": 4
       }
     ]
   },
@@ -3148,7 +3182,7 @@
     "classes": [
       {
         "name": "G4009_TP",
-        "vacant_places": 8
+        "vacant_places": 4
       }
     ]
   },
@@ -3161,7 +3195,7 @@
     "classes": [
       {
         "name": "AP4020_PL1",
-        "vacant_places": 5
+        "vacant_places": 1
       },
       {
         "name": "AP4020_PL2",
@@ -3178,7 +3212,7 @@
     "classes": [
       {
         "name": "AP4020_T",
-        "vacant_places": 5
+        "vacant_places": 1
       }
     ]
   },
@@ -3191,7 +3225,7 @@
     "classes": [
       {
         "name": "M4061_TP",
-        "vacant_places": 7
+        "vacant_places": 11
       }
     ]
   },
@@ -3204,7 +3238,7 @@
     "classes": [
       {
         "name": "M4169_TP",
-        "vacant_places": 2
+        "vacant_places": 1
       }
     ]
   },
@@ -3230,7 +3264,7 @@
     "classes": [
       {
         "name": "M.IA001_TP",
-        "vacant_places": 17
+        "vacant_places": 12
       }
     ]
   },
@@ -3260,7 +3294,7 @@
     "classes": [
       {
         "name": "M.IA012_TP1",
-        "vacant_places": 11
+        "vacant_places": 9
       },
       {
         "name": "M.IA012_TP2",
@@ -3281,19 +3315,19 @@
       },
       {
         "name": "BIOL1007_PLE",
-        "vacant_places": 20
+        "vacant_places": 17
       },
       {
         "name": "BIOL1007_PL1",
-        "vacant_places": 2
+        "vacant_places": 1
       },
       {
         "name": "BIOL1007_PL2",
-        "vacant_places": 3
+        "vacant_places": 0
       },
       {
         "name": "BIOL1007_PL3",
-        "vacant_places": 19
+        "vacant_places": 14
       }
     ]
   },
@@ -3306,7 +3340,7 @@
     "classes": [
       {
         "name": "BIOL1007_T",
-        "vacant_places": 27
+        "vacant_places": 11
       }
     ]
   },
@@ -3357,11 +3391,11 @@
       },
       {
         "name": "CC1008_PL2",
-        "vacant_places": 19
+        "vacant_places": 11
       },
       {
         "name": "CC1008_PL3",
-        "vacant_places": 20
+        "vacant_places": 4
       }
     ]
   },
@@ -3374,7 +3408,7 @@
     "classes": [
       {
         "name": "CC1008_T",
-        "vacant_places": 42
+        "vacant_places": 17
       }
     ]
   },
@@ -3387,19 +3421,19 @@
     "classes": [
       {
         "name": "CC1024_PL1",
-        "vacant_places": 8
+        "vacant_places": 2
       },
       {
         "name": "CC1024_PL2",
-        "vacant_places": 5
+        "vacant_places": 0
       },
       {
         "name": "CC1024_PL3",
-        "vacant_places": 7
+        "vacant_places": 6
       },
       {
         "name": "CC1024_PL4",
-        "vacant_places": 8
+        "vacant_places": 7
       },
       {
         "name": "CC1024_PL5",
@@ -3407,15 +3441,15 @@
       },
       {
         "name": "CC1024_PL6",
-        "vacant_places": 8
+        "vacant_places": 4
       },
       {
         "name": "CC1024_PL7",
-        "vacant_places": 8
+        "vacant_places": 7
       },
       {
         "name": "CC1024_PL8",
-        "vacant_places": 7
+        "vacant_places": 4
       }
     ]
   },
@@ -3428,11 +3462,11 @@
     "classes": [
       {
         "name": "CC1024_T1",
-        "vacant_places": 26
+        "vacant_places": 12
       },
       {
         "name": "CC1024_T2",
-        "vacant_places": 6
+        "vacant_places": 0
       }
     ]
   },
@@ -3501,7 +3535,7 @@
       },
       {
         "name": "ARQTP1003_PL2",
-        "vacant_places": 8
+        "vacant_places": 0
       }
     ]
   },
@@ -3527,43 +3561,39 @@
     "classes": [
       {
         "name": "CC1002_PL1",
-        "vacant_places": 5
+        "vacant_places": 0
       },
       {
         "name": "CC1002_PL10",
-        "vacant_places": 2
-      },
-      {
-        "name": "CC1002_PL2",
         "vacant_places": 0
       },
       {
         "name": "CC1002_PL3",
-        "vacant_places": 5
+        "vacant_places": 2
       },
       {
         "name": "CC1002_PL4",
-        "vacant_places": 5
+        "vacant_places": 3
       },
       {
         "name": "CC1002_PL5",
-        "vacant_places": 19
+        "vacant_places": 15
       },
       {
         "name": "CC1002_PL6",
-        "vacant_places": 5
+        "vacant_places": 1
       },
       {
         "name": "CC1002_PL7",
-        "vacant_places": 2
+        "vacant_places": 0
       },
       {
         "name": "CC1002_PL8",
-        "vacant_places": 2
+        "vacant_places": 1
       },
       {
         "name": "CC1002_PL9",
-        "vacant_places": 10
+        "vacant_places": 4
       }
     ]
   },
@@ -3580,7 +3610,7 @@
       },
       {
         "name": "CC1002_T2",
-        "vacant_places": 17
+        "vacant_places": 10
       }
     ]
   },
@@ -3671,7 +3701,7 @@
     "classes": [
       {
         "name": "M1025_PL1",
-        "vacant_places": 1
+        "vacant_places": 0
       },
       {
         "name": "M1025_PL2",
@@ -3683,11 +3713,11 @@
       },
       {
         "name": "M1025_PL4",
-        "vacant_places": 8
+        "vacant_places": 1
       },
       {
         "name": "M1025_PL5",
-        "vacant_places": 30
+        "vacant_places": 21
       }
     ]
   },
@@ -3704,11 +3734,11 @@
       },
       {
         "name": "Q1003_PL2",
-        "vacant_places": 13
+        "vacant_places": 2
       },
       {
         "name": "Q1003_PL3",
-        "vacant_places": 11
+        "vacant_places": 0
       }
     ]
   },
@@ -3721,11 +3751,11 @@
     "classes": [
       {
         "name": "Q1003_TP1",
-        "vacant_places": 4
+        "vacant_places": 0
       },
       {
         "name": "Q1003_TP2",
-        "vacant_places": 18
+        "vacant_places": 0
       }
     ]
   },
@@ -3764,7 +3794,7 @@
     "classes": [
       {
         "name": "BIOL4001_TP",
-        "vacant_places": 13
+        "vacant_places": 10
       }
     ]
   },
@@ -3803,7 +3833,7 @@
     "classes": [
       {
         "name": "M1029_T",
-        "vacant_places": 15
+        "vacant_places": 3
       }
     ]
   },
@@ -3816,7 +3846,7 @@
     "classes": [
       {
         "name": "M1029_TP",
-        "vacant_places": 15
+        "vacant_places": 3
       }
     ]
   },
@@ -3829,7 +3859,7 @@
     "classes": [
       {
         "name": "M1014_T",
-        "vacant_places": 16
+        "vacant_places": 7
       }
     ]
   },
@@ -3842,11 +3872,11 @@
     "classes": [
       {
         "name": "M1014_TP1",
-        "vacant_places": 1
+        "vacant_places": 0
       },
       {
         "name": "M1014_TP2",
-        "vacant_places": 15
+        "vacant_places": 7
       }
     ]
   },
@@ -3885,7 +3915,7 @@
     "classes": [
       {
         "name": "FIS1013_T",
-        "vacant_places": 30
+        "vacant_places": 0
       }
     ]
   },
@@ -3898,23 +3928,23 @@
     "classes": [
       {
         "name": "FIS1013_TP1",
-        "vacant_places": 26
+        "vacant_places": 9
       },
       {
         "name": "FIS1013_TP2",
-        "vacant_places": 8
+        "vacant_places": 0
       },
       {
         "name": "FIS1013_TP3",
-        "vacant_places": 16
+        "vacant_places": 4
       },
       {
         "name": "FIS1013_TP4",
-        "vacant_places": 19
+        "vacant_places": 6
       },
       {
         "name": "FIS1013_TP5",
-        "vacant_places": 11
+        "vacant_places": 0
       }
     ]
   },
@@ -3927,7 +3957,7 @@
     "classes": [
       {
         "name": "G4026_T",
-        "vacant_places": 8
+        "vacant_places": 3
       }
     ]
   },
@@ -3940,7 +3970,7 @@
     "classes": [
       {
         "name": "G4026_TP",
-        "vacant_places": 8
+        "vacant_places": 3
       }
     ]
   },
@@ -3966,7 +3996,7 @@
     "classes": [
       {
         "name": "BIOL4016_TP",
-        "vacant_places": 16
+        "vacant_places": 13
       }
     ]
   },
@@ -4018,7 +4048,7 @@
     "classes": [
       {
         "name": "CAGR4019_TP",
-        "vacant_places": 5
+        "vacant_places": 10
       }
     ]
   },
@@ -4230,7 +4260,7 @@
       },
       {
         "name": "Q4116_PL2",
-        "vacant_places": 12
+        "vacant_places": 9
       }
     ]
   },
@@ -4243,7 +4273,7 @@
     "classes": [
       {
         "name": "Q4120_PL",
-        "vacant_places": 1
+        "vacant_places": 0
       }
     ]
   },
@@ -4295,7 +4325,7 @@
     "classes": [
       {
         "name": "BIOL4123_PL",
-        "vacant_places": 3
+        "vacant_places": 2
       }
     ]
   },
@@ -4308,7 +4338,7 @@
     "classes": [
       {
         "name": "BIOL4123_T",
-        "vacant_places": 3
+        "vacant_places": 2
       }
     ]
   },
@@ -4321,7 +4351,7 @@
     "classes": [
       {
         "name": "FIS4031_TP",
-        "vacant_places": 23
+        "vacant_places": 21
       }
     ]
   },
@@ -4338,7 +4368,7 @@
       },
       {
         "name": "BIOL4086_PL2",
-        "vacant_places": 5
+        "vacant_places": 3
       }
     ]
   },
@@ -4351,7 +4381,7 @@
     "classes": [
       {
         "name": "BIOL4086_T",
-        "vacant_places": 7
+        "vacant_places": 13
       }
     ]
   },
@@ -4364,7 +4394,7 @@
     "classes": [
       {
         "name": "M4042_TP",
-        "vacant_places": 6
+        "vacant_places": 10
       }
     ]
   },
@@ -4377,7 +4407,7 @@
     "classes": [
       {
         "name": "BIOL4056_TP",
-        "vacant_places": 0
+        "vacant_places": 2
       }
     ]
   },
@@ -4442,7 +4472,7 @@
     "classes": [
       {
         "name": "FIS4019_TP",
-        "vacant_places": 16
+        "vacant_places": 15
       }
     ]
   },
@@ -4455,11 +4485,11 @@
     "classes": [
       {
         "name": "FIS4032_PL1",
-        "vacant_places": 11
+        "vacant_places": 8
       },
       {
         "name": "FIS4032_PL2",
-        "vacant_places": 11
+        "vacant_places": 10
       },
       {
         "name": "FIS4032_PL3",
@@ -4476,7 +4506,7 @@
     "classes": [
       {
         "name": "FIS4032_TP",
-        "vacant_places": 33
+        "vacant_places": 29
       }
     ]
   },
@@ -4489,7 +4519,7 @@
     "classes": [
       {
         "name": "BIOL4113_PL",
-        "vacant_places": 14
+        "vacant_places": 9
       }
     ]
   },
@@ -4502,7 +4532,7 @@
     "classes": [
       {
         "name": "BIOL4113_T",
-        "vacant_places": 14
+        "vacant_places": 9
       }
     ]
   },
@@ -4515,7 +4545,7 @@
     "classes": [
       {
         "name": "CC4081_TP",
-        "vacant_places": 25
+        "vacant_places": 24
       }
     ]
   },
@@ -4528,7 +4558,7 @@
     "classes": [
       {
         "name": "AP4010_PL1",
-        "vacant_places": 4
+        "vacant_places": 2
       },
       {
         "name": "AP4010_PL2",
@@ -4545,7 +4575,7 @@
     "classes": [
       {
         "name": "AP4010_T",
-        "vacant_places": 4
+        "vacant_places": 2
       }
     ]
   },
@@ -4571,7 +4601,7 @@
     "classes": [
       {
         "name": "G4031_T",
-        "vacant_places": 10
+        "vacant_places": 2
       }
     ]
   },
@@ -4584,7 +4614,7 @@
     "classes": [
       {
         "name": "G4031_TP",
-        "vacant_places": 10
+        "vacant_places": 2
       }
     ]
   },
@@ -4636,7 +4666,7 @@
     "classes": [
       {
         "name": "CC4001_TP",
-        "vacant_places": 21
+        "vacant_places": 19
       }
     ]
   },
@@ -4653,7 +4683,7 @@
       },
       {
         "name": "CC4042_TP2",
-        "vacant_places": 9
+        "vacant_places": 8
       }
     ]
   },
@@ -4686,7 +4716,7 @@
       },
       {
         "name": "CCINF1001_PL6",
-        "vacant_places": 30
+        "vacant_places": 17
       }
     ]
   },
@@ -4720,11 +4750,11 @@
       },
       {
         "name": "CC1019_PL2",
-        "vacant_places": 14
+        "vacant_places": 12
       },
       {
         "name": "CC1019_PL3",
-        "vacant_places": 14
+        "vacant_places": 5
       }
     ]
   },
@@ -4737,7 +4767,7 @@
     "classes": [
       {
         "name": "CC1019_T",
-        "vacant_places": 33
+        "vacant_places": 22
       }
     ]
   },
@@ -4750,7 +4780,7 @@
     "classes": [
       {
         "name": "AP4011_PL1",
-        "vacant_places": 2
+        "vacant_places": 1
       },
       {
         "name": "AP4011_PL2",
@@ -4767,7 +4797,7 @@
     "classes": [
       {
         "name": "AP4011_T",
-        "vacant_places": 12
+        "vacant_places": 1
       }
     ]
   },
@@ -4841,7 +4871,7 @@
     "classes": [
       {
         "name": "Q4099_T",
-        "vacant_places": 0
+        "vacant_places": 1
       }
     ]
   },
@@ -4854,7 +4884,7 @@
     "classes": [
       {
         "name": "Q4099_TP",
-        "vacant_places": 0
+        "vacant_places": 1
       }
     ]
   },
@@ -4867,7 +4897,7 @@
     "classes": [
       {
         "name": "Q4115_T",
-        "vacant_places": 19
+        "vacant_places": 14
       }
     ]
   },
@@ -4893,7 +4923,7 @@
     "classes": [
       {
         "name": "BIOL4115_PL",
-        "vacant_places": 17
+        "vacant_places": 13
       }
     ]
   },
@@ -4906,7 +4936,7 @@
     "classes": [
       {
         "name": "BIOL4115_T",
-        "vacant_places": 17
+        "vacant_places": 13
       }
     ]
   },
@@ -4945,7 +4975,7 @@
     "classes": [
       {
         "name": "Q4012_T",
-        "vacant_places": 6
+        "vacant_places": 5
       }
     ]
   },
@@ -4958,7 +4988,7 @@
     "classes": [
       {
         "name": "Q4012_TP",
-        "vacant_places": 6
+        "vacant_places": 5
       }
     ]
   },
@@ -4971,7 +5001,7 @@
     "classes": [
       {
         "name": "Q1009_T",
-        "vacant_places": 25
+        "vacant_places": 8
       }
     ]
   },
@@ -4988,15 +5018,15 @@
       },
       {
         "name": "Q1009_TP2",
-        "vacant_places": 3
+        "vacant_places": 0
       },
       {
         "name": "Q1009_TP3",
-        "vacant_places": 4
+        "vacant_places": 0
       },
       {
         "name": "Q1009_TP4",
-        "vacant_places": 16
+        "vacant_places": 6
       }
     ]
   },
@@ -5022,7 +5052,7 @@
     "classes": [
       {
         "name": "CAGR4002_T",
-        "vacant_places": 3
+        "vacant_places": 11
       }
     ]
   },
@@ -5035,7 +5065,7 @@
     "classes": [
       {
         "name": "CAGR4002_TP",
-        "vacant_places": 3
+        "vacant_places": 11
       }
     ]
   },
@@ -5061,7 +5091,7 @@
     "classes": [
       {
         "name": "BIOL4004_TP",
-        "vacant_places": 17
+        "vacant_places": 14
       }
     ]
   },
@@ -5078,7 +5108,7 @@
       },
       {
         "name": "CC4031_TP2",
-        "vacant_places": 3
+        "vacant_places": 2
       }
     ]
   },
@@ -5117,7 +5147,7 @@
     "classes": [
       {
         "name": "BIOL4126_TP",
-        "vacant_places": 6
+        "vacant_places": 5
       }
     ]
   },
@@ -5143,7 +5173,7 @@
     "classes": [
       {
         "name": "BIOL4029_TP",
-        "vacant_places": 7
+        "vacant_places": 4
       }
     ]
   },
@@ -5156,11 +5186,11 @@
     "classes": [
       {
         "name": "M4113_TP1",
-        "vacant_places": 8
+        "vacant_places": 9
       },
       {
         "name": "M4113_TP2",
-        "vacant_places": 4
+        "vacant_places": 0
       }
     ]
   },
@@ -5173,7 +5203,7 @@
     "classes": [
       {
         "name": "EGEO/AMB4001_TP",
-        "vacant_places": 5
+        "vacant_places": 7
       }
     ]
   },
@@ -5186,7 +5216,7 @@
     "classes": [
       {
         "name": "EGEO4014_TP",
-        "vacant_places": 0
+        "vacant_places": 1
       }
     ]
   },
@@ -5199,7 +5229,7 @@
     "classes": [
       {
         "name": "EGEO4034_PL",
-        "vacant_places": 10
+        "vacant_places": 1
       }
     ]
   },
@@ -5212,7 +5242,7 @@
     "classes": [
       {
         "name": "EGEO4034_T",
-        "vacant_places": 10
+        "vacant_places": 1
       }
     ]
   },
@@ -5225,7 +5255,7 @@
     "classes": [
       {
         "name": "M4148_TP",
-        "vacant_places": 5
+        "vacant_places": 4
       }
     ]
   },
@@ -5238,7 +5268,7 @@
     "classes": [
       {
         "name": "Q4082_PL",
-        "vacant_places": 4
+        "vacant_places": 2
       }
     ]
   },
@@ -5251,7 +5281,7 @@
     "classes": [
       {
         "name": "Q4082_T",
-        "vacant_places": 4
+        "vacant_places": 2
       }
     ]
   },
@@ -5290,7 +5320,7 @@
     "classes": [
       {
         "name": "EG4009_TP",
-        "vacant_places": 8
+        "vacant_places": 7
       }
     ]
   },
@@ -5303,7 +5333,7 @@
     "classes": [
       {
         "name": "Q4083_PL",
-        "vacant_places": 8
+        "vacant_places": 6
       }
     ]
   },
@@ -5316,7 +5346,7 @@
     "classes": [
       {
         "name": "Q4083_TP",
-        "vacant_places": 8
+        "vacant_places": 6
       }
     ]
   },
@@ -5342,7 +5372,7 @@
     "classes": [
       {
         "name": "CC4003_TP",
-        "vacant_places": 19
+        "vacant_places": 16
       }
     ]
   },
@@ -5381,7 +5411,7 @@
     "classes": [
       {
         "name": "FIS4037_TP",
-        "vacant_places": 11
+        "vacant_places": 10
       }
     ]
   },
@@ -5394,7 +5424,7 @@
     "classes": [
       {
         "name": "FIS4020_TP",
-        "vacant_places": 10
+        "vacant_places": 8
       }
     ]
   },
@@ -5433,7 +5463,7 @@
     "classes": [
       {
         "name": "FIS4038_PL1",
-        "vacant_places": 19
+        "vacant_places": 18
       },
       {
         "name": "FIS4038_PL2",
@@ -5462,7 +5492,7 @@
     "classes": [
       {
         "name": "EQB4001_T",
-        "vacant_places": 1
+        "vacant_places": 0
       }
     ]
   },
@@ -5626,7 +5656,7 @@
     "classes": [
       {
         "name": "M4059_TP",
-        "vacant_places": 5
+        "vacant_places": 6
       }
     ]
   },
@@ -5811,6 +5841,19 @@
     ]
   },
   {
+    "code": "FIS600",
+    "name": "Tópicos Avançados de Física",
+    "occurrence_id": 593894,
+    "academic_year": 1,
+    "type": "TP",
+    "classes": [
+      {
+        "name": "FIS600_TP",
+        "vacant_places": 0
+      }
+    ]
+  },
+  {
     "code": "EG4012",
     "name": "Tópicos Avançados de SIG",
     "occurrence_id": 592561,
@@ -5819,7 +5862,7 @@
     "classes": [
       {
         "name": "EG4012_TP",
-        "vacant_places": 8
+        "vacant_places": 7
       }
     ]
   },
@@ -5849,7 +5892,7 @@
       },
       {
         "name": "CC4022_TP2",
-        "vacant_places": 0
+        "vacant_places": 2
       }
     ]
   },
@@ -5905,7 +5948,7 @@
     "classes": [
       {
         "name": "M1024_T",
-        "vacant_places": 44
+        "vacant_places": 17
       }
     ]
   },
@@ -5918,19 +5961,19 @@
     "classes": [
       {
         "name": "M1024_TP1",
-        "vacant_places": 20
+        "vacant_places": 7
       },
       {
         "name": "M1024_TP2",
-        "vacant_places": 3
+        "vacant_places": 0
       },
       {
         "name": "M1024_TP3",
-        "vacant_places": 5
+        "vacant_places": 1
       },
       {
         "name": "M1024_TP4",
-        "vacant_places": 12
+        "vacant_places": 2
       }
     ]
   },
@@ -5956,7 +5999,7 @@
     "classes": [
       {
         "name": "Q1010_PLE",
-        "vacant_places": 8
+        "vacant_places": 12
       },
       {
         "name": "Q1010_PL1",
@@ -5981,6 +6024,10 @@
       {
         "name": "Q1010_PL6",
         "vacant_places": 0
+      },
+      {
+        "name": "Q1010_PL7",
+        "vacant_places": 1
       }
     ]
   },
@@ -6019,7 +6066,7 @@
     "classes": [
       {
         "name": "AP4012_PL1",
-        "vacant_places": 5
+        "vacant_places": 4
       },
       {
         "name": "AP4012_PL2",
@@ -6036,7 +6083,7 @@
     "classes": [
       {
         "name": "AP4012_T",
-        "vacant_places": 5
+        "vacant_places": 4
       }
     ]
   },
@@ -6062,7 +6109,7 @@
     "classes": [
       {
         "name": "CC4016_TP1",
-        "vacant_places": 9
+        "vacant_places": 7
       },
       {
         "name": "CC4016_TP2",
@@ -6079,7 +6126,33 @@
     "classes": [
       {
         "name": "CC4056_TP",
-        "vacant_places": 20
+        "vacant_places": 16
+      }
+    ]
+  },
+  {
+    "code": "TCAEM01",
+    "name": "Xenobióticos no Ambiente",
+    "occurrence_id": 588620,
+    "academic_year": 1,
+    "type": "PL",
+    "classes": [
+      {
+        "name": "TCAEM01_PL",
+        "vacant_places": 0
+      }
+    ]
+  },
+  {
+    "code": "TCAEM01",
+    "name": "Xenobióticos no Ambiente",
+    "occurrence_id": 588620,
+    "academic_year": 1,
+    "type": "T",
+    "classes": [
+      {
+        "name": "TCAEM01_T",
+        "vacant_places": 0
       }
     ]
   },
@@ -6092,7 +6165,7 @@
     "classes": [
       {
         "name": "CAGR2012_PL",
-        "vacant_places": 0
+        "vacant_places": 8
       }
     ]
   },
@@ -6105,7 +6178,7 @@
     "classes": [
       {
         "name": "CAGR2012_T",
-        "vacant_places": 17
+        "vacant_places": 4
       }
     ]
   },
@@ -6122,7 +6195,7 @@
       },
       {
         "name": "CAGR1001_PL2",
-        "vacant_places": 0
+        "vacant_places": 1
       }
     ]
   },
@@ -6135,7 +6208,7 @@
     "classes": [
       {
         "name": "CAGR1001_T",
-        "vacant_places": 0
+        "vacant_places": 3
       }
     ]
   },
@@ -6148,7 +6221,7 @@
     "classes": [
       {
         "name": "M2032_T",
-        "vacant_places": 75
+        "vacant_places": 12
       }
     ]
   },
@@ -6161,11 +6234,11 @@
     "classes": [
       {
         "name": "M2032_TP1",
-        "vacant_places": 38
+        "vacant_places": 2
       },
       {
         "name": "M2032_TP2",
-        "vacant_places": 37
+        "vacant_places": 10
       }
     ]
   },
@@ -6178,7 +6251,7 @@
     "classes": [
       {
         "name": "M2007_T",
-        "vacant_places": 112
+        "vacant_places": 11
       }
     ]
   },
@@ -6191,11 +6264,11 @@
     "classes": [
       {
         "name": "M2007_TP1",
-        "vacant_places": 55
+        "vacant_places": 0
       },
       {
         "name": "M2007_TP2",
-        "vacant_places": 56
+        "vacant_places": 5
       }
     ]
   },
@@ -6229,7 +6302,7 @@
     "classes": [
       {
         "name": "M1019_T",
-        "vacant_places": 6
+        "vacant_places": 2
       }
     ]
   },
@@ -6242,15 +6315,15 @@
     "classes": [
       {
         "name": "M1019_TP1",
-        "vacant_places": 2
+        "vacant_places": 0
       },
       {
         "name": "M1019_TP2",
-        "vacant_places": 2
+        "vacant_places": 1
       },
       {
         "name": "M1019_TP3",
-        "vacant_places": 2
+        "vacant_places": 1
       }
     ]
   },
@@ -6263,7 +6336,7 @@
     "classes": [
       {
         "name": "M2037_T",
-        "vacant_places": 92
+        "vacant_places": 10
       }
     ]
   },
@@ -6276,15 +6349,15 @@
     "classes": [
       {
         "name": "M2037_TP1",
-        "vacant_places": 31
+        "vacant_places": 1
       },
       {
         "name": "M2037_TP2",
-        "vacant_places": 32
+        "vacant_places": 0
       },
       {
         "name": "M2037_TP3",
-        "vacant_places": 29
+        "vacant_places": 3
       }
     ]
   },
@@ -6297,7 +6370,7 @@
     "classes": [
       {
         "name": "M2028_T",
-        "vacant_places": 19
+        "vacant_places": 7
       }
     ]
   },
@@ -6310,15 +6383,15 @@
     "classes": [
       {
         "name": "M2028_TP1",
-        "vacant_places": 5
+        "vacant_places": 0
       },
       {
         "name": "M2028_TP2",
-        "vacant_places": 7
+        "vacant_places": 3
       },
       {
         "name": "M2028_TP3",
-        "vacant_places": 7
+        "vacant_places": 4
       }
     ]
   },
@@ -6331,7 +6404,7 @@
     "classes": [
       {
         "name": "M2018_T",
-        "vacant_places": 140
+        "vacant_places": 5
       }
     ]
   },
@@ -6344,19 +6417,19 @@
     "classes": [
       {
         "name": "M2018_TP1",
-        "vacant_places": 35
+        "vacant_places": 2
       },
       {
         "name": "M2018_TP2",
-        "vacant_places": 36
+        "vacant_places": 1
       },
       {
         "name": "M2018_TP3",
-        "vacant_places": 35
+        "vacant_places": 11
       },
       {
         "name": "M2018_TP4_SauDInoB",
-        "vacant_places": 32
+        "vacant_places": 0
       }
     ]
   },
@@ -6369,7 +6442,7 @@
     "classes": [
       {
         "name": "M2033_T",
-        "vacant_places": 148
+        "vacant_places": 11
       }
     ]
   },
@@ -6382,15 +6455,15 @@
     "classes": [
       {
         "name": "M2033_TP1",
-        "vacant_places": 48
+        "vacant_places": 5
       },
       {
         "name": "M2033_TP2",
-        "vacant_places": 48
+        "vacant_places": 0
       },
       {
         "name": "M2033_TP3",
-        "vacant_places": 51
+        "vacant_places": 8
       }
     ]
   },
@@ -6403,7 +6476,7 @@
     "classes": [
       {
         "name": "AST2004_T",
-        "vacant_places": 42
+        "vacant_places": 24
       }
     ]
   },
@@ -6415,12 +6488,16 @@
     "type": "TP",
     "classes": [
       {
+        "name": "AST2004_dispensa",
+        "vacant_places": 0
+      },
+      {
         "name": "AST2004_TP1",
-        "vacant_places": 42
+        "vacant_places": 0
       },
       {
         "name": "AST2004_TP2",
-        "vacant_places": 0
+        "vacant_places": 28
       }
     ]
   },
@@ -6433,7 +6510,7 @@
     "classes": [
       {
         "name": "CAGR2003_PL",
-        "vacant_places": 16
+        "vacant_places": 11
       }
     ]
   },
@@ -6446,7 +6523,7 @@
     "classes": [
       {
         "name": "CAGR2003_T",
-        "vacant_places": 16
+        "vacant_places": 10
       }
     ]
   },
@@ -6459,27 +6536,27 @@
     "classes": [
       {
         "name": "CC2005_PL1",
-        "vacant_places": 29
+        "vacant_places": 6
       },
       {
         "name": "CC2005_PL2",
-        "vacant_places": 30
+        "vacant_places": 13
       },
       {
         "name": "CC2005_PL3",
-        "vacant_places": 28
+        "vacant_places": 0
       },
       {
         "name": "CC2005_PL4",
-        "vacant_places": 29
+        "vacant_places": 10
       },
       {
         "name": "CC2005_PL5",
-        "vacant_places": 28
+        "vacant_places": 0
       },
       {
         "name": "CC2005_PL6",
-        "vacant_places": 29
+        "vacant_places": 9
       },
       {
         "name": "CC2005_PL7",
@@ -6487,7 +6564,7 @@
       },
       {
         "name": "CC2005_PL8",
-        "vacant_places": 28
+        "vacant_places": 0
       }
     ]
   },
@@ -6500,7 +6577,7 @@
     "classes": [
       {
         "name": "CC2005_T",
-        "vacant_places": 204
+        "vacant_places": 41
       }
     ]
   },
@@ -7069,7 +7146,7 @@
     "classes": [
       {
         "name": "M1022_T",
-        "vacant_places": 11
+        "vacant_places": 5
       }
     ]
   },
@@ -7082,11 +7159,11 @@
     "classes": [
       {
         "name": "M1022_TP1",
-        "vacant_places": 8
+        "vacant_places": 5
       },
       {
         "name": "M1022_TP2",
-        "vacant_places": 3
+        "vacant_places": 0
       },
       {
         "name": "M1022_TP3",
@@ -7103,7 +7180,7 @@
     "classes": [
       {
         "name": "FIS2013_T",
-        "vacant_places": 147
+        "vacant_places": 50
       }
     ]
   },
@@ -7116,15 +7193,15 @@
     "classes": [
       {
         "name": "FIS2013_TP1",
-        "vacant_places": 41
+        "vacant_places": 2
       },
       {
         "name": "FIS2013_TP2",
-        "vacant_places": 41
+        "vacant_places": 8
       },
       {
         "name": "FIS2013_TP3",
-        "vacant_places": 41
+        "vacant_places": 5
       }
     ]
   },
@@ -7137,7 +7214,7 @@
     "classes": [
       {
         "name": "FIS2015_T",
-        "vacant_places": 69
+        "vacant_places": 4
       }
     ]
   },
@@ -7150,11 +7227,11 @@
     "classes": [
       {
         "name": "FIS2015_TP1",
-        "vacant_places": 41
+        "vacant_places": 4
       },
       {
         "name": "FIS2015_TP2",
-        "vacant_places": 42
+        "vacant_places": 0
       }
     ]
   },
@@ -7167,7 +7244,7 @@
     "classes": [
       {
         "name": "FIS4026_TP",
-        "vacant_places": 40
+        "vacant_places": 30
       }
     ]
   },
@@ -7180,7 +7257,7 @@
     "classes": [
       {
         "name": "FIS3023_PL",
-        "vacant_places": 45
+        "vacant_places": 21
       }
     ]
   },
@@ -7193,7 +7270,7 @@
     "classes": [
       {
         "name": "FIS3023_T",
-        "vacant_places": 45
+        "vacant_places": 22
       }
     ]
   },
@@ -7206,7 +7283,7 @@
     "classes": [
       {
         "name": "CAMB2001_T",
-        "vacant_places": 34
+        "vacant_places": 3
       }
     ]
   },
@@ -7219,7 +7296,7 @@
     "classes": [
       {
         "name": "CAMB2001_TP",
-        "vacant_places": 34
+        "vacant_places": 3
       }
     ]
   },
@@ -7517,23 +7594,23 @@
     "classes": [
       {
         "name": "CC1007_PL1",
-        "vacant_places": 24
+        "vacant_places": 0
       },
       {
         "name": "CC1007_PL2",
-        "vacant_places": 25
+        "vacant_places": 0
       },
       {
         "name": "CC1007_PL3",
-        "vacant_places": 26
+        "vacant_places": 8
       },
       {
         "name": "CC1007_PL4",
-        "vacant_places": 22
+        "vacant_places": 0
       },
       {
         "name": "CC1007_PL5",
-        "vacant_places": 25
+        "vacant_places": 0
       },
       {
         "name": "CC1007_PL6",
@@ -7541,15 +7618,15 @@
       },
       {
         "name": "CC1007_PL7",
-        "vacant_places": 29
+        "vacant_places": 13
       },
       {
         "name": "CC1007_PL8",
-        "vacant_places": 23
+        "vacant_places": 0
       },
       {
         "name": "CC1007_PL9",
-        "vacant_places": 26
+        "vacant_places": 22
       }
     ]
   },
@@ -7562,11 +7639,11 @@
     "classes": [
       {
         "name": "CC1007_T1",
-        "vacant_places": 116
+        "vacant_places": 0
       },
       {
         "name": "CC1007_T2",
-        "vacant_places": 70
+        "vacant_places": 29
       }
     ]
   },
@@ -7579,7 +7656,7 @@
     "classes": [
       {
         "name": "F/MED4002_TP",
-        "vacant_places": 30
+        "vacant_places": 24
       }
     ]
   },
@@ -7592,7 +7669,7 @@
     "classes": [
       {
         "name": "FIS2014_T",
-        "vacant_places": 146
+        "vacant_places": 49
       }
     ]
   },
@@ -7605,15 +7682,15 @@
     "classes": [
       {
         "name": "FIS2014_TP1",
-        "vacant_places": 41
+        "vacant_places": 11
       },
       {
         "name": "FIS2014_TP2",
-        "vacant_places": 41
+        "vacant_places": 0
       },
       {
         "name": "FIS2014_TP3",
-        "vacant_places": 40
+        "vacant_places": 0
       }
     ]
   },
@@ -7630,39 +7707,39 @@
       },
       {
         "name": "BIOL2007_PLE",
-        "vacant_places": 20
+        "vacant_places": 18
       },
       {
         "name": "BIOL2007_PL1",
-        "vacant_places": 17
+        "vacant_places": 0
       },
       {
         "name": "BIOL2007_PL2",
-        "vacant_places": 20
+        "vacant_places": 0
       },
       {
         "name": "BIOL2007_PL3",
-        "vacant_places": 17
+        "vacant_places": 0
       },
       {
         "name": "BIOL2007_PL4",
-        "vacant_places": 20
+        "vacant_places": 1
       },
       {
         "name": "BIOL2007_PL5",
-        "vacant_places": 19
+        "vacant_places": 0
       },
       {
         "name": "BIOL2007_PL6",
-        "vacant_places": 20
+        "vacant_places": 5
       },
       {
         "name": "BIOL2007_PL7",
-        "vacant_places": 20
+        "vacant_places": 0
       },
       {
         "name": "BIOL2007_PL8",
-        "vacant_places": 19
+        "vacant_places": 12
       }
     ]
   },
@@ -7675,7 +7752,7 @@
     "classes": [
       {
         "name": "BIOL2007_T",
-        "vacant_places": 161
+        "vacant_places": 17
       }
     ]
   },
@@ -7692,39 +7769,39 @@
       },
       {
         "name": "BIOL1005_PLE",
-        "vacant_places": 20
+        "vacant_places": 18
       },
       {
         "name": "BIOL1005_PL1",
-        "vacant_places": 19
+        "vacant_places": 0
       },
       {
         "name": "BIOL1005_PL2",
-        "vacant_places": 19
+        "vacant_places": 0
       },
       {
         "name": "BIOL1005_PL3",
-        "vacant_places": 18
+        "vacant_places": 0
       },
       {
         "name": "BIOL1005_PL4",
-        "vacant_places": 18
+        "vacant_places": 6
       },
       {
         "name": "BIOL1005_PL5",
-        "vacant_places": 18
+        "vacant_places": 0
       },
       {
         "name": "BIOL1005_PL6",
-        "vacant_places": 17
+        "vacant_places": 1
       },
       {
         "name": "BIOL1005_PL7",
-        "vacant_places": 19
+        "vacant_places": 6
       },
       {
         "name": "BIOL1005_PL8",
-        "vacant_places": 17
+        "vacant_places": 13
       }
     ]
   },
@@ -7737,7 +7814,7 @@
     "classes": [
       {
         "name": "BIOL1005_T",
-        "vacant_places": 143
+        "vacant_places": 16
       }
     ]
   },
@@ -7754,23 +7831,23 @@
       },
       {
         "name": "BIOL2008_PLE",
-        "vacant_places": 20
+        "vacant_places": 16
       },
       {
         "name": "BIOL2008_PL1",
-        "vacant_places": 19
+        "vacant_places": 0
       },
       {
         "name": "BIOL2008_PL2",
-        "vacant_places": 19
+        "vacant_places": 0
       },
       {
         "name": "BIOL2008_PL3",
-        "vacant_places": 17
+        "vacant_places": 0
       },
       {
         "name": "BIOL2008_PL4",
-        "vacant_places": 20
+        "vacant_places": 0
       },
       {
         "name": "BIOL2008_PL5",
@@ -7778,19 +7855,19 @@
       },
       {
         "name": "BIOL2008_PL6",
-        "vacant_places": 20
+        "vacant_places": 0
       },
       {
         "name": "BIOL2008_PL7",
-        "vacant_places": 20
+        "vacant_places": 0
       },
       {
         "name": "BIOL2008_PL8",
-        "vacant_places": 20
+        "vacant_places": 10
       },
       {
         "name": "BIOL2008_PL9",
-        "vacant_places": 19
+        "vacant_places": 6
       }
     ]
   },
@@ -7803,7 +7880,7 @@
     "classes": [
       {
         "name": "BIOL2008_T",
-        "vacant_places": 152
+        "vacant_places": 16
       }
     ]
   },
@@ -7816,7 +7893,7 @@
     "classes": [
       {
         "name": "GEOL3005_T",
-        "vacant_places": 5
+        "vacant_places": 2
       }
     ]
   },
@@ -7829,7 +7906,7 @@
     "classes": [
       {
         "name": "GEOL3005_TP",
-        "vacant_places": 5
+        "vacant_places": 2
       }
     ]
   },
@@ -7881,11 +7958,11 @@
     "classes": [
       {
         "name": "GES4000_TP1",
-        "vacant_places": 10
+        "vacant_places": 7
       },
       {
         "name": "GES4000_TP2",
-        "vacant_places": 10
+        "vacant_places": 8
       }
     ]
   },
@@ -7898,7 +7975,7 @@
     "classes": [
       {
         "name": "F/MED4003_TP",
-        "vacant_places": 30
+        "vacant_places": 23
       }
     ]
   },
@@ -7911,7 +7988,7 @@
     "classes": [
       {
         "name": "EGEO2009_T",
-        "vacant_places": 29
+        "vacant_places": 9
       }
     ]
   },
@@ -7924,7 +8001,7 @@
     "classes": [
       {
         "name": "EGEO2009_TP",
-        "vacant_places": 29
+        "vacant_places": 9
       }
     ]
   },
@@ -7937,7 +8014,7 @@
     "classes": [
       {
         "name": "GEOL3001_PL1",
-        "vacant_places": 13
+        "vacant_places": 6
       },
       {
         "name": "GEOL3001_PL2",
@@ -7954,7 +8031,7 @@
     "classes": [
       {
         "name": "GEOL3001_T",
-        "vacant_places": 13
+        "vacant_places": 6
       }
     ]
   },
@@ -8187,11 +8264,15 @@
     "classes": [
       {
         "name": "CC3006_PL1",
-        "vacant_places": 37
+        "vacant_places": 0
       },
       {
         "name": "CC3006_PL2",
-        "vacant_places": 39
+        "vacant_places": 0
+      },
+      {
+        "name": "CC3006_PL3",
+        "vacant_places": 24
       }
     ]
   },
@@ -8204,7 +8285,7 @@
     "classes": [
       {
         "name": "CC3006_T",
-        "vacant_places": 96
+        "vacant_places": 23
       }
     ]
   },
@@ -8217,7 +8298,7 @@
     "classes": [
       {
         "name": "EGEO2005_T",
-        "vacant_places": 12
+        "vacant_places": 5
       }
     ]
   },
@@ -8230,7 +8311,7 @@
     "classes": [
       {
         "name": "EGEO2005_TP",
-        "vacant_places": 12
+        "vacant_places": 5
       }
     ]
   },
@@ -8243,7 +8324,7 @@
     "classes": [
       {
         "name": "FIS4058_OT",
-        "vacant_places": 20
+        "vacant_places": 13
       }
     ]
   },
@@ -8290,7 +8371,7 @@
     "classes": [
       {
         "name": "Q2001_T",
-        "vacant_places": 39
+        "vacant_places": 20
       }
     ]
   },
@@ -8303,7 +8384,7 @@
     "classes": [
       {
         "name": "Q2001_TP",
-        "vacant_places": 39
+        "vacant_places": 20
       }
     ]
   },
@@ -8316,11 +8397,11 @@
     "classes": [
       {
         "name": "M2036_PL1",
-        "vacant_places": 32
+        "vacant_places": 0
       },
       {
         "name": "M2036_PL2",
-        "vacant_places": 32
+        "vacant_places": 4
       }
     ]
   },
@@ -8333,7 +8414,7 @@
     "classes": [
       {
         "name": "Q2003_PL",
-        "vacant_places": 15
+        "vacant_places": 3
       }
     ]
   },
@@ -8346,11 +8427,11 @@
     "classes": [
       {
         "name": "Q2002_PL1",
-        "vacant_places": 10
+        "vacant_places": 1
       },
       {
         "name": "Q2002_PL2",
-        "vacant_places": 10
+        "vacant_places": 2
       }
     ]
   },
@@ -8380,27 +8461,27 @@
     "classes": [
       {
         "name": "CC2003_PL1",
-        "vacant_places": 36
+        "vacant_places": 12
       },
       {
         "name": "CC2003_PL2",
-        "vacant_places": 36
+        "vacant_places": 0
       },
       {
         "name": "CC2003_PL3",
-        "vacant_places": 38
+        "vacant_places": 31
       },
       {
         "name": "CC2003_PL4",
-        "vacant_places": 37
+        "vacant_places": 10
       },
       {
         "name": "CC2003_PL5",
-        "vacant_places": 34
+        "vacant_places": 0
       },
       {
         "name": "CC2003_PL6",
-        "vacant_places": 38
+        "vacant_places": 29
       }
     ]
   },
@@ -8413,11 +8494,11 @@
     "classes": [
       {
         "name": "CC2003_T1",
-        "vacant_places": 118
+        "vacant_places": 22
       },
       {
         "name": "CC2003_T2",
-        "vacant_places": 73
+        "vacant_places": 32
       }
     ]
   },
@@ -8430,11 +8511,11 @@
     "classes": [
       {
         "name": "FIS1023_T1",
-        "vacant_places": 25
+        "vacant_places": 2
       },
       {
         "name": "FIS1023_T2",
-        "vacant_places": 30
+        "vacant_places": 21
       }
     ]
   },
@@ -8447,11 +8528,11 @@
     "classes": [
       {
         "name": "FIS1023_TP1",
-        "vacant_places": 15
+        "vacant_places": 1
       },
       {
         "name": "FIS1023_TP2",
-        "vacant_places": 30
+        "vacant_places": 1
       }
     ]
   },
@@ -8481,7 +8562,7 @@
     "classes": [
       {
         "name": "AP4019_T",
-        "vacant_places": 0
+        "vacant_places": 1
       }
     ]
   },
@@ -8494,11 +8575,11 @@
     "classes": [
       {
         "name": "M2015_T1",
-        "vacant_places": 6
+        "vacant_places": 0
       },
       {
         "name": "M2015_T2",
-        "vacant_places": 10
+        "vacant_places": 2
       }
     ]
   },
@@ -8511,19 +8592,19 @@
     "classes": [
       {
         "name": "M2015_TP1",
-        "vacant_places": 5
+        "vacant_places": 0
       },
       {
         "name": "M2015_TP2",
-        "vacant_places": 5
-      },
-      {
-        "name": "M2015_TP3 (L:Q)",
         "vacant_places": 1
       },
       {
+        "name": "M2015_TP3 (L:Q)",
+        "vacant_places": 0
+      },
+      {
         "name": "M2015_TP4",
-        "vacant_places": 5
+        "vacant_places": 2
       }
     ]
   },
@@ -8536,7 +8617,7 @@
     "classes": [
       {
         "name": "M2039_T",
-        "vacant_places": 77
+        "vacant_places": 10
       }
     ]
   },
@@ -8549,11 +8630,11 @@
     "classes": [
       {
         "name": "M2039_TP1",
-        "vacant_places": 39
+        "vacant_places": 0
       },
       {
         "name": "M2039_TP2",
-        "vacant_places": 40
+        "vacant_places": 10
       }
     ]
   },
@@ -8570,43 +8651,43 @@
       },
       {
         "name": "BIOL1006_PLE",
-        "vacant_places": 20
+        "vacant_places": 17
       },
       {
         "name": "BIOL1006_PL1",
-        "vacant_places": 18
+        "vacant_places": 0
       },
       {
         "name": "BIOL1006_PL2",
-        "vacant_places": 18
+        "vacant_places": 0
       },
       {
         "name": "BIOL1006_PL3",
-        "vacant_places": 18
+        "vacant_places": 0
       },
       {
         "name": "BIOL1006_PL4",
-        "vacant_places": 17
+        "vacant_places": 0
       },
       {
         "name": "BIOL1006_PL5",
-        "vacant_places": 16
+        "vacant_places": 0
       },
       {
         "name": "BIOL1006_PL6",
-        "vacant_places": 15
+        "vacant_places": 0
       },
       {
         "name": "BIOL1006_PL7",
-        "vacant_places": 18
+        "vacant_places": 2
       },
       {
         "name": "BIOL1006_PL8",
-        "vacant_places": 17
+        "vacant_places": 10
       },
       {
         "name": "BIOL1006_PL9",
-        "vacant_places": 17
+        "vacant_places": 1
       }
     ]
   },
@@ -8619,7 +8700,7 @@
     "classes": [
       {
         "name": "BIOL1006_T",
-        "vacant_places": 157
+        "vacant_places": 13
       }
     ]
   },
@@ -8730,7 +8811,7 @@
     "classes": [
       {
         "name": "EGEO3021_T",
-        "vacant_places": 0
+        "vacant_places": 8
       }
     ]
   },
@@ -8743,7 +8824,7 @@
     "classes": [
       {
         "name": "EGEO3021_TP",
-        "vacant_places": 0
+        "vacant_places": 8
       }
     ]
   },
@@ -8756,7 +8837,7 @@
     "classes": [
       {
         "name": "FIS2016_T",
-        "vacant_places": 145
+        "vacant_places": 44
       }
     ]
   },
@@ -8769,15 +8850,15 @@
     "classes": [
       {
         "name": "FIS2016_TP1",
-        "vacant_places": 41
+        "vacant_places": 0
       },
       {
         "name": "FIS2016_TP2",
-        "vacant_places": 39
+        "vacant_places": 0
       },
       {
         "name": "FIS2016_TP3",
-        "vacant_places": 69
+        "vacant_places": 32
       }
     ]
   },
@@ -8790,7 +8871,7 @@
     "classes": [
       {
         "name": "GEOL3026_TP",
-        "vacant_places": 13
+        "vacant_places": 2
       }
     ]
   },
@@ -8803,7 +8884,7 @@
     "classes": [
       {
         "name": "GEOL1004_T",
-        "vacant_places": 24
+        "vacant_places": 5
       }
     ]
   },
@@ -8816,11 +8897,11 @@
     "classes": [
       {
         "name": "GEOL1004_TP1",
-        "vacant_places": 11
+        "vacant_places": 0
       },
       {
         "name": "GEOL1004_TP2",
-        "vacant_places": 13
+        "vacant_places": 5
       },
       {
         "name": "GEOL1004_TP3",
@@ -8837,7 +8918,7 @@
     "classes": [
       {
         "name": "GEOL2003_T",
-        "vacant_places": 17
+        "vacant_places": 6
       }
     ]
   },
@@ -8850,11 +8931,11 @@
     "classes": [
       {
         "name": "GEOL2003_TP1",
-        "vacant_places": 8
+        "vacant_places": 4
       },
       {
         "name": "GEOL2003_TP2",
-        "vacant_places": 9
+        "vacant_places": 2
       },
       {
         "name": "GEOL2003_TP3",
@@ -8888,7 +8969,7 @@
     "classes": [
       {
         "name": "AP4016_T",
-        "vacant_places": 0
+        "vacant_places": 1
       }
     ]
   },
@@ -8901,7 +8982,7 @@
     "classes": [
       {
         "name": "EGEO2003_PL",
-        "vacant_places": 10
+        "vacant_places": 2
       }
     ]
   },
@@ -8914,7 +8995,7 @@
     "classes": [
       {
         "name": "EGEO2003_T",
-        "vacant_places": 10
+        "vacant_places": 7
       }
     ]
   },
@@ -8957,7 +9038,7 @@
       },
       {
         "name": "M2043_T2",
-        "vacant_places": 14
+        "vacant_places": 13
       }
     ]
   },
@@ -8970,7 +9051,7 @@
     "classes": [
       {
         "name": "M2043_TP1",
-        "vacant_places": 8
+        "vacant_places": 7
       },
       {
         "name": "M2043_TP2",
@@ -8995,11 +9076,11 @@
     "classes": [
       {
         "name": "M2040_T1",
-        "vacant_places": 75
+        "vacant_places": 0
       },
       {
         "name": "M2040_T2",
-        "vacant_places": 79
+        "vacant_places": 34
       }
     ]
   },
@@ -9012,19 +9093,19 @@
     "classes": [
       {
         "name": "M2040_TP1",
-        "vacant_places": 35
+        "vacant_places": 0
       },
       {
         "name": "M2040_TP2",
-        "vacant_places": 33
+        "vacant_places": 0
       },
       {
         "name": "M2040_TP3 (L:Q)",
-        "vacant_places": 39
+        "vacant_places": 19
       },
       {
         "name": "M2040_TP4",
-        "vacant_places": 37
+        "vacant_places": 3
       }
     ]
   },
@@ -9037,7 +9118,7 @@
     "classes": [
       {
         "name": "CC3032_TP",
-        "vacant_places": 29
+        "vacant_places": 16
       }
     ]
   },
@@ -9076,11 +9157,11 @@
     "classes": [
       {
         "name": "ARQTP2003_PL1",
-        "vacant_places": 13
+        "vacant_places": 0
       },
       {
         "name": "ARQTP2003_PL2",
-        "vacant_places": 14
+        "vacant_places": 4
       }
     ]
   },
@@ -9093,7 +9174,7 @@
     "classes": [
       {
         "name": "ARQTP2003_T",
-        "vacant_places": 27
+        "vacant_places": 3
       }
     ]
   },
@@ -9192,7 +9273,7 @@
       },
       {
         "name": "AP4017_PL2",
-        "vacant_places": 0
+        "vacant_places": 1
       }
     ]
   },
@@ -9205,7 +9286,7 @@
     "classes": [
       {
         "name": "AP4017_T",
-        "vacant_places": 0
+        "vacant_places": 1
       }
     ]
   },
@@ -9333,23 +9414,23 @@
     "classes": [
       {
         "name": "Q2010_PLD",
-        "vacant_places": 50
+        "vacant_places": 36
       },
       {
         "name": "Q2010_PL1",
-        "vacant_places": 13
+        "vacant_places": 1
       },
       {
         "name": "Q2010_PL2",
-        "vacant_places": 15
+        "vacant_places": 6
       },
       {
         "name": "Q2010_PL3",
-        "vacant_places": 15
+        "vacant_places": 0
       },
       {
         "name": "Q2010_PL4",
-        "vacant_places": 16
+        "vacant_places": 8
       }
     ]
   },
@@ -9362,7 +9443,7 @@
     "classes": [
       {
         "name": "Q2010_T",
-        "vacant_places": 75
+        "vacant_places": 18
       }
     ]
   },
@@ -9375,11 +9456,11 @@
     "classes": [
       {
         "name": "Q2010_TP1",
-        "vacant_places": 27
+        "vacant_places": 2
       },
       {
         "name": "Q2010_TP2",
-        "vacant_places": 32
+        "vacant_places": 1
       }
     ]
   },
@@ -9392,7 +9473,7 @@
     "classes": [
       {
         "name": "Q2020_PLD",
-        "vacant_places": 17
+        "vacant_places": 0
       },
       {
         "name": "Q2020_PL1",
@@ -9412,7 +9493,7 @@
       },
       {
         "name": "Q2020_PL5",
-        "vacant_places": 12
+        "vacant_places": 4
       }
     ]
   },
@@ -9425,7 +9506,7 @@
     "classes": [
       {
         "name": "Q2020_T",
-        "vacant_places": 61
+        "vacant_places": 28
       }
     ]
   },
@@ -9438,11 +9519,11 @@
     "classes": [
       {
         "name": "Q2020_TP1",
-        "vacant_places": 4
+        "vacant_places": 0
       },
       {
         "name": "Q2020_TP2",
-        "vacant_places": 0
+        "vacant_places": 3
       }
     ]
   },
@@ -9468,7 +9549,7 @@
     "classes": [
       {
         "name": "Q2015_T",
-        "vacant_places": 27
+        "vacant_places": 16
       }
     ]
   },
@@ -9481,7 +9562,7 @@
     "classes": [
       {
         "name": "Q2015_TPD",
-        "vacant_places": 50
+        "vacant_places": 39
       },
       {
         "name": "Q2015_TP1",
@@ -9502,7 +9583,7 @@
     "classes": [
       {
         "name": "Q2004_T",
-        "vacant_places": 31
+        "vacant_places": 12
       }
     ]
   },
@@ -9515,7 +9596,7 @@
     "classes": [
       {
         "name": "Q2004_TP",
-        "vacant_places": 31
+        "vacant_places": 12
       }
     ]
   },
@@ -9528,15 +9609,15 @@
     "classes": [
       {
         "name": "Q1008_PLD",
-        "vacant_places": 30
+        "vacant_places": 5
       },
       {
         "name": "Q1008_PL1",
-        "vacant_places": 11
+        "vacant_places": 0
       },
       {
         "name": "Q1008_PL2",
-        "vacant_places": 16
+        "vacant_places": 0
       }
     ]
   },
@@ -9549,7 +9630,7 @@
     "classes": [
       {
         "name": "Q1008_T",
-        "vacant_places": 55
+        "vacant_places": 6
       }
     ]
   },
@@ -9562,7 +9643,7 @@
     "classes": [
       {
         "name": "Q2011_T",
-        "vacant_places": 28
+        "vacant_places": 13
       }
     ]
   },
@@ -9575,11 +9656,11 @@
     "classes": [
       {
         "name": "Q2011_TP",
-        "vacant_places": 18
+        "vacant_places": 4
       },
       {
         "name": "Q2011_TPD",
-        "vacant_places": 10
+        "vacant_places": 9
       }
     ]
   },
@@ -9592,7 +9673,7 @@
     "classes": [
       {
         "name": "Q2018_PLD",
-        "vacant_places": 39
+        "vacant_places": 23
       },
       {
         "name": "Q2018_PL1",
@@ -9608,11 +9689,11 @@
       },
       {
         "name": "Q2018_PL4",
-        "vacant_places": 3
+        "vacant_places": 1
       },
       {
         "name": "Q2018_PL5",
-        "vacant_places": 1
+        "vacant_places": 0
       }
     ]
   },
@@ -9625,7 +9706,7 @@
     "classes": [
       {
         "name": "Q2018_T",
-        "vacant_places": 43
+        "vacant_places": 20
       }
     ]
   },
@@ -9651,7 +9732,7 @@
     "classes": [
       {
         "name": "F/MED4004_S",
-        "vacant_places": 0
+        "vacant_places": 4
       }
     ]
   },
@@ -9664,7 +9745,7 @@
     "classes": [
       {
         "name": "F/MED4004_TP",
-        "vacant_places": 0
+        "vacant_places": 4
       }
     ]
   },
@@ -9829,7 +9910,7 @@
     "classes": [
       {
         "name": "M.IA006_TP",
-        "vacant_places": 49
+        "vacant_places": 20
       }
     ]
   },
@@ -9868,11 +9949,11 @@
     "classes": [
       {
         "name": "ARQTP2001_PL1",
-        "vacant_places": 12
+        "vacant_places": 0
       },
       {
         "name": "ARQTP2001_PL2",
-        "vacant_places": 13
+        "vacant_places": 4
       }
     ]
   },
@@ -9885,7 +9966,7 @@
     "classes": [
       {
         "name": "ARQTP2001_T",
-        "vacant_places": 27
+        "vacant_places": 4
       }
     ]
   },
@@ -9898,7 +9979,7 @@
     "classes": [
       {
         "name": "CAGR4004_PL",
-        "vacant_places": 3
+        "vacant_places": 2
       }
     ]
   },
@@ -9911,7 +9992,7 @@
     "classes": [
       {
         "name": "CAGR4004_T",
-        "vacant_places": 3
+        "vacant_places": 2
       }
     ]
   },
@@ -9924,11 +10005,11 @@
     "classes": [
       {
         "name": "AP4018_PL1",
-        "vacant_places": 0
+        "vacant_places": 2
       },
       {
         "name": "AP4018_PL2",
-        "vacant_places": 0
+        "vacant_places": 2
       }
     ]
   },
@@ -9941,7 +10022,7 @@
     "classes": [
       {
         "name": "AP4018_T",
-        "vacant_places": 0
+        "vacant_places": 1
       }
     ]
   },
@@ -9954,11 +10035,11 @@
     "classes": [
       {
         "name": "ARQTP2005_PL1",
-        "vacant_places": 12
+        "vacant_places": 0
       },
       {
         "name": "ARQTP2005_PL2",
-        "vacant_places": 14
+        "vacant_places": 2
       }
     ]
   },
@@ -9971,7 +10052,7 @@
     "classes": [
       {
         "name": "ARQTP2005_T",
-        "vacant_places": 26
+        "vacant_places": 2
       }
     ]
   },
@@ -10224,7 +10305,7 @@
     "classes": [
       {
         "name": "FIS4052_TP",
-        "vacant_places": 18
+        "vacant_places": 15
       }
     ]
   },
@@ -10237,7 +10318,7 @@
     "classes": [
       {
         "name": "M3033_TP",
-        "vacant_places": 77
+        "vacant_places": 9
       }
     ]
   },
@@ -10250,7 +10331,7 @@
     "classes": [
       {
         "name": "M3002_TP",
-        "vacant_places": 30
+        "vacant_places": 8
       }
     ]
   },
@@ -10263,15 +10344,15 @@
     "classes": [
       {
         "name": "CC3043_PL1",
-        "vacant_places": 28
+        "vacant_places": 0
       },
       {
         "name": "CC3043_PL2",
-        "vacant_places": 30
+        "vacant_places": 0
       },
       {
         "name": "CC3043_PL3",
-        "vacant_places": 29
+        "vacant_places": 10
       }
     ]
   },
@@ -10284,7 +10365,7 @@
     "classes": [
       {
         "name": "CC3043_T",
-        "vacant_places": 97
+        "vacant_places": 20
       }
     ]
   },
@@ -10301,23 +10382,23 @@
       },
       {
         "name": "BIOL3004_PLE",
-        "vacant_places": 20
+        "vacant_places": 19
       },
       {
         "name": "BIOL3004_PL1",
-        "vacant_places": 19
+        "vacant_places": 0
       },
       {
         "name": "BIOL3004_PL2",
-        "vacant_places": 19
+        "vacant_places": 0
       },
       {
         "name": "BIOL3004_PL3",
-        "vacant_places": 19
+        "vacant_places": 0
       },
       {
         "name": "BIOL3004_PL4",
-        "vacant_places": 20
+        "vacant_places": 6
       }
     ]
   },
@@ -10330,7 +10411,7 @@
     "classes": [
       {
         "name": "BIOL3004_T",
-        "vacant_places": 87
+        "vacant_places": 7
       }
     ]
   },
@@ -10343,7 +10424,7 @@
     "classes": [
       {
         "name": "AST3021_PL",
-        "vacant_places": 29
+        "vacant_places": 22
       }
     ]
   },
@@ -10356,7 +10437,7 @@
     "classes": [
       {
         "name": "AST3021_T",
-        "vacant_places": 23
+        "vacant_places": 16
       }
     ]
   },
@@ -10369,7 +10450,7 @@
     "classes": [
       {
         "name": "BIOL3028_T",
-        "vacant_places": 38
+        "vacant_places": 13
       }
     ]
   },
@@ -10382,7 +10463,7 @@
     "classes": [
       {
         "name": "BIOL3028_TP",
-        "vacant_places": 33
+        "vacant_places": 9
       },
       {
         "name": "BIOL3028_TPD",
@@ -10390,7 +10471,7 @@
       },
       {
         "name": "BIOL3028_TPE",
-        "vacant_places": 5
+        "vacant_places": 4
       }
     ]
   },
@@ -10403,7 +10484,7 @@
     "classes": [
       {
         "name": "BIOL3005_T",
-        "vacant_places": 57
+        "vacant_places": 12
       }
     ]
   },
@@ -10416,7 +10497,7 @@
     "classes": [
       {
         "name": "BIOL3005_TP",
-        "vacant_places": 57
+        "vacant_places": 13
       },
       {
         "name": "BIOL3005_TPD",
@@ -10424,7 +10505,7 @@
       },
       {
         "name": "BIOL3005_TPE",
-        "vacant_places": 5
+        "vacant_places": 4
       }
     ]
   },
@@ -10449,7 +10530,7 @@
       },
       {
         "name": "BIOL1002_PL2",
-        "vacant_places": 15
+        "vacant_places": 7
       },
       {
         "name": "BIOL1002_PL3",
@@ -10466,7 +10547,7 @@
     "classes": [
       {
         "name": "BIOL1002_T",
-        "vacant_places": 16
+        "vacant_places": 7
       }
     ]
   },
@@ -10487,11 +10568,11 @@
       },
       {
         "name": "BIOL1001_PL1",
-        "vacant_places": 15
+        "vacant_places": 4
       },
       {
         "name": "BIOL1001_PL2",
-        "vacant_places": 4
+        "vacant_places": 1
       }
     ]
   },
@@ -10504,7 +10585,7 @@
     "classes": [
       {
         "name": "BIOL1001_T",
-        "vacant_places": 23
+        "vacant_places": 9
       }
     ]
   },
@@ -10517,7 +10598,7 @@
     "classes": [
       {
         "name": "BIOL3006_T",
-        "vacant_places": 57
+        "vacant_places": 5
       }
     ]
   },
@@ -10534,15 +10615,15 @@
       },
       {
         "name": "BIOL3006_TPE",
-        "vacant_places": 20
+        "vacant_places": 19
       },
       {
         "name": "BIOL3006_TP1",
-        "vacant_places": 27
+        "vacant_places": 0
       },
       {
         "name": "BIOL3006_TP2",
-        "vacant_places": 30
+        "vacant_places": 6
       }
     ]
   },
@@ -10563,15 +10644,15 @@
       },
       {
         "name": "BIOL1003_PL1",
-        "vacant_places": 18
+        "vacant_places": 7
       },
       {
         "name": "BIOL1003_PL2",
-        "vacant_places": 20
+        "vacant_places": 0
       },
       {
         "name": "BIOL1003_PL3",
-        "vacant_places": 7
+        "vacant_places": 0
       }
     ]
   },
@@ -10584,7 +10665,7 @@
     "classes": [
       {
         "name": "BIOL1003_T",
-        "vacant_places": 45
+        "vacant_places": 6
       }
     ]
   },
@@ -10610,11 +10691,11 @@
     "classes": [
       {
         "name": "CC3001_PL1",
-        "vacant_places": 34
+        "vacant_places": 0
       },
       {
         "name": "CC3001_PL2",
-        "vacant_places": 39
+        "vacant_places": 9
       }
     ]
   },
@@ -10627,7 +10708,7 @@
     "classes": [
       {
         "name": "CC3001_T",
-        "vacant_places": 93
+        "vacant_places": 28
       }
     ]
   },
@@ -10640,7 +10721,7 @@
     "classes": [
       {
         "name": "M3034_TP",
-        "vacant_places": 20
+        "vacant_places": 3
       }
     ]
   },
@@ -10653,11 +10734,11 @@
     "classes": [
       {
         "name": "Q/BIOQ3001_PL",
-        "vacant_places": 12
+        "vacant_places": 0
       },
       {
         "name": "Q/BIOQ3001_PL2",
-        "vacant_places": 10
+        "vacant_places": 3
       }
     ]
   },
@@ -10670,7 +10751,7 @@
     "classes": [
       {
         "name": "Q/BIOQ3001_T",
-        "vacant_places": 21
+        "vacant_places": 2
       }
     ]
   },
@@ -10683,7 +10764,7 @@
     "classes": [
       {
         "name": "EGEO3025_PL",
-        "vacant_places": 0
+        "vacant_places": 5
       }
     ]
   },
@@ -10696,7 +10777,7 @@
     "classes": [
       {
         "name": "EGEO3025_T",
-        "vacant_places": 0
+        "vacant_places": 5
       }
     ]
   },
@@ -10722,7 +10803,7 @@
     "classes": [
       {
         "name": "CAGR3010_T",
-        "vacant_places": 10
+        "vacant_places": 3
       }
     ]
   },
@@ -10735,7 +10816,7 @@
     "classes": [
       {
         "name": "CAGR3010_TP",
-        "vacant_places": 10
+        "vacant_places": 3
       }
     ]
   },
@@ -10748,7 +10829,7 @@
     "classes": [
       {
         "name": "GEOL2002_T",
-        "vacant_places": 34
+        "vacant_places": 5
       }
     ]
   },
@@ -10761,11 +10842,11 @@
     "classes": [
       {
         "name": "GEOL2002_TP1",
-        "vacant_places": 17
+        "vacant_places": 5
       },
       {
         "name": "GEOL2002_TP2",
-        "vacant_places": 17
+        "vacant_places": 0
       },
       {
         "name": "GEOL2002_TP3",
@@ -10782,7 +10863,7 @@
     "classes": [
       {
         "name": "FIS3018_T",
-        "vacant_places": 143
+        "vacant_places": 73
       }
     ]
   },
@@ -10795,15 +10876,15 @@
     "classes": [
       {
         "name": "FIS3018_TP1",
-        "vacant_places": 34
+        "vacant_places": 0
       },
       {
         "name": "FIS3018_TP2",
-        "vacant_places": 40
+        "vacant_places": 19
       },
       {
         "name": "FIS3018_TP3",
-        "vacant_places": 39
+        "vacant_places": 25
       }
     ]
   },
@@ -10816,7 +10897,7 @@
     "classes": [
       {
         "name": "CAGR3021_PL",
-        "vacant_places": 0
+        "vacant_places": 5
       }
     ]
   },
@@ -10829,7 +10910,7 @@
     "classes": [
       {
         "name": "CAGR3021_T",
-        "vacant_places": 8
+        "vacant_places": 4
       }
     ]
   },
@@ -10842,7 +10923,7 @@
     "classes": [
       {
         "name": "AST3014_T",
-        "vacant_places": 40
+        "vacant_places": 31
       }
     ]
   },
@@ -10854,8 +10935,12 @@
     "type": "TP",
     "classes": [
       {
+        "name": "AST3014_dispensa",
+        "vacant_places": 0
+      },
+      {
         "name": "AST3014_TP",
-        "vacant_places": 40
+        "vacant_places": 31
       }
     ]
   },
@@ -10868,7 +10953,7 @@
     "classes": [
       {
         "name": "GEOL2005_T",
-        "vacant_places": 46
+        "vacant_places": 8
       }
     ]
   },
@@ -10881,15 +10966,15 @@
     "classes": [
       {
         "name": "GEOL2005_TP1",
-        "vacant_places": 13
+        "vacant_places": 0
       },
       {
         "name": "GEOL2005_TP2",
-        "vacant_places": 18
+        "vacant_places": 8
       },
       {
         "name": "GEOL2005_TP3",
-        "vacant_places": 16
+        "vacant_places": 0
       },
       {
         "name": "GEOL2005_TP4",
@@ -10906,7 +10991,7 @@
     "classes": [
       {
         "name": "CAMB3009_T",
-        "vacant_places": 19
+        "vacant_places": 5
       }
     ]
   },
@@ -10919,11 +11004,11 @@
     "classes": [
       {
         "name": "CAMB3009_TP1",
-        "vacant_places": 10
+        "vacant_places": 5
       },
       {
         "name": "CAMB3009_TP2",
-        "vacant_places": 9
+        "vacant_places": 0
       }
     ]
   },
@@ -10936,11 +11021,11 @@
     "classes": [
       {
         "name": "ARQTP3011_PL1",
-        "vacant_places": 14
+        "vacant_places": 0
       },
       {
         "name": "ARQTP3011_PL2",
-        "vacant_places": 13
+        "vacant_places": 2
       }
     ]
   },
@@ -10953,7 +11038,7 @@
     "classes": [
       {
         "name": "ARQTP3011_T",
-        "vacant_places": 29
+        "vacant_places": 4
       }
     ]
   },
@@ -10966,7 +11051,7 @@
     "classes": [
       {
         "name": "BIOL3027_T",
-        "vacant_places": 38
+        "vacant_places": 11
       }
     ]
   },
@@ -10983,15 +11068,15 @@
       },
       {
         "name": "BIOL3027_TPE",
-        "vacant_places": 20
+        "vacant_places": 17
       },
       {
         "name": "BIOL3027_TP1",
-        "vacant_places": 42
+        "vacant_places": 0
       },
       {
         "name": "BIOL3027_TP2",
-        "vacant_places": 44
+        "vacant_places": 12
       }
     ]
   },
@@ -11004,7 +11089,7 @@
     "classes": [
       {
         "name": "GEOL3014_T",
-        "vacant_places": 8
+        "vacant_places": 9
       }
     ]
   },
@@ -11017,7 +11102,7 @@
     "classes": [
       {
         "name": "GEOL3014_TP",
-        "vacant_places": 8
+        "vacant_places": 9
       }
     ]
   },
@@ -11030,7 +11115,7 @@
     "classes": [
       {
         "name": "CAGR3007_PL",
-        "vacant_places": 12
+        "vacant_places": 0
       }
     ]
   },
@@ -11043,7 +11128,7 @@
     "classes": [
       {
         "name": "CAGR3007_T",
-        "vacant_places": 12
+        "vacant_places": 0
       }
     ]
   },
@@ -11056,7 +11141,7 @@
     "classes": [
       {
         "name": "FIS3026_T",
-        "vacant_places": 60
+        "vacant_places": 5
       }
     ]
   },
@@ -11069,7 +11154,7 @@
     "classes": [
       {
         "name": "FIS3026_TP",
-        "vacant_places": 60
+        "vacant_places": 5
       }
     ]
   },
@@ -11082,7 +11167,7 @@
     "classes": [
       {
         "name": "EGEO3008_T",
-        "vacant_places": 10
+        "vacant_places": 5
       }
     ]
   },
@@ -11095,7 +11180,7 @@
     "classes": [
       {
         "name": "EGEO3008_TP",
-        "vacant_places": 10
+        "vacant_places": 5
       }
     ]
   },
@@ -11108,7 +11193,7 @@
     "classes": [
       {
         "name": "ARQTP3005_PL",
-        "vacant_places": 24
+        "vacant_places": 0
       }
     ]
   },
@@ -11121,7 +11206,7 @@
     "classes": [
       {
         "name": "ARQTP3005_TP",
-        "vacant_places": 24
+        "vacant_places": 0
       }
     ]
   },
@@ -11134,7 +11219,7 @@
     "classes": [
       {
         "name": "Q3015_TP",
-        "vacant_places": 34
+        "vacant_places": 4
       }
     ]
   },
@@ -11147,7 +11232,7 @@
     "classes": [
       {
         "name": "Q3003_T",
-        "vacant_places": 17
+        "vacant_places": 3
       }
     ]
   },
@@ -11160,7 +11245,7 @@
     "classes": [
       {
         "name": "Q3003_TP",
-        "vacant_places": 17
+        "vacant_places": 3
       }
     ]
   },
@@ -11173,11 +11258,11 @@
     "classes": [
       {
         "name": "ARQTP3007_PL1",
-        "vacant_places": 15
+        "vacant_places": 0
       },
       {
         "name": "ARQTP3007_PL2",
-        "vacant_places": 15
+        "vacant_places": 3
       }
     ]
   },
@@ -11190,7 +11275,7 @@
     "classes": [
       {
         "name": "ARQTP3007_T",
-        "vacant_places": 30
+        "vacant_places": 3
       }
     ]
   },
@@ -11203,15 +11288,15 @@
     "classes": [
       {
         "name": "CC3042_PL1",
-        "vacant_places": 23
+        "vacant_places": 0
       },
       {
         "name": "CC3042_PL2",
-        "vacant_places": 22
+        "vacant_places": 0
       },
       {
         "name": "CC3042_PL3",
-        "vacant_places": 23
+        "vacant_places": 9
       }
     ]
   },
@@ -11224,7 +11309,7 @@
     "classes": [
       {
         "name": "CC3042_T",
-        "vacant_places": 99
+        "vacant_places": 40
       }
     ]
   },
@@ -11237,23 +11322,23 @@
     "classes": [
       {
         "name": "FIS3027_PL1",
-        "vacant_places": 11
+        "vacant_places": 3
       },
       {
         "name": "FIS3027_PL2",
-        "vacant_places": 12
+        "vacant_places": 0
       },
       {
         "name": "FIS3027_PL3",
-        "vacant_places": 10
+        "vacant_places": 3
       },
       {
         "name": "FIS3027_PL4",
-        "vacant_places": 12
+        "vacant_places": 0
       },
       {
         "name": "FIS3027_PL5",
-        "vacant_places": 12
+        "vacant_places": 0
       }
     ]
   },
@@ -11266,7 +11351,7 @@
     "classes": [
       {
         "name": "FIS3027_TP",
-        "vacant_places": 147
+        "vacant_places": 96
       }
     ]
   },
@@ -11279,7 +11364,7 @@
     "classes": [
       {
         "name": "CC3044_T",
-        "vacant_places": 68
+        "vacant_places": 8
       }
     ]
   },
@@ -11292,15 +11377,15 @@
     "classes": [
       {
         "name": "CC3044_TP1",
-        "vacant_places": 22
+        "vacant_places": 5
       },
       {
         "name": "CC3044_TP2",
-        "vacant_places": 22
+        "vacant_places": 1
       },
       {
         "name": "CC3044_TP3",
-        "vacant_places": 23
+        "vacant_places": 0
       }
     ]
   },
@@ -11313,7 +11398,7 @@
     "classes": [
       {
         "name": "M3009_TP",
-        "vacant_places": 29
+        "vacant_places": 4
       }
     ]
   },
@@ -11352,7 +11437,7 @@
     "classes": [
       {
         "name": "CAGR3001_T",
-        "vacant_places": 15
+        "vacant_places": 0
       }
     ]
   },
@@ -11365,7 +11450,7 @@
     "classes": [
       {
         "name": "CAGR3001_TP",
-        "vacant_places": 15
+        "vacant_places": 0
       }
     ]
   },
@@ -11378,7 +11463,7 @@
     "classes": [
       {
         "name": "FIS3017_T",
-        "vacant_places": 143
+        "vacant_places": 71
       }
     ]
   },
@@ -11391,15 +11476,15 @@
     "classes": [
       {
         "name": "FIS3017_TP1",
-        "vacant_places": 40
+        "vacant_places": 22
       },
       {
         "name": "FIS3017_TP2",
-        "vacant_places": 37
+        "vacant_places": 0
       },
       {
         "name": "FIS3017_TP3",
-        "vacant_places": 42
+        "vacant_places": 25
       },
       {
         "name": "FIS3017_TP4",
@@ -11416,7 +11501,7 @@
     "classes": [
       {
         "name": "GEOL3015_T",
-        "vacant_places": 15
+        "vacant_places": 3
       }
     ]
   },
@@ -11429,7 +11514,7 @@
     "classes": [
       {
         "name": "GEOL3015_TP",
-        "vacant_places": 15
+        "vacant_places": 3
       }
     ]
   },
@@ -11442,11 +11527,11 @@
     "classes": [
       {
         "name": "CAMB3005_PL1",
-        "vacant_places": 10
+        "vacant_places": 3
       },
       {
         "name": "CAMB3005_PL2",
-        "vacant_places": 12
+        "vacant_places": 6
       }
     ]
   },
@@ -11459,7 +11544,7 @@
     "classes": [
       {
         "name": "CAMB3005_T",
-        "vacant_places": 22
+        "vacant_places": 5
       }
     ]
   },
@@ -11472,11 +11557,11 @@
     "classes": [
       {
         "name": "CAMB3005_TP1",
-        "vacant_places": 10
+        "vacant_places": 3
       },
       {
         "name": "CAMB3005_TP2",
-        "vacant_places": 12
+        "vacant_places": 6
       }
     ]
   },
@@ -11489,15 +11574,15 @@
     "classes": [
       {
         "name": "Q3008_PLD",
-        "vacant_places": 10
+        "vacant_places": 7
       },
       {
         "name": "Q3008_PL1",
-        "vacant_places": 14
+        "vacant_places": 6
       },
       {
         "name": "Q3008_PL2",
-        "vacant_places": 13
+        "vacant_places": 0
       }
     ]
   },
@@ -11510,7 +11595,7 @@
     "classes": [
       {
         "name": "Q3008_T",
-        "vacant_places": 39
+        "vacant_places": 15
       }
     ]
   },
@@ -11531,23 +11616,23 @@
       },
       {
         "name": "BIOL3017_PL1",
-        "vacant_places": 12
+        "vacant_places": 0
       },
       {
         "name": "BIOL3017_PL2",
-        "vacant_places": 16
+        "vacant_places": 0
       },
       {
         "name": "BIOL3017_PL3",
-        "vacant_places": 16
+        "vacant_places": 10
       },
       {
         "name": "BIOL3017_PL4",
-        "vacant_places": 14
+        "vacant_places": 0
       },
       {
         "name": "BIOL3017_PL5",
-        "vacant_places": 16
+        "vacant_places": 0
       }
     ]
   },
@@ -11560,7 +11645,7 @@
     "classes": [
       {
         "name": "BIOL3017_T",
-        "vacant_places": 79
+        "vacant_places": 7
       }
     ]
   },
@@ -11573,7 +11658,7 @@
     "classes": [
       {
         "name": "Q3009_PL1",
-        "vacant_places": 20
+        "vacant_places": 9
       },
       {
         "name": "Q3009_PL2",
@@ -11590,7 +11675,7 @@
     "classes": [
       {
         "name": "Q3009_TP",
-        "vacant_places": 20
+        "vacant_places": 9
       }
     ]
   },
@@ -11603,7 +11688,7 @@
     "classes": [
       {
         "name": "M3023_T",
-        "vacant_places": 73
+        "vacant_places": 10
       }
     ]
   },
@@ -11616,7 +11701,7 @@
     "classes": [
       {
         "name": "M3023_TP",
-        "vacant_places": 73
+        "vacant_places": 8
       }
     ]
   },
@@ -11629,7 +11714,7 @@
     "classes": [
       {
         "name": "M3012_TP",
-        "vacant_places": 58
+        "vacant_places": 4
       }
     ]
   },
@@ -11663,19 +11748,19 @@
       },
       {
         "name": "BIOL3018_PL1",
-        "vacant_places": 17
+        "vacant_places": 2
       },
       {
         "name": "BIOL3018_PL2",
-        "vacant_places": 17
+        "vacant_places": 0
       },
       {
         "name": "BIOL3018_PL3",
-        "vacant_places": 18
+        "vacant_places": 0
       },
       {
         "name": "BIOL3018_PL4",
-        "vacant_places": 17
+        "vacant_places": 0
       }
     ]
   },
@@ -11688,7 +11773,7 @@
     "classes": [
       {
         "name": "BIOL3018_T",
-        "vacant_places": 77
+        "vacant_places": 11
       }
     ]
   },
@@ -11701,7 +11786,7 @@
     "classes": [
       {
         "name": "FIS3019_T",
-        "vacant_places": 70
+        "vacant_places": 21
       }
     ]
   },
@@ -11714,11 +11799,11 @@
     "classes": [
       {
         "name": "FIS3019_TP1",
-        "vacant_places": 30
+        "vacant_places": 7
       },
       {
         "name": "FIS3019_TP2",
-        "vacant_places": 30
+        "vacant_places": 0
       }
     ]
   },
@@ -11731,7 +11816,7 @@
     "classes": [
       {
         "name": "M3045_TP",
-        "vacant_places": 96
+        "vacant_places": 4
       }
     ]
   },
@@ -11783,7 +11868,7 @@
     "classes": [
       {
         "name": "CC3049_TP",
-        "vacant_places": 37
+        "vacant_places": 6
       }
     ]
   },
@@ -11816,11 +11901,11 @@
       },
       {
         "name": "CC1015_PL6",
-        "vacant_places": 18
+        "vacant_places": 7
       },
       {
         "name": "CC1015_PL7_BioInf",
-        "vacant_places": 10
+        "vacant_places": 8
       }
     ]
   },
@@ -11833,11 +11918,11 @@
     "classes": [
       {
         "name": "CC1015_T1",
-        "vacant_places": 0
+        "vacant_places": 26
       },
       {
         "name": "CC1015_T2",
-        "vacant_places": 0
+        "vacant_places": 7
       }
     ]
   },
@@ -11850,11 +11935,11 @@
     "classes": [
       {
         "name": "ARQTP3009_PL1",
-        "vacant_places": 14
+        "vacant_places": 0
       },
       {
         "name": "ARQTP3009_PL2",
-        "vacant_places": 13
+        "vacant_places": 2
       }
     ]
   },
@@ -11867,7 +11952,7 @@
     "classes": [
       {
         "name": "ARQTP3009_T",
-        "vacant_places": 27
+        "vacant_places": 3
       }
     ]
   },
@@ -11880,11 +11965,11 @@
     "classes": [
       {
         "name": "CAMB3007_PL1",
-        "vacant_places": 12
+        "vacant_places": 0
       },
       {
         "name": "CAMB3007_PL2",
-        "vacant_places": 11
+        "vacant_places": 4
       }
     ]
   },
@@ -11897,7 +11982,7 @@
     "classes": [
       {
         "name": "CAMB3007_T",
-        "vacant_places": 23
+        "vacant_places": 5
       }
     ]
   },
@@ -11910,7 +11995,7 @@
     "classes": [
       {
         "name": "CAGR3003_PL",
-        "vacant_places": 8
+        "vacant_places": 6
       }
     ]
   },
@@ -11923,7 +12008,7 @@
     "classes": [
       {
         "name": "CAGR3003_T",
-        "vacant_places": 8
+        "vacant_places": 6
       }
     ]
   },
@@ -11936,7 +12021,7 @@
     "classes": [
       {
         "name": "Q3002_T",
-        "vacant_places": 30
+        "vacant_places": 4
       }
     ]
   },
@@ -11949,11 +12034,11 @@
     "classes": [
       {
         "name": "Q3002_TP",
-        "vacant_places": 30
+        "vacant_places": 5
       },
       {
         "name": "Q3002_TPD",
-        "vacant_places": 999
+        "vacant_places": 998
       }
     ]
   },
@@ -11966,11 +12051,11 @@
     "classes": [
       {
         "name": "GEOL3004_PL1",
-        "vacant_places": 17
+        "vacant_places": 0
       },
       {
         "name": "GEOL3004_PL2",
-        "vacant_places": 16
+        "vacant_places": 5
       },
       {
         "name": "GEOL3004_PL3",
@@ -11987,7 +12072,7 @@
     "classes": [
       {
         "name": "GEOL3004_T",
-        "vacant_places": 34
+        "vacant_places": 5
       }
     ]
   },
@@ -12000,15 +12085,15 @@
     "classes": [
       {
         "name": "CC3002_PL1",
-        "vacant_places": 27
+        "vacant_places": 1
       },
       {
         "name": "CC3002_PL2",
-        "vacant_places": 27
+        "vacant_places": 7
       },
       {
         "name": "CC3002_PL3",
-        "vacant_places": 30
+        "vacant_places": 2
       }
     ]
   },
@@ -12021,7 +12106,7 @@
     "classes": [
       {
         "name": "CC3002_T",
-        "vacant_places": 94
+        "vacant_places": 21
       }
     ]
   },
@@ -12034,7 +12119,7 @@
     "classes": [
       {
         "name": "BIOL3022_PL",
-        "vacant_places": 1
+        "vacant_places": 0
       }
     ]
   },
@@ -12047,7 +12132,7 @@
     "classes": [
       {
         "name": "BIOL3022_T",
-        "vacant_places": 1
+        "vacant_places": 0
       }
     ]
   },
@@ -12060,7 +12145,7 @@
     "classes": [
       {
         "name": "CAMB3003_T",
-        "vacant_places": 23
+        "vacant_places": 4
       }
     ]
   },
@@ -12073,11 +12158,11 @@
     "classes": [
       {
         "name": "CAMB3003_TP1",
-        "vacant_places": 10
+        "vacant_places": 0
       },
       {
         "name": "CAMB3003_TP2",
-        "vacant_places": 12
+        "vacant_places": 4
       }
     ]
   },
@@ -12090,7 +12175,7 @@
     "classes": [
       {
         "name": "GEOL3006_T",
-        "vacant_places": 19
+        "vacant_places": 0
       }
     ]
   },
@@ -12103,7 +12188,7 @@
     "classes": [
       {
         "name": "GEOL3006_TP",
-        "vacant_places": 19
+        "vacant_places": 0
       }
     ]
   },
@@ -12116,7 +12201,7 @@
     "classes": [
       {
         "name": "Q3017_PL",
-        "vacant_places": 4
+        "vacant_places": 0
       }
     ]
   },
@@ -12129,7 +12214,7 @@
     "classes": [
       {
         "name": "Q3017_TP",
-        "vacant_places": 4
+        "vacant_places": 0
       }
     ]
   },
@@ -12142,7 +12227,7 @@
     "classes": [
       {
         "name": "CC3033_PL",
-        "vacant_places": 29
+        "vacant_places": 15
       }
     ]
   },
@@ -12155,7 +12240,7 @@
     "classes": [
       {
         "name": "CC3033_T",
-        "vacant_places": 29
+        "vacant_places": 15
       }
     ]
   },
@@ -12168,11 +12253,7 @@
     "classes": [
       {
         "name": "BIOINF3001_PL1",
-        "vacant_places": 15
-      },
-      {
-        "name": "BIOINF3001_PL2",
-        "vacant_places": 15
+        "vacant_places": 0
       }
     ]
   },
@@ -12185,7 +12266,7 @@
     "classes": [
       {
         "name": "BIOINF3001_T",
-        "vacant_places": 40
+        "vacant_places": 21
       }
     ]
   },
@@ -12198,7 +12279,7 @@
     "classes": [
       {
         "name": "EGEO3027_T",
-        "vacant_places": 15
+        "vacant_places": 4
       },
       {
         "name": "EGEO3027_T",
@@ -12215,7 +12296,7 @@
     "classes": [
       {
         "name": "EGEO3027_TP",
-        "vacant_places": 15
+        "vacant_places": 4
       }
     ]
   },
@@ -12228,15 +12309,15 @@
     "classes": [
       {
         "name": "CC3008_PL1",
-        "vacant_places": 25
+        "vacant_places": 3
       },
       {
         "name": "CC3008_PL2",
-        "vacant_places": 25
+        "vacant_places": 7
       },
       {
         "name": "CC3008_PL3",
-        "vacant_places": 24
+        "vacant_places": 3
       }
     ]
   },
@@ -12249,7 +12330,7 @@
     "classes": [
       {
         "name": "CC3008_T",
-        "vacant_places": 74
+        "vacant_places": 14
       }
     ]
   },
@@ -12292,27 +12373,27 @@
       },
       {
         "name": "BIOL3001_PLE",
-        "vacant_places": 20
+        "vacant_places": 17
       },
       {
         "name": "BIOL3001_PL1",
-        "vacant_places": 15
+        "vacant_places": 0
       },
       {
         "name": "BIOL3001_PL2",
-        "vacant_places": 17
+        "vacant_places": 0
       },
       {
         "name": "BIOL3001_PL3",
-        "vacant_places": 17
+        "vacant_places": 0
       },
       {
         "name": "BIOL3001_PL4",
-        "vacant_places": 18
+        "vacant_places": 10
       },
       {
         "name": "BIOL3001_PL5",
-        "vacant_places": 18
+        "vacant_places": 0
       }
     ]
   },
@@ -12325,7 +12406,7 @@
     "classes": [
       {
         "name": "BIOL3001_T",
-        "vacant_places": 88
+        "vacant_places": 7
       }
     ]
   },
@@ -12338,7 +12419,7 @@
     "classes": [
       {
         "name": "ARQTP2007_T",
-        "vacant_places": 24
+        "vacant_places": 2
       }
     ]
   },
@@ -12351,7 +12432,7 @@
     "classes": [
       {
         "name": "CAGR3006_PL",
-        "vacant_places": 12
+        "vacant_places": 1
       }
     ]
   },
@@ -12364,7 +12445,7 @@
     "classes": [
       {
         "name": "CAGR3006_T",
-        "vacant_places": 12
+        "vacant_places": 1
       }
     ]
   },
@@ -12377,7 +12458,7 @@
     "classes": [
       {
         "name": "CAGR3009_PL",
-        "vacant_places": 12
+        "vacant_places": 0
       }
     ]
   },
@@ -12390,7 +12471,7 @@
     "classes": [
       {
         "name": "CAGR3009_T",
-        "vacant_places": 12
+        "vacant_places": 0
       }
     ]
   }
