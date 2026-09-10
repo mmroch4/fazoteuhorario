@@ -19,7 +19,13 @@ import re
 import sys
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
+import faculdades as F
+
+ROOT = F.ROOT
+
+# The faculty the site shows when the URL says nothing. Must match DEFAULT in
+# assets/boot.js: that is what decides which URLs stay clean and which carry ?f=.
+DEFAULT_FACULTY = "fcup"
 
 # The public address of the site. Change with --site (which rewrites this file).
 SITE = "https://horario.miguelrocha.dev"
@@ -218,19 +224,42 @@ def write_sitemap(site):
     """One URL per page, plus one per UC that has a published timetable.
 
     subject.html reads ?code=CC1007 as well as #CC1007, and only the query form
-    is a distinct URL to a crawler - so that is the form the sitemap uses."""
-    data = json.loads((ROOT / "data" / "timetable.json").read_text(encoding="utf-8"))
-    today = datetime.date.today().isoformat()
-    lastmod = (data.get("generated") or today)[:10]
+    is a distinct URL to a crawler - so that is the form the sitemap uses.
 
-    urls = [(site + p["path"], "1.0" if p["path"] == "/" else "0.8", lastmod)
-            for p in PAGES.values()]
-    n_ucs = 0
-    for sub in data["subjects"]:
-        if not any(c["slots"] for c in sub["classes"]):
-            continue                       # nothing to show, nothing to index
-        urls.append((f"{site}/subject.html?code={sub['code']}", "0.5", lastmod))
-        n_ucs += 1
+    Every ready faculty is listed, following the URL convention of boot.js: the
+    default faculty keeps clean URLs, the others carry ?f=<sigla>. Without that
+    the sitemap would claim one faculty's UC codes are the whole site."""
+    today = datetime.date.today().isoformat()
+    urls, n_ucs, seen = [], 0, set()
+
+    for code in F.READY:
+        path = F.timetable(code)
+        if not path.exists():
+            print(f"  ! sem {path.relative_to(ROOT)} — corre "
+                  f"python3 scripts/build_data.py -f {code}")
+            continue
+        data = json.loads(path.read_text(encoding="utf-8"))
+        lastmod = (data.get("generated") or today)[:10]
+        fq = "" if code == DEFAULT_FACULTY else "?f=" + code
+
+        for p in PAGES.values():
+            # The home page is "/" only for the default faculty; elsewhere the
+            # query has to hang off a real file name.
+            page = p["path"] if p["path"] != "/" else ("/" if not fq else "/index.html")
+            url = site + page + fq
+            if url not in seen:
+                seen.add(url)
+                urls.append((url, "1.0" if p["path"] == "/" else "0.8", lastmod))
+
+        for sub in data["subjects"]:
+            if not any(c["slots"] for c in sub["classes"]):
+                continue                   # nothing to show, nothing to index
+            q = "code=" + sub["code"] + ("" if code == DEFAULT_FACULTY else "&f=" + code)
+            urls.append((f"{site}/subject.html?{q}", "0.5", lastmod))
+            n_ucs += 1
+
+    if not urls:
+        sys.exit("nenhuma faculdade com timetable.json — corre build_data.py primeiro")
 
     body = "".join(
         f"  <url>\n    <loc>{esc(u)}</loc>\n    <lastmod>{m}</lastmod>\n"
@@ -239,7 +268,7 @@ def write_sitemap(site):
         '<?xml version="1.0" encoding="UTF-8"?>\n'
         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
         + body + "</urlset>\n", encoding="utf-8")
-    print(f"  sitemap.xml ({len(urls)} URLs: {len(PAGES)} páginas + {n_ucs} UCs)")
+    print(f"  sitemap.xml ({len(urls)} URLs: {len(urls) - n_ucs} páginas + {n_ucs} UCs)")
 
 
 def set_site(new):
